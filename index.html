@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>空間衛生社 ランディングページ（PC 1440）</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Montserrat:ital,wght@0,600;0,700;1,700;1,800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
 <style>
@@ -20,16 +21,977 @@ input,select,textarea,button{font-family:inherit}
 .svc-card:hover .svc-num{color:#0e5fd1 !important}
 .svc-card:hover .svc-name{color:#0e5fd1 !important}
 }
+
+
+/* ===== Responsive step 1: Header + Hero ===== */
+.mobile-menu-button,
+.mobile-menu,
+.hero-image-mobile{display:none}
+
+@media (max-width: 767px){
+  html{scroll-behavior:smooth}
+  body{overflow-x:hidden}
+  body.mobile-menu-open{overflow:hidden}
+
+  .site-header{
+    position:sticky !important;
+    top:0;
+    height:64px !important;
+    border-bottom:1px solid rgba(10,42,79,.06) !important;
+    box-shadow:0 3px 16px rgba(10,42,79,.04);
+  }
+  .header-inner{
+    width:100% !important;
+    max-width:none !important;
+    padding:0 18px !important;
+  }
+  .site-logo{
+    width:128px !important;
+    height:auto !important;
+    position:relative;
+    z-index:32;
+  }
+  .pc-nav{display:none !important}
+
+  .mobile-menu-button{
+    display:flex;
+    position:relative;
+    z-index:32;
+    width:44px;
+    height:44px;
+    padding:0;
+    border:0;
+    background:transparent;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+  }
+  .mobile-menu-button span{
+    display:block;
+    width:23px;
+    height:2px;
+    border-radius:999px;
+    background:#0a2a4f;
+    transform-origin:center;
+    transition:transform .28s ease, opacity .2s ease;
+  }
+  .mobile-menu-button.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .mobile-menu-button.is-open span:nth-child(2){opacity:0;transform:scaleX(.3)}
+  .mobile-menu-button.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .mobile-menu{
+    display:block;
+    position:fixed;
+    z-index:30;
+    left:0;
+    right:0;
+    top:64px;
+    height:calc(100dvh - 64px);
+    padding:26px 22px 34px;
+    background:rgba(248,252,255,.98);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-12px);
+    pointer-events:none;
+    transition:opacity .26s ease, transform .32s cubic-bezier(.22,.61,.36,1), visibility .26s ease;
+  }
+  .mobile-menu.is-open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .mobile-menu-nav{display:flex;flex-direction:column}
+  .mobile-menu-nav a{
+    display:flex;
+    align-items:center;
+    min-height:58px;
+    border-bottom:1px solid #dbeaf6;
+    color:#0a2a4f;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .mobile-menu-nav a::after{
+    content:'→';
+    margin-left:auto;
+    color:#1a79f2;
+    font-family:Montserrat,sans-serif;
+    font-weight:700;
+  }
+
+  .hero{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 0 34px !important;
+    background:linear-gradient(160deg,#f4fafe 0%,#ffffff 55%,#f6fbff 100%) !important;
+  }
+  .hero > img[aria-hidden="true"]{opacity:.22 !important}
+  .hero-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    min-height:0 !important;
+    padding:24px 18px 0 !important;
+    display:block !important;
+  }
+  .hero-image-desktop,
+  .hero-scroll{display:none !important}
+  .hero-content{
+    width:100% !important;
+    height:auto !important;
+    padding:0 !important;
+  }
+  .hero-catch{
+    width:132px !important;
+    height:auto !important;
+    margin:0 0 8px 6px !important;
+  }
+  .hero-title{
+    width:auto !important;
+    height:auto !important;
+    margin:0 6px !important;
+    font-size:clamp(34px,10.4vw,43px) !important;
+    line-height:1.2 !important;
+    letter-spacing:0 !important;
+  }
+  .hero-lead{
+    width:auto !important;
+    height:auto !important;
+    margin:12px 6px 0 !important;
+    text-align:left !important;
+    font-size:14px !important;
+    line-height:1.75 !important;
+  }
+  .hero-image-mobile{
+    display:block;
+    width:calc(100% + 12px);
+    max-width:none;
+    height:auto;
+    margin:4px -6px 0;
+    object-fit:contain;
+  }
+  .hero-actions{
+    width:100% !important;
+    margin-top:-2px !important;
+    align-items:stretch !important;
+  }
+  .hero-badges{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:8px !important;
+    width:100% !important;
+  }
+  .hero-badge{
+    width:100% !important;
+    min-width:0 !important;
+    height:92px !important;
+    padding:10px 5px !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    gap:7px !important;
+    border-radius:18px !important;
+    font-size:12px !important;
+    line-height:1.35 !important;
+    text-align:center !important;
+    white-space:normal !important;
+  }
+  .hero-badge svg{width:25px !important;height:25px !important;flex:0 0 auto}
+  .hero-cta{
+    width:100% !important;
+    height:58px !important;
+    margin-top:16px !important;
+    padding:0 22px !important;
+    justify-content:center !important;
+    border-radius:29px !important;
+    font-size:15px !important;
+    gap:12px !important;
+    box-shadow:0 12px 24px rgba(26,121,242,.25) !important;
+  }
+  .hero-note{display:none !important}
+}
+
+
+/* ===== Responsive step 2: About + Services ===== */
+@media (max-width: 767px){
+  /* Small polish carried forward from the review */
+  .site-logo{width:146px !important}
+  .hero-title{text-align:center !important;margin-left:auto !important;margin-right:auto !important}
+  .hero-lead{text-align:center !important;margin-left:auto !important;margin-right:auto !important}
+
+  /* About */
+  .about{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:54px 0 58px !important;
+    background:linear-gradient(180deg,#eaf6fe 0%,#fbfdff 52%,#f7fcff 100%) !important;
+  }
+  .about > svg{height:44px !important}
+  .about > img[aria-hidden="true"]{opacity:.22 !important}
+  .about-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:0 20px !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1.22fr) minmax(118px,.78fr) !important;
+    gap:12px !important;
+    align-items:start !important;
+  }
+  .about-inner > img[aria-hidden="true"]{opacity:.34 !important;transform:scale(.62)}
+  .about-copy{width:auto !important;min-width:0 !important;padding-top:2px}
+  .about-en{font-size:42px !important;line-height:1 !important}
+  .about-jp{margin-top:5px !important;padding-left:2px !important;font-size:11px !important}
+  .about-title{
+    margin-top:20px !important;
+    font-size:24px !important;
+    line-height:1.5 !important;
+    letter-spacing:0 !important;
+  }
+  .about-text{margin-top:20px !important;gap:10px !important}
+  .about-text p{
+    font-size:11.5px !important;
+    line-height:1.8 !important;
+  }
+  .about-visual{
+    width:100% !important;
+    height:270px !important;
+    margin-top:50px !important;
+  }
+  .about-photo{
+    width:100% !important;
+    height:250px !important;
+    object-fit:cover !important;
+    object-position:center 28% !important;
+    border-radius:50% 50% 44% 56% / 42% 38% 62% 58% !important;
+  }
+  .about-badge{
+    right:-8px !important;
+    top:-38px !important;
+    width:82px !important;
+    height:82px !important;
+  }
+  .about-badge span{font-size:12px !important;line-height:1.15 !important}
+  .about-visual > div:last-child{
+    width:50px !important;
+    height:50px !important;
+    left:-8px !important;
+    bottom:-2px !important;
+  }
+
+  /* Services */
+  .services{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:58px 0 72px !important;
+    background:linear-gradient(180deg,#e7f5fe 0%,#f6fcff 58%,#eaf6fe 100%) !important;
+  }
+  .services > svg{height:44px !important}
+  .services > img[aria-hidden="true"]{opacity:.20 !important}
+  .services-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:0 20px !important;
+    display:block !important;
+  }
+  .services-inner > img[aria-hidden="true"]{opacity:.34 !important;transform:scale(.62)}
+  .services-en{font-size:42px !important}
+  .services-jp{margin-top:5px !important;padding-left:2px !important;font-size:11px !important}
+  .services-lead{
+    margin-top:10px !important;
+    padding-left:2px !important;
+    font-size:11.5px !important;
+    line-height:1.75 !important;
+  }
+  .services-grid{
+    margin-top:30px !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    column-gap:10px !important;
+    row-gap:12px !important;
+  }
+  .services-grid .svc-card{
+    min-width:0 !important;
+    min-height:214px !important;
+    padding:16px 10px 15px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.88) !important;
+    border:1px solid rgba(222,237,249,.88) !important;
+    box-shadow:0 6px 16px rgba(10,42,79,.035) !important;
+  }
+  .services-grid .svc-num{
+    align-self:flex-start !important;
+    font-size:23px !important;
+    margin-left:2px !important;
+  }
+  .services-grid .svc-illust{
+    width:min(100%,112px) !important;
+    margin-top:8px !important;
+  }
+  .services-grid .svc-name{
+    margin-top:10px !important;
+    font-size:13px !important;
+    line-height:1.45 !important;
+  }
+  .services-grid .svc-card p{
+    margin-top:7px !important;
+    font-size:10.5px !important;
+    line-height:1.65 !important;
+  }
+}
+
+
+/* ===== Responsive step 3: Works ===== */
+@media (max-width: 767px){
+  .works{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:54px 0 64px !important;
+    background:#fff !important;
+  }
+  .works > svg{height:44px !important}
+  .works > img[aria-hidden="true"]{opacity:.20 !important;transform:scale(.66)}
+  .works-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:0 20px !important;
+  }
+  .works-inner > img[aria-hidden="true"]{opacity:.30 !important;transform:scale(.58)}
+  .works-en{font-size:42px !important;line-height:1 !important}
+  .works-jp{margin-top:5px !important;font-size:11px !important}
+  .works-lead{
+    margin-top:10px !important;
+    font-size:11.5px !important;
+    line-height:1.75 !important;
+  }
+  .works-list{
+    margin-top:30px !important;
+    gap:22px !important;
+  }
+  .works-item{
+    display:flex !important;
+    flex-direction:row-reverse !important;
+    align-items:center !important;
+    gap:12px !important;
+    height:auto !important;
+    min-height:0 !important;
+  }
+  .works-item > div{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+  }
+  .works-item > img{
+    flex:0 0 46% !important;
+    width:46% !important;
+    height:132px !important;
+    max-width:none !important;
+    object-fit:cover !important;
+    position:static !important;
+    left:auto !important;
+    border-radius:48% 52% 46% 54% / 48% 44% 56% 52% !important;
+  }
+  .works-item > div > div:first-child{
+    font-size:23px !important;
+    line-height:1 !important;
+  }
+  .works-item > div > div:nth-child(2){
+    display:none !important;
+  }
+  .works-item h3{
+    margin-top:6px !important;
+    font-size:14px !important;
+    line-height:1.4 !important;
+  }
+  .works-item p{
+    width:auto !important;
+    height:auto !important;
+    margin:7px 0 0 !important;
+    font-size:10.5px !important;
+    line-height:1.65 !important;
+  }
+  .works-item p br{display:none !important}
+  .works-item > div > div:last-child{
+    margin-top:8px !important;
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:5px !important;
+  }
+  .works-item > div > div:last-child span{
+    padding:4px 8px !important;
+    font-size:8.5px !important;
+  }
+}
+
+/* ===== Responsive step 4: Strengths ===== */
+@media (max-width: 767px){
+  .strengths{
+    height:auto !important;
+    min-height:0 !important;
+    padding:0 0 56px !important;
+    overflow:hidden !important;
+  }
+  .strengths > svg{height:42px !important}
+  .strengths > img[aria-hidden="true"]{opacity:.18 !important;transform:scale(.62)}
+  .strengths-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:74px 20px 0 !important;
+    display:block !important;
+  }
+  .strengths-inner > img[aria-hidden="true"]{opacity:.28 !important;transform:scale(.58)}
+  .strengths-en{
+    left:0 !important;
+    font-size:42px !important;
+    line-height:1 !important;
+  }
+  .strengths-jp{
+    left:0 !important;
+    margin-top:6px !important;
+    padding-left:0 !important;
+    font-size:11px !important;
+  }
+  .strengths-lead{
+    left:0 !important;
+    margin-top:10px !important;
+    padding-left:0 !important;
+    font-size:11px !important;
+    line-height:1.75 !important;
+  }
+  .strengths-lead br{display:none !important}
+  .strengths-grid{
+    margin-top:24px !important;
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-template-rows:none !important;
+    column-gap:10px !important;
+    row-gap:10px !important;
+  }
+  .strengths-grid > div[aria-hidden="true"]{display:none !important}
+  .strength-card{
+    min-width:0 !important;
+    padding:16px 12px 18px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:10px !important;
+    background:rgba(255,255,255,.92) !important;
+    border:1px solid rgba(255,255,255,.95) !important;
+    border-radius:18px !important;
+    box-shadow:0 8px 22px rgba(10,42,79,.05) !important;
+  }
+  .strength-icon{
+    width:68px !important;
+    margin:0 !important;
+  }
+  .strength-icon > div:first-child{
+    font-size:21px !important;
+    margin:0 0 -11px 2px !important;
+  }
+  .strength-icon > div:nth-child(2){
+    width:68px !important;
+    height:58px !important;
+  }
+  .strength-icon svg{
+    width:32px !important;
+    height:32px !important;
+  }
+  .strength-copy{width:100% !important;min-width:0 !important}
+  .strength-copy h3{
+    margin:0 !important;
+    font-size:13px !important;
+    line-height:1.45 !important;
+  }
+  .strength-copy > div{
+    margin:7px 0 8px !important;
+    width:24px !important;
+  }
+  .strength-copy p{
+    height:auto !important;
+    margin:0 !important;
+    font-size:10px !important;
+    line-height:1.65 !important;
+  }
+  .strength-copy p br{display:none !important}
+}
+
+
+/* ===== Responsive step 5: FAQ + Contact ===== */
+@media (max-width: 767px){
+  .faq-section{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 0 58px !important;
+  }
+  .faq-section > svg{height:42px !important}
+  .faq-section > div[style*="position: absolute"]{opacity:.18 !important;transform:scale(.7)}
+  .faq-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:72px 20px 0 !important;
+    display:block !important;
+  }
+  .faq-inner > svg,
+  .faq-inner > div[style*="position: absolute"]{display:none !important}
+  .faq-intro{width:100% !important}
+  .faq-en{font-size:43px !important}
+  .faq-jp{
+    margin-top:6px !important;
+    padding-left:0 !important;
+    font-size:11px !important;
+  }
+  .faq-lead{
+    margin-top:10px !important;
+    font-size:10.5px !important;
+    line-height:1.7 !important;
+  }
+  .faq-photo-wrap{display:none !important}
+  #faq-list{
+    width:100% !important;
+    margin-top:24px !important;
+  }
+  #faq-list > div{
+    margin-top:0 !important;
+    padding:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+  }
+  #faq-list > div > div:first-child{
+    min-height:54px !important;
+    height:auto !important;
+    padding:13px 4px !important;
+    gap:9px !important;
+    border-bottom:1px solid #d5e7f6 !important;
+  }
+  #faq-list > div > div:first-child > span:first-child{
+    width:33px !important;
+    flex:0 0 33px !important;
+    font-size:13px !important;
+  }
+  #faq-list > div > div:first-child > span:nth-child(2){display:none !important}
+  #faq-list > div > div:first-child > span:nth-child(3){
+    font-size:11px !important;
+    line-height:1.5 !important;
+  }
+  #faq-list button{
+    width:27px !important;
+    height:27px !important;
+  }
+  #faq-list > div > div:nth-child(2) > div > div{
+    margin:8px 0 10px !important;
+    padding:14px !important;
+    gap:10px !important;
+    border-radius:12px !important;
+  }
+  #faq-list > div > div:nth-child(2) span{
+    font-size:13px !important;
+  }
+  #faq-list > div > div:nth-child(2) p{
+    font-size:10.5px !important;
+    line-height:1.75 !important;
+  }
+
+  .contact-section{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 0 58px !important;
+  }
+  .contact-section > svg{height:42px !important}
+  .contact-section > img[aria-hidden="true"]{opacity:.16 !important;transform:scale(.6)}
+  .contact-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:76px 20px 0 !important;
+    display:block !important;
+  }
+  .contact-inner > img[aria-hidden="true"]{opacity:.24 !important;transform:scale(.55)}
+  .contact-inner > svg{
+    width:34px !important;
+    height:30px !important;
+    right:26px !important;
+    top:68px !important;
+  }
+  .contact-badge{
+    width:108px !important;
+    height:108px !important;
+    right:18px !important;
+    top:92px !important;
+  }
+  .contact-badge span{
+    font-size:16px !important;
+    line-height:1.18 !important;
+  }
+  .contact-en{
+    font-size:44px !important;
+    text-align:left !important;
+  }
+  .contact-jp{
+    margin-top:7px !important;
+    font-size:18px !important;
+    text-align:left !important;
+  }
+  .contact-lead{
+    width:68% !important;
+    margin-top:26px !important;
+    font-size:11px !important;
+    line-height:1.7 !important;
+  }
+  .contact-copy{
+    width:72% !important;
+    margin-top:9px !important;
+    font-size:10px !important;
+    line-height:1.8 !important;
+    text-align:left !important;
+  }
+  .contact-copy br{display:none !important}
+  .contact-form{
+    width:100% !important;
+    margin-top:28px !important;
+    padding:26px 18px 24px !important;
+    gap:20px !important;
+    border-radius:20px !important;
+    box-shadow:0 12px 30px rgba(20,80,150,.07) !important;
+  }
+  .contact-form > div{
+    gap:7px !important;
+  }
+  .contact-form > div > div:first-child{
+    gap:8px !important;
+    flex-wrap:wrap !important;
+  }
+  .contact-form span[style*="Montserrat"]{
+    font-size:12px !important;
+  }
+  .contact-form label{
+    font-size:12px !important;
+  }
+  .contact-form div[style*="margin-left: 36px"]{
+    margin-left:0 !important;
+    font-size:9.5px !important;
+  }
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="tel"]{
+    width:100% !important;
+    height:46px !important;
+    padding:0 13px !important;
+    font-size:12px !important;
+    border-radius:9px !important;
+  }
+  .contact-form textarea{
+    width:100% !important;
+    height:118px !important;
+    padding:13px !important;
+    font-size:11px !important;
+    line-height:1.7 !important;
+    border-radius:9px !important;
+  }
+  .contact-form input[type="radio"]{
+    width:18px !important;
+    height:18px !important;
+  }
+  .contact-form button[type="submit"]{
+    width:100% !important;
+    height:58px !important;
+    margin-top:4px !important;
+    border-radius:29px !important;
+    font-size:13px !important;
+  }
+}
+
+
+/* ===== Responsive step 6: Footer ===== */
+@media (max-width: 767px){
+  .site-footer{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 !important;
+  }
+  .site-footer > svg:first-of-type{height:54px !important;}
+  .site-footer > svg:nth-of-type(2){height:86px !important;}
+  .site-footer > img[aria-hidden="true"]{opacity:.22 !important;}
+  .site-footer > img[aria-hidden="true"]:nth-of-type(1){
+    width:150px !important;height:auto !important;left:-74px !important;top:120px !important;
+  }
+  .site-footer > img[aria-hidden="true"]:nth-of-type(2){
+    width:160px !important;height:auto !important;right:-76px !important;top:74px !important;
+  }
+  .footer-inner{
+    width:100% !important;
+    max-width:none !important;
+    padding:72px 24px 24px !important;
+    min-height:0 !important;
+  }
+  .footer-inner > img[aria-hidden="true"]{opacity:.28 !important;transform:scale(.58);transform-origin:center;}
+  .footer-inner > img[aria-hidden="true"]:nth-of-type(1){left:-18px !important;top:24px !important;}
+  .footer-inner > img[aria-hidden="true"]:nth-of-type(2){left:auto !important;right:-12px !important;top:296px !important;}
+  .footer-main{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:34px 24px !important;
+    align-items:start !important;
+  }
+  .footer-brand{
+    width:100% !important;
+    grid-column:1 / -1 !important;
+  }
+  .footer-brand > img{
+    width:178px !important;
+    height:auto !important;
+  }
+  .footer-brand > div{
+    margin-top:8px !important;
+    font-size:9px !important;
+    letter-spacing:.18em !important;
+  }
+  .footer-brand > p{
+    margin-top:18px !important;
+    font-size:11px !important;
+    line-height:1.8 !important;
+  }
+  .footer-brand > p br{display:none !important;}
+  .footer-col{width:100% !important;}
+  .footer-col > div:first-child{
+    font-size:12px !important;
+    letter-spacing:.14em !important;
+  }
+  .footer-col > div:nth-child(2){
+    margin:9px 0 4px !important;
+    width:24px !important;
+    height:2px !important;
+  }
+  .footer-col a{
+    height:32px !important;
+    font-size:10.5px !important;
+    line-height:1.3 !important;
+  }
+  .footer-col a svg{width:13px !important;height:9px !important;flex:0 0 auto;}
+  .footer-bottom{
+    margin-top:34px !important;
+    padding-top:18px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:12px !important;
+  }
+  .footer-legal{
+    gap:10px !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+  }
+  .footer-legal a{font-size:9px !important;}
+  .footer-legal span{font-size:9px !important;}
+  .footer-copy{font-size:9px !important;text-align:center !important;}
+}
+
+
+/* Hero catch 2-line lock */
+@media (max-width: 767px) {
+  .hero-catch {
+    width: 100% !important;
+    height: auto !important;
+    text-align: center !important;
+    font-size: clamp(31px, 9vw, 42px) !important;
+    line-height: 1.28 !important;
+  }
+
+  .hero-line1,
+  .hero-line2 {
+    white-space: nowrap !important;
+  }
+
+  .hero-line1,
+  .hero-line2 {
+    display: inline-block;
+  }
+}
+
+
+/* Fix mobile handwritten catch size */
+@media (max-width: 767px) {
+  .hero-catch {
+    font-size: clamp(31px, 9vw, 42px) !important;
+  }
+
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    width: 230px !important;
+    height: 115px !important;
+    max-width: none !important;
+  }
+}
+
+
+/* Smaller mobile handwritten catch */
+@media (max-width: 767px) {
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    width: 115px !important;
+    height: auto !important;
+  }
+}
+
+
+/* Tune mobile handwritten catch size */
+@media (max-width: 767px) {
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    width: 150px !important;
+    height: auto !important;
+  }
+}
+
+
+/* Mobile hero gradient fade to pure white */
+@media (max-width: 767px) {
+  section:first-of-type {
+    background:
+      linear-gradient(
+        180deg,
+        #f4fafe 0%,
+        #f8fcff 55%,
+        #ffffff 82%,
+        #ffffff 100%
+      ) !important;
+  }
+}
+
+
+/* Add mobile section spacing: Hero -> About */
+@media (max-width: 767px) {
+  #about {
+    margin-top: 20px !important;
+  }
+}
+
+
+/* Clip About decorations at section boundary on mobile */
+@media (max-width: 767px) {
+  #about {
+    overflow: hidden !important;
+  }
+}
+
+
+/* Remove About bottom decorations on mobile */
+@media (max-width: 767px) {
+  #about img[src*="c43ebe0af97bc6792b9f35fb3ffd2b70"] {
+    display: none !important;
+  }
+
+  #about img[src*="41f17a11a833ef35e026a8b53998ad8d"] {
+    display: none !important;
+  }
+}
+
+
+/* Clean About background decorations near Services on mobile */
+@media (max-width: 767px) {
+  #about > img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+
+/* Clean Works background on mobile */
+@media (max-width: 767px) {
+
+  /* Works全体を完全な白背景にする */
+  #works {
+    background: #ffffff !important;
+  }
+
+  /* Works内の背景装飾だけすべて非表示 */
+  #works img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+
+/* Sharpen Services -> Works boundary on mobile */
+@media (max-width: 767px) {
+  #services {
+    background: #eaf6fe !important;
+  }
+
+  #works > svg:first-child {
+    opacity: 1 !important;
+  }
+
+  #works > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+}
+
+
+/* Works mobile item spacing - final */
+@media (max-width: 767px) {
+  #works div[style*="flex-direction: column"][style*="gap: 70px"] {
+    gap: 40px !important;
+  }
+}
+
+
+/* Restore original typography */
+body,
+input,
+select,
+textarea,
+button {
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif !important;
+}
+
+/* Hero main copy */
+.hero-catch,
+.hero-line1,
+.hero-line2 {
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif !important;
+  font-weight: 900 !important;
+}
+
+/* English handwritten section headings */
+.about-en,
+.services-en,
+.works-en,
+.strengths-en,
+.faq-en,
+.contact-en {
+  font-family: 'Caveat', cursive !important;
+  font-weight: 700 !important;
+}
+
+
+/* Remove Contact background decorations on mobile */
+@media (max-width: 767px) {
+  #contact > img[aria-hidden="true"],
+  #contact img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
 <div style="width: 100%; height: auto; min-height: 9191px; overflow: visible; background: #ffffff; color: #0a2a4f">
 
 <!-- ============ HEADER ============ -->
-<header style="position: relative; z-index: 20; height: 88px; background: #ffffff; border-bottom: 1px solid #e5eaf1">
-<div style="position: relative; width: 1440px; max-width: 1440px; margin: 0 auto; height: 100%; padding: 0 72px; display: flex; align-items: center; justify-content: space-between;">
-<img src="./assets/3614c6f8013d313c6ad3037fd29f1d96.png" alt="空間衛生社" style="width: 172.3px; height: 40px; display: block;">
-<nav style="display: flex; align-items: center; gap: 34px;">
+<header class="site-header" style="position: relative; z-index: 20; height: 88px; background: #ffffff; border-bottom: 1px solid #e5eaf1">
+<div class="header-inner" style="position: relative; width: 1440px; max-width: 1440px; margin: 0 auto; height: 100%; padding: 0 72px; display: flex; align-items: center; justify-content: space-between;">
+<img class="site-logo" src="./assets/logo-header.png" alt="空間衛生社" style="width: 172.3px; height: 40px; display: block;">
+<nav class="pc-nav" style="display: flex; align-items: center; gap: 34px;">
 <a href="#services" style="font-size: 15px; font-weight: 700; color: #0a2a4f; text-decoration: none;">サービス紹介</a>
 <a href="#works" style="font-size: 15px; font-weight: 700; color: #0a2a4f; text-decoration: none;">対応実績</a>
 <a href="#strengths" style="font-size: 15px; font-weight: 700; color: #0a2a4f; text-decoration: none;">私たちの強み</a>
@@ -40,53 +1002,70 @@ input,select,textarea,button{font-family:inherit}
 無料で相談する
 </a>
 </nav>
+
+<button class="mobile-menu-button" type="button" aria-label="メニューを開く" aria-controls="mobile-menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <nav class="mobile-menu-nav" aria-label="スマートフォンメニュー">
+    <a href="#about">私たちについて</a>
+    <a href="#services">サービス紹介</a>
+    <a href="#works">対応実績</a>
+    <a href="#strengths">私たちの強み</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+</div>
 </div>
 </header>
 
 <!-- ============ HERO ============ -->
-<section style="position: relative; height: 664px; overflow: hidden; background: linear-gradient(160deg, #f4fafe 0%, #ffffff 45%, #ffffff 100%)">
-<img src="./assets/782fa5a48122722632cbec6aca9422d9.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; top: 150px; width: 300px; height: 185px; opacity: 0.4;">
-<img src="./assets/6e9f97a19be003d784de124dd0e4e59e.png" alt="" aria-hidden="true" style="position: absolute; left: -44px; top: 476px; width: 150px; height: 130px; opacity: 0.4;">
+<section class="hero" style="position: relative; height: 664px; overflow: hidden; background: linear-gradient(160deg, #f4fafe 0%, #ffffff 45%, #ffffff 100%)">
+<img src="./assets/deco-shape-01.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; top: 150px; width: 300px; height: 185px; opacity: 0.4;">
+<img src="./assets/deco-shape-02.png" alt="" aria-hidden="true" style="position: absolute; left: -44px; top: 476px; width: 150px; height: 130px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 640px; padding: 0 76px 0 140px; display: flex; align-items: center; justify-content: space-between;"><img src="./assets/e9ed7bd0093bed89bd6d22ab0a5343a1.png" alt="オフィスの床を清掃する空間衛生社のスタッフのキービジュアル" style="position: absolute; z-index: 2; left: 542px; top: 0px; width: 935px; height: 574px; object-fit: contain; border-radius: 0; box-shadow: none; display: block">
+<div class="hero-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 640px; padding: 0 76px 0 140px; display: flex; align-items: center; justify-content: space-between;"><img class="hero-image-desktop" src="./assets/hero-main.png" alt="オフィスの床を清掃する空間衛生社のスタッフのキービジュアル" style="position: absolute; z-index: 2; left: 542px; top: 0px; width: 935px; height: 574px; object-fit: contain; border-radius: 0; box-shadow: none; display: block">
 
-<div style="position: absolute; left: 58px; top: 236px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+<div class="hero-scroll" style="position: absolute; left: 58px; top: 236px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
 <span style="writing-mode: vertical-rl; transform: rotate(180deg); font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.42em; color: #61809d;">SCROLL</span>
 <span style="width: 1px; height: 64px; background: #9ebfd8;"></span>
 </div>
-<div style="position: relative; z-index: 3; width: 609px; padding-bottom: 20px; height: 603px">
+<div class="hero-content" style="position: relative; z-index: 3; width: 609px; padding-bottom: 20px; height: 603px">
 
-<img src="./assets/770984f08a0d20037bbb09d882ea7383.png" alt="きれいな空間で、いい毎日を。" style="width: 230px; height: 115px; display: block; margin-bottom: 14px;">
+<img class="hero-catch" src="./assets/hero-handwritten-copy.png" alt="きれいな空間で、いい毎日を。" style="width: 230px; height: 115px; display: block; margin-bottom: 14px;">
 
-<h1 style="margin: 0; font-size: 68px; font-weight: 900; line-height: 1.15; letter-spacing: 0.01em; color: #0a2a4f; width: 630px; height: 157px">みんなの毎日を、<br><span style="color: rgb(26, 121, 242)">もっと気持ちよく。</span></h1>
+<h1 class="hero-title hero-catch" style="margin: 0; font-size: 68px; font-weight: 900; line-height: 1.15; letter-spacing: 0.01em; color: #0a2a4f; width: 630px; height: 157px"><span class="hero-line1">みんなの毎日を、</span><br><span class="hero-line2" style="color: rgb(26, 121, 242)">もっと気持ちよく。</span></h1>
 
-<p style="margin: 16px 0 0 96px; width: 566px; text-align: center; font-size: 20px; line-height: 1.6; font-weight: 500; color: #4c6079; height: 32px; margin-left: 0px; margin-right: auto">
+<p class="hero-lead" style="margin: 16px 0 0 96px; width: 566px; text-align: center; font-size: 20px; line-height: 1.6; font-weight: 500; color: #4c6079; height: 32px; margin-left: 0px; margin-right: auto">
 プロの清掃で、快適な空間づくりをサポートします。
 </p>
 
-<div style="margin-top: 32px; width: 576px; display: flex; flex-direction: column; align-items: center;">
+<img class="hero-image-mobile" src="./assets/hero-main.png" alt="オフィスを清掃する空間衛生社のスタッフ">
 
-<div style="display: flex; align-items: center; gap: 16px;">
-<div style="width: 177px; height: 65px; display: flex; align-items: center; gap: 14px; background: #ffffff; border: 1px solid #e9f1f9; border-radius: 16px; padding: 0 11.5px; box-shadow: 0 8px 20px rgba(10,42,79,0.06); font-size: 19px; font-weight: 700; color: #0a2a4f; white-space: nowrap;">
+<div class="hero-actions" style="margin-top: 32px; width: 576px; display: flex; flex-direction: column; align-items: center;">
+
+<div class="hero-badges" style="display: flex; align-items: center; gap: 16px;">
+<div class="hero-badge" style="width: 177px; height: 65px; display: flex; align-items: center; gap: 14px; background: #ffffff; border: 1px solid #e9f1f9; border-radius: 16px; padding: 0 11.5px; box-shadow: 0 8px 20px rgba(10,42,79,0.06); font-size: 19px; font-weight: 700; color: #0a2a4f; white-space: nowrap;">
 <svg width="26" height="26" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.3" stroke="#1a79f2" stroke-width="1.6"></circle><path d="M10 5.8V10L13 12" stroke="#1a79f2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 最短即日対応
 </div>
-<div style="width: 193px; height: 65px; display: flex; align-items: center; gap: 14px; background: #ffffff; border: 1px solid #e9f1f9; border-radius: 16px; padding: 0 10px; box-shadow: 0 8px 20px rgba(10,42,79,0.06); font-size: 19px; font-weight: 700; color: #0a2a4f; white-space: nowrap;">
+<div class="hero-badge" style="width: 193px; height: 65px; display: flex; align-items: center; gap: 14px; background: #ffffff; border: 1px solid #e9f1f9; border-radius: 16px; padding: 0 10px; box-shadow: 0 8px 20px rgba(10,42,79,0.06); font-size: 19px; font-weight: 700; color: #0a2a4f; white-space: nowrap;">
 <svg width="26" height="26" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 17.5V4.2C4 3.5 4.5 3 5.2 3H11.8C12.5 3 13 3.5 13 4.2V17.5" stroke="#1a79f2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M13 9H15.8C16.5 9 17 9.5 17 10.2V17.5" stroke="#1a79f2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M6.6 6.2H10.4M6.6 9.4H10.4M6.6 12.6H10.4" stroke="#1a79f2" stroke-width="1.5" stroke-linecap="round"></path><path d="M2.5 17.5H18.5" stroke="#1a79f2" stroke-width="1.6" stroke-linecap="round"></path></svg>
 法人・店舗対応
 </div>
-<div style="width: 177px; height: 65px; display: flex; align-items: center; gap: 14px; background: #ffffff; border: 1px solid #e9f1f9; border-radius: 16px; padding: 0 11.5px; box-shadow: 0 8px 20px rgba(10,42,79,0.06); font-size: 19px; font-weight: 700; color: #0a2a4f; white-space: nowrap;">
+<div class="hero-badge" style="width: 177px; height: 65px; display: flex; align-items: center; gap: 14px; background: #ffffff; border: 1px solid #e9f1f9; border-radius: 16px; padding: 0 11.5px; box-shadow: 0 8px 20px rgba(10,42,79,0.06); font-size: 19px; font-weight: 700; color: #0a2a4f; white-space: nowrap;">
 <svg width="26" height="26" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 2.5H12.5L16 6V17C16 17.5 15.5 18 15 18H6C5.5 18 5 17.5 5 17V3.5C5 3 5.5 2.5 6 2.5Z" stroke="#1a79f2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M12.3 2.5V5.6C12.3 6.1 12.7 6.5 13.2 6.5H16" stroke="#1a79f2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M7.3 10.2H13.7M7.3 13H13.7" stroke="#1a79f2" stroke-width="1.5" stroke-linecap="round"></path></svg>
 無料見積もり
 </div>
 </div>
 
-<a href="#contact" style="margin-top: 36px; display: inline-flex; align-items: center; gap: 19px; height: 84px; padding: 0 58px; border-radius: 42px; background: linear-gradient(135deg, #1a79f2, #0e5fd1); color: #ffffff; font-size: 21px; font-weight: 700; text-decoration: none; box-shadow: 0 16px 30px rgba(26,121,242,0.32);">
+<a class="hero-cta" href="#contact" style="margin-top: 36px; display: inline-flex; align-items: center; gap: 19px; height: 84px; padding: 0 58px; border-radius: 42px; background: linear-gradient(135deg, #1a79f2, #0e5fd1); color: #ffffff; font-size: 21px; font-weight: 700; text-decoration: none; box-shadow: 0 16px 30px rgba(26,121,242,0.32);">
 無料で見積もりの相談をする
 <svg width="25" height="25" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </a>
 
-<div style="margin-top: 18px; display: flex; align-items: center; gap: 13px;">
+<div class="hero-note" style="margin-top: 18px; display: flex; align-items: center; gap: 13px;">
 <span style="width: 27px; height: 1px; background: #b9cbdc;"></span>
 <span style="font-size: 16px; font-weight: 600; letter-spacing: 0.02em; color: #7b95b0;">相談無料・しつこい営業なし</span>
 <span style="width: 27px; height: 1px; background: #b9cbdc;"></span>
@@ -100,33 +1079,33 @@ input,select,textarea,button{font-family:inherit}
 </section>
 
 <!-- ============ ABOUT ============ -->
-<section id="about" style="position: relative; height: 700px; overflow: hidden; background: linear-gradient(180deg, #eaf6fe 0%, #fbfdff 48%, #f8fcff 100%)">
+<section id="about" class="about" style="position: relative; height: 700px; overflow: hidden; background: linear-gradient(180deg, #eaf6fe 0%, #fbfdff 48%, #f8fcff 100%)">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><path d="M0 0H1440V42C1340 42 1240 18 1140 18C1013.3 18 886.7 76 760 76C633.3 76 506.7 14 380 14C253.3 14 126.7 40 0 40Z" fill="#ffffff"></path></svg>
 
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; left: -130px; top: 250px; width: 300px; height: 267px; opacity: 0.4;">
-<img src="./assets/41f17a11a833ef35e026a8b53998ad8d.png" alt="" aria-hidden="true" style="position: absolute; right: -120px; top: 110px; width: 340px; height: 313px; opacity: 0.4;">
-<img src="./assets/782fa5a48122722632cbec6aca9422d9.png" alt="" aria-hidden="true" style="position: absolute; right: -70px; top: 480px; width: 230px; height: 142px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; left: -130px; top: 250px; width: 300px; height: 267px; opacity: 0.4;">
+<img src="./assets/deco-shape-04.png" alt="" aria-hidden="true" style="position: absolute; right: -120px; top: 110px; width: 340px; height: 313px; opacity: 0.4;">
+<img src="./assets/deco-shape-01.png" alt="" aria-hidden="true" style="position: absolute; right: -70px; top: 480px; width: 230px; height: 142px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 700px; padding: 0 118px 0 140px; display: flex; align-items: center; justify-content: space-between;"><img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; right: 147px; top: 450.5px; width: 84px; height: 78px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; right: 70px; top: 128px; width: 88px; height: 88px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 36px; top: 560px; width: 80px; height: 80px; opacity: 0.5;">
-<div style="width: 560px;">
-<div style="font-family: Caveat, cursive; font-size: 62px; font-weight: 700; line-height: 1; color: #1a79f2;">About</div>
-<div style="margin-top: 10px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px">私たちについて</div>
-<h2 style="margin: 34px 0 0; font-size: 38px; font-weight: 900; line-height: 1.55; color: #0a2a4f;">
+<div class="about-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 700px; padding: 0 118px 0 140px; display: flex; align-items: center; justify-content: space-between;"><img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; right: 147px; top: 450.5px; width: 84px; height: 78px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; right: 70px; top: 128px; width: 88px; height: 88px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 36px; top: 560px; width: 80px; height: 80px; opacity: 0.5;">
+<div class="about-copy" style="width: 560px;">
+<div class="about-en" style="font-family: Caveat, cursive; font-size: 62px; font-weight: 700; line-height: 1; color: #1a79f2;">About</div>
+<div class="about-jp" style="margin-top: 10px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px">私たちについて</div>
+<h2 class="about-title" style="margin: 34px 0 0; font-size: 38px; font-weight: 900; line-height: 1.55; color: #0a2a4f;">
 キレイな空間から、<br>
 <span style="color: #1a79f2; background: linear-gradient(transparent 62%, #bfe3fb 62%, #bfe3fb 95%, transparent 95%);">気持ちのいい毎日を</span><span style="color: #0a2a4f;">。</span>
 </h2>
-<div style="margin-top: 34px; display: flex; flex-direction: column; gap: 24px;">
+<div class="about-text" style="margin-top: 34px; display: flex; flex-direction: column; gap: 24px;">
 <p style="margin: 0; font-size: 19px; line-height: 1.6; font-weight: 500; color: #4c6079">私たちは、清掃をただ汚れを落とす作業ではなく、その場所を使う人が気持ちよく過ごすための仕事だと考えています。</p>
 <p style="margin: 0; font-size: 19px; line-height: 2.15; font-weight: 500; color: #4c6079">オフィスや店舗、住宅、賃貸物件など、一つひとつの現場に合わせて、丁寧で柔軟なサービスを心がけています。</p>
 <p style="margin: 0; font-size: 19px; line-height: 2.15; font-weight: 500; color: #4c6079">清潔で快適な空間づくりを通して、客様の日常や仕事を支えられる存在を目指しています。</p>
 </div>
 </div>
 
-<div style="position: relative; width: 541px; height: 601px">
-<img src="./assets/ccba24e882c0589db9374d2d8be81411.jpg" alt="室内を清掃する空間衛生社のスタッフ二名" style="width: 430px; height: 540px; object-fit: cover; display: block; border-radius: 48% 52% 44% 56% / 40% 38% 62% 60%;">
-<div style="position: absolute; right: -44px; top: 34px; width: 154px; height: 154px; border-radius: 50%; background: linear-gradient(150deg, #cbe7fb, #a6d6f7); display: flex; align-items: center; justify-content: center;">
+<div class="about-visual" style="position: relative; width: 541px; height: 601px">
+<img class="about-photo" src="./assets/about-staff.jpg" alt="室内を清掃する空間衛生社のスタッフ二名" style="width: 430px; height: 540px; object-fit: cover; display: block; border-radius: 48% 52% 44% 56% / 40% 38% 62% 60%;">
+<div class="about-badge" style="position: absolute; right: -44px; top: 34px; width: 154px; height: 154px; border-radius: 50%; background: linear-gradient(150deg, #cbe7fb, #a6d6f7); display: flex; align-items: center; justify-content: center;">
 <span style="font-family: Caveat, cursive; font-size: 22px; font-weight: 700; line-height: 1.22; text-align: center; color: #0e5fd1; transform: rotate(-7deg);">CLEAN SPACE,<br>BETTER<br>EVERYDAY.</span>
 </div>
 <div style="position: absolute; left: 6px; bottom: 6px; width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(150deg, #cfc4f5, #cbe4fb); opacity: 0.7;"></div>
@@ -135,63 +1114,63 @@ input,select,textarea,button{font-family:inherit}
 </section>
 
 <!-- ============ SERVICES ============ -->
-<section id="services" style="position: relative; height: 1059px; overflow: hidden; background: linear-gradient(180deg, #e7f5fe 0%, #f6fcff 55%, #eaf6fe 100%)">
+<section id="services" class="services" style="position: relative; height: 1059px; overflow: hidden; background: linear-gradient(180deg, #e7f5fe 0%, #f6fcff 55%, #eaf6fe 100%)">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><path d="M0 0H1440V39C1397.7 39 1355.3 21 1313 21C1191.3 21 1069.7 78 948 78C793.3 78 638.7 14 484 14C362.3 14 240.7 67 119 67C79.3 67 39.7 46 0 46Z" fill="#f8fcff"></path></svg>
 
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 200px; width: 230px; height: 197px; opacity: 0.4;">
-<img src="./assets/41f17a11a833ef35e026a8b53998ad8d.png" alt="" aria-hidden="true" style="position: absolute; right: -140px; top: 240px; width: 300px; height: 276px; opacity: 0.4;">
-<img src="./assets/2eb990e6788b328e254847549df58d6f.png" alt="" aria-hidden="true" style="position: absolute; left: -90px; bottom: 20px; width: 260px; height: 249px; opacity: 0.4;">
-<img src="./assets/19c7fba09fc1c226a0f1d8e10602a99e.png" alt="" aria-hidden="true" style="position: absolute; right: -80px; bottom: 20px; width: 240px; height: 246px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 200px; width: 230px; height: 197px; opacity: 0.4;">
+<img src="./assets/deco-shape-04.png" alt="" aria-hidden="true" style="position: absolute; right: -140px; top: 240px; width: 300px; height: 276px; opacity: 0.4;">
+<img src="./assets/deco-shape-05.png" alt="" aria-hidden="true" style="position: absolute; left: -90px; bottom: 20px; width: 260px; height: 249px; opacity: 0.4;">
+<img src="./assets/deco-shape-06.png" alt="" aria-hidden="true" style="position: absolute; right: -80px; bottom: 20px; width: 240px; height: 246px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 758px; padding: 116px 140px 0; display: flex; flex-direction: column;">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; right: 55px; bottom: 192.5px; width: 76px; height: 70px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 54px; bottom: 228px; width: 88px; height: 88px; opacity: 0.5;">
-<div>
-<div style="font-family: Caveat, cursive; font-size: 60px; font-weight: 700; line-height: 1; color: #1a79f2;">Services</div>
-<div style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px">サービス紹介</div>
-<p style="margin: 14px 0 0; padding-left: 10px; font-size: 15px; font-weight: 500; color: #4c6079;">法人から個人まで、幅広い清掃サービスに対応しています。</p>
+<div class="services-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 758px; padding: 116px 140px 0; display: flex; flex-direction: column;">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; right: 55px; bottom: 192.5px; width: 76px; height: 70px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 54px; bottom: 228px; width: 88px; height: 88px; opacity: 0.5;">
+<div class="services-heading">
+<div class="services-en" style="font-family: Caveat, cursive; font-size: 60px; font-weight: 700; line-height: 1; color: #1a79f2;">Services</div>
+<div class="services-jp" style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px">サービス紹介</div>
+<p class="services-lead" style="margin: 14px 0 0; padding-left: 10px; font-size: 15px; font-weight: 500; color: #4c6079;">法人から個人まで、幅広い清掃サービスに対応しています。</p>
 </div>
 
-<div style="margin-top: 62px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 64px; row-gap: 54px;">
+<div class="services-grid" style="margin-top: 62px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 64px; row-gap: 54px;">
 
 <div class="svc-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
 <div class="svc-num" style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: #1a79f2;">01</div>
-<img class="svc-illust" src="./assets/b74bf538ac6264e98ceb32b773391334.png" alt="エアコン洗浄のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
+<img class="svc-illust" src="./assets/service-aircon.png" alt="エアコン洗浄のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
 <h3 class="svc-name" style="margin: 20px 0 0; font-size: 19px; font-weight: 900; color: #0a2a4f;">エアコン洗浄</h3>
 <p style="margin: 12px 0 0; font-size: 13.5px; line-height: 1.95; font-weight: 500; color: #566c86;">家庭用・業務用エアコンの<br>内部洗浄に対応。</p>
 </div>
 
 <div class="svc-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
 <div class="svc-num" style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: #1a79f2;">02</div>
-<img class="svc-illust" src="./assets/af2b9327d584a536e83edec09b13968a.png" alt="ハウスクリーニングのイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
+<img class="svc-illust" src="./assets/service-house-cleaning.png" alt="ハウスクリーニングのイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
 <h3 class="svc-name" style="margin: 20px 0 0; font-size: 19px; font-weight: 900; color: #0a2a4f;">ハウスクリーニング</h3>
 <p style="margin: 12px 0 0; font-size: 13.5px; line-height: 1.95; font-weight: 500; color: #566c86;">水まわりや室内全体を<br>丁寧にクリーニング。</p>
 </div>
 
 <div class="svc-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
 <div class="svc-num" style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: #1a79f2;">03</div>
-<img class="svc-illust" src="./assets/094264c2e07f0efc92191557f2465a2e.png" alt="退去後清掃のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
+<img class="svc-illust" src="./assets/service-moveout.png" alt="退去後清掃のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
 <h3 class="svc-name" style="margin: 20px 0 0; font-size: 19px; font-weight: 900; color: #0a2a4f;">退去後清掃</h3>
 <p style="margin: 12px 0 0; font-size: 13.5px; line-height: 1.95; font-weight: 500; color: #566c86;">退去後のお部屋や空室を<br>きれいに整えます。</p>
 </div>
 
 <div class="svc-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
 <div class="svc-num" style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: #1a79f2;">04</div>
-<img class="svc-illust" src="./assets/69829b95aa6ab8fd7122b186f4673efc.png" alt="店舗・施設清掃のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
+<img class="svc-illust" src="./assets/service-facility.png" alt="店舗・施設清掃のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
 <h3 class="svc-name" style="margin: 20px 0 0; font-size: 19px; font-weight: 900; color: #0a2a4f;">店舗・施設清掃</h3>
 <p style="margin: 12px 0 0; font-size: 13.5px; line-height: 1.95; font-weight: 500; color: #566c86;">床清掃や換気扇清掃など、<br>店舗・施設の清掃に対応。</p>
 </div>
 
 <div class="svc-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
 <div class="svc-num" style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: #1a79f2;">05</div>
-<img class="svc-illust" src="./assets/7cff372a52275038b8881f407a4cc558.png" alt="屋外清掃・環境整備のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
+<img class="svc-illust" src="./assets/service-outdoor.png" alt="屋外清掃・環境整備のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
 <h3 class="svc-name" style="margin: 20px 0 0; font-size: 19px; font-weight: 900; color: #0a2a4f;">屋外清掃・環境整備</h3>
 <p style="margin: 12px 0 0; font-size: 13.5px; line-height: 1.95; font-weight: 500; color: #566c86;">草刈り、除草剤散布、<br>敷地内の環境整備に対応。</p>
 </div>
 
 <div class="svc-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
 <div class="svc-num" style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: #1a79f2;">06</div>
-<img class="svc-illust" src="./assets/590a3cd8fe860a53e5767fd44abbe07c.png" alt="家事代行のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
+<img class="svc-illust" src="./assets/service-housekeeping.png" alt="家事代行のイラスト" style="margin-top: 14px; width: 192px; height: auto; display: block;">
 <h3 class="svc-name" style="margin: 20px 0 0; font-size: 19px; font-weight: 900; color: #0a2a4f;">家事代行</h3>
 <p style="margin: 12px 0 0; font-size: 13.5px; line-height: 1.95; font-weight: 500; color: #566c86;">日常のお掃除や片付けなどを<br>サポート。</p>
 </div>
@@ -204,33 +1183,33 @@ input,select,textarea,button{font-family:inherit}
 
 
 <!-- ============ STRENGTHS ============ -->
-<section id="works" style="position: relative; height: 3584px; overflow: hidden; background: #ffffff">
+<section id="works" class="works" style="position: relative; height: 3584px; overflow: hidden; background: #ffffff">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><defs><linearGradient id="servicesWorksWave" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e7f5fe"></stop><stop offset="100%" stop-color="#ffffff"></stop></linearGradient></defs><path d="M0 0H1440V40C1376.7 40 1313.3 20 1250 20C1100 20 950 76 800 76C666.7 76 533.3 16 400 16C266.7 16 133.3 42 0 42Z" fill="url(#servicesWorksWave)"></path></svg>
 
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; left: -140px; top: 470px; width: 290px; height: 258px; opacity: 0.4;">
-<img src="./assets/41f17a11a833ef35e026a8b53998ad8d.png" alt="" aria-hidden="true" style="position: absolute; right: -150px; top: 1000px; width: 300px; height: 276px; opacity: 0.4;">
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; right: -60px; top: 2280px; width: 160px; height: 142px; opacity: 0.4;">
-<img src="./assets/782fa5a48122722632cbec6aca9422d9.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; top: 1280px; width: 230px; height: 142px; opacity: 0.4;">
-<img src="./assets/41f17a11a833ef35e026a8b53998ad8d.png" alt="" aria-hidden="true" style="position: absolute; right: -130px; top: 1620px; width: 250px; height: 230px; opacity: 0.4;">
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 2110px; width: 220px; height: 196px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; left: -140px; top: 470px; width: 290px; height: 258px; opacity: 0.4;">
+<img src="./assets/deco-shape-04.png" alt="" aria-hidden="true" style="position: absolute; right: -150px; top: 1000px; width: 300px; height: 276px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; right: -60px; top: 2280px; width: 160px; height: 142px; opacity: 0.4;">
+<img src="./assets/deco-shape-01.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; top: 1280px; width: 230px; height: 142px; opacity: 0.4;">
+<img src="./assets/deco-shape-04.png" alt="" aria-hidden="true" style="position: absolute; right: -130px; top: 1620px; width: 250px; height: 230px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 2110px; width: 220px; height: 196px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 3502px; padding: 106px 140px 0;">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; right: 103px; top: 2139px; width: 68px; height: 64px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 45px; top: 950px; width: 100px; height: 100px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; right: 108px; top: 213px; width: 88px; height: 88px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; right: 66px; top: 2526px; width: 96px; height: 96px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 639px; top: 1899px; width: 84px; height: 84px; opacity: 0.5;">
-<img src="./assets/782fa5a48122722632cbec6aca9422d9.png" alt="" aria-hidden="true" style="position: absolute; right: -70px; top: 2842px; width: 220px; height: 200px; opacity: 0.4;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; right: 120px; top: 2738px; width: 84px; height: 84px; opacity: 0.5;">
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 3254px; width: 220px; height: 196px; opacity: 0.4;">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; left: 45px; top: 3174px; width: 76px; height: 70px; opacity: 0.5;">
-<div style="font-family: Caveat, cursive; font-size: 58px; font-weight: 700; line-height: 1; color: #1a79f2;">Works</div>
-<div style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f;">対応実績</div>
-<p style="margin: 18px 0 0; font-size: 14.5px; font-weight: 500; color: #4c6079;">店舗・住宅・賃貸物件など、さまざまな現場の清掃に対応しています。</p>
+<div class="works-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 3502px; padding: 106px 140px 0;">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; right: 103px; top: 2139px; width: 68px; height: 64px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 45px; top: 950px; width: 100px; height: 100px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; right: 108px; top: 213px; width: 88px; height: 88px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; right: 66px; top: 2526px; width: 96px; height: 96px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 639px; top: 1899px; width: 84px; height: 84px; opacity: 0.5;">
+<img src="./assets/deco-shape-01.png" alt="" aria-hidden="true" style="position: absolute; right: -70px; top: 2842px; width: 220px; height: 200px; opacity: 0.4;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; right: 120px; top: 2738px; width: 84px; height: 84px; opacity: 0.5;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 3254px; width: 220px; height: 196px; opacity: 0.4;">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; left: 45px; top: 3174px; width: 76px; height: 70px; opacity: 0.5;">
+<div class="works-en" style="font-family: Caveat, cursive; font-size: 58px; font-weight: 700; line-height: 1; color: #1a79f2;">Works</div>
+<div class="works-jp" style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f;">対応実績</div>
+<p class="works-lead" style="margin: 18px 0 0; font-size: 14.5px; font-weight: 500; color: #4c6079;">店舗・住宅・賃貸物件など、さまざまな現場の清掃に対応しています。</p>
 
-<div style="margin-top: 56px; display: flex; flex-direction: column; gap: 70px;">
+<div class="works-list" style="margin-top: 56px; display: flex; flex-direction: column; gap: 70px;">
 
-<div style="display: flex; align-items: center; gap: 64px; height: 381px;">
+<div class="works-item works-item-01" style="display: flex; align-items: center; gap: 64px; height: 381px;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">01</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -245,11 +1224,11 @@ input,select,textarea,button{font-family:inherit}
 <span style="padding: 7px 18px; border-radius: 999px; background: #e7f3fd; font-size: 12.5px; font-weight: 700; color: #2a6bb8;">法人対応</span>
 </div>
 </div>
-<img src="./assets/839068b12d5b6a7d737decb507eb2652.jpg" alt="業務用エアコンを洗浄するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 48% 52% 56% 44% / 46% 54% 46% 54%; left: -115px; position: relative">
+<img src="./assets/work-aircon.jpg" alt="業務用エアコンを洗浄するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 48% 52% 56% 44% / 46% 54% 46% 54%; left: -115px; position: relative">
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 300px;">
-<img src="./assets/f130620fb9f49322b8f2452a91dfc3b2.jpg" alt="退去後の空室を清掃するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 54% 46% 58% 42% / 44% 56% 44% 56%;">
+<div class="works-item works-item-02" style="display: flex; align-items: center; gap: 64px; height: 300px;">
+<img src="./assets/work-moveout.jpg" alt="退去後の空室を清掃するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 54% 46% 58% 42% / 44% 56% 44% 56%;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">02</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -266,7 +1245,7 @@ input,select,textarea,button{font-family:inherit}
 </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 381px;">
+<div class="works-item works-item-03" style="display: flex; align-items: center; gap: 64px; height: 381px;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">03</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -281,11 +1260,11 @@ input,select,textarea,button{font-family:inherit}
 <span style="padding: 7px 18px; border-radius: 999px; background: #e7f3fd; font-size: 12.5px; font-weight: 700; color: #2a6bb8;">美装</span>
 </div>
 </div>
-<img src="./assets/c97d3cf9f852717be2b81481abc66f32.png" alt="新築物件のキッチンを仕上げ清掃するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 52% 48% 44% 56% / 56% 44% 52% 48%; left: -115px; position: relative">
+<img src="./assets/work-new-construction.png" alt="新築物件のキッチンを仕上げ清掃するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 52% 48% 44% 56% / 56% 44% 52% 48%; left: -115px; position: relative">
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 300px;">
-<img src="./assets/bc848ee4a72044a4f1bcbf9beda57c0b.jpg" alt="オフィスの床をポリッシャーで洗浄するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 52% 48% 42% 58% / 54% 46% 54% 46%;">
+<div class="works-item works-item-04" style="display: flex; align-items: center; gap: 64px; height: 300px;">
+<img src="./assets/work-office-floor.jpg" alt="オフィスの床をポリッシャーで洗浄するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 52% 48% 42% 58% / 54% 46% 54% 46%;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">04</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -302,7 +1281,7 @@ input,select,textarea,button{font-family:inherit}
 </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 381px;">
+<div class="works-item works-item-05" style="display: flex; align-items: center; gap: 64px; height: 381px;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">05</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -317,11 +1296,11 @@ input,select,textarea,button{font-family:inherit}
 <span style="padding: 7px 18px; border-radius: 999px; background: #e7f3fd; font-size: 12.5px; font-weight: 700; color: #2a6bb8;">厨房清掃</span>
 </div>
 </div>
-<img src="./assets/dc9a5f73364641ad470a1d86bfb0dc3c.jpg" alt="飲食店の換気扇を洗浄するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 46% 54% 40% 60% / 56% 44% 56% 44%; position: relative; left: -115px">
+<img src="./assets/work-restaurant-vent.jpg" alt="飲食店の換気扇を洗浄するスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 46% 54% 40% 60% / 56% 44% 56% 44%; position: relative; left: -115px">
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 300px;">
-<img src="./assets/69368259cca9be634bcec8fe748b52b1.png" alt="リビングのテーブルを拭くスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 44% 56% 54% 46% / 48% 52% 44% 56%;">
+<div class="works-item works-item-06" style="display: flex; align-items: center; gap: 64px; height: 300px;">
+<img src="./assets/work-housekeeping.png" alt="リビングのテーブルを拭くスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 44% 56% 54% 46% / 48% 52% 44% 56%;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">06</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -338,7 +1317,7 @@ input,select,textarea,button{font-family:inherit}
 </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 381px;">
+<div class="works-item works-item-07" style="display: flex; align-items: center; gap: 64px; height: 381px;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">07</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -353,11 +1332,11 @@ input,select,textarea,button{font-family:inherit}
 <span style="padding: 7px 18px; border-radius: 999px; background: #e7f3fd; font-size: 12.5px; font-weight: 700; color: #2a6bb8;">環境整備</span>
 </div>
 </div>
-<img src="./assets/e4f08a864a630771087d32861beca93c.png" alt="敷地内で草刈りを行うスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 46% 54% 52% 48% / 44% 56% 46% 54%; left: -115px; position: relative">
+<img src="./assets/work-grass-cutting.png" alt="敷地内で草刈りを行うスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 46% 54% 52% 48% / 44% 56% 46% 54%; left: -115px; position: relative">
 </div>
 
-<div style="display: flex; align-items: center; gap: 64px; height: 300px;">
-<img src="./assets/569a46efaf698a78910e95f125f709ee.png" alt="住宅前で雪かきをするスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 48% 52% 44% 56% / 42% 58% 40% 60%;">
+<div class="works-item works-item-08" style="display: flex; align-items: center; gap: 64px; height: 300px;">
+<img src="./assets/work-snow-removal.png" alt="住宅前で雪かきをするスタッフ" style="width: 496px; height: 300px; object-fit: cover; display: block; border-radius: 48% 52% 44% 56% / 42% 58% 40% 60%;">
 <div style="flex-grow: 1;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 40px; line-height: 1; color: #1a79f2;">08</div>
 <div style="margin-top: 16px; display: flex; align-items: center; gap: 12px;">
@@ -376,76 +1355,76 @@ input,select,textarea,button{font-family:inherit}
 
 </div>
 </div>
-</section><section id="strengths" style="position: relative; overflow: hidden; background: linear-gradient(180deg, #e9f6fe 0%, #f7fcff 52%, #edf7fe 100%)">
+</section><section id="strengths" class="strengths" style="position: relative; overflow: hidden; background: linear-gradient(180deg, #e9f6fe 0%, #f7fcff 52%, #edf7fe 100%)">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><path d="M0 0H1440V46C1340 46 1240 20 1140 20C1013.3 20 886.7 70 760 70C633.3 70 506.7 22 380 22C253.3 22 126.7 50 0 50Z" fill="#fafdff"></path></svg>
 
-<img src="./assets/41f17a11a833ef35e026a8b53998ad8d.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; top: 80px; width: 260px; height: 239px; opacity: 0.4;">
-<img src="./assets/2eb990e6788b328e254847549df58d6f.png" alt="" aria-hidden="true" style="position: absolute; right: -90px; top: 160px; width: 220px; height: 211px; opacity: 0.4;">
-<img src="./assets/19c7fba09fc1c226a0f1d8e10602a99e.png" alt="" aria-hidden="true" style="position: absolute; left: -80px; bottom: 60px; width: 200px; height: 205px; opacity: 0.4;">
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; right: -120px; bottom: 0px; width: 260px; height: 231px; opacity: 0.4;">
+<img src="./assets/deco-shape-04.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; top: 80px; width: 260px; height: 239px; opacity: 0.4;">
+<img src="./assets/deco-shape-05.png" alt="" aria-hidden="true" style="position: absolute; right: -90px; top: 160px; width: 220px; height: 211px; opacity: 0.4;">
+<img src="./assets/deco-shape-06.png" alt="" aria-hidden="true" style="position: absolute; left: -80px; bottom: 60px; width: 200px; height: 205px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; right: -120px; bottom: 0px; width: 260px; height: 231px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 850px; padding: 106px 190px 0; display: flex; flex-direction: column">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; right: 42px; top: 483.5px; width: 72px; height: 66px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 19px; bottom: 419px; width: 84px; height: 84px; opacity: 0.5;">
+<div class="strengths-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 850px; padding: 106px 190px 0; display: flex; flex-direction: column">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; right: 42px; top: 483.5px; width: 72px; height: 66px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 19px; bottom: 419px; width: 84px; height: 84px; opacity: 0.5;">
 <div>
-<div style="font-family: Caveat, cursive; font-size: 58px; font-weight: 700; line-height: 1; color: #1a79f2; text-align: left; display: block; position: relative; left: -48px">Strengths</div><div style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px; position: relative; left: -48px">私たちの強み</div>
-<p style="margin: 14px 0 0; padding-left: 10px; font-size: 14.5px; line-height: 2; font-weight: 500; color: #4c6079; position: relative; left: -48px">さまざまな現場に寄り添い、清掃のプロとして<br>柔軟で丁寧なサービスをご提供します。</p>
+<div class="strengths-en" style="font-family: Caveat, cursive; font-size: 58px; font-weight: 700; line-height: 1; color: #1a79f2; text-align: left; display: block; position: relative; left: -48px">Strengths</div><div class="strengths-jp" style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px; position: relative; left: -48px">私たちの強み</div>
+<p class="strengths-lead" style="margin: 14px 0 0; padding-left: 10px; font-size: 14.5px; line-height: 2; font-weight: 500; color: #4c6079; position: relative; left: -48px">さまざまな現場に寄り添い、清掃のプロとして<br>柔軟で丁寧なサービスをご提供します。</p>
 </div>
 
-<div style="margin-top: 50px; margin-bottom: auto; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(178px, auto)); column-gap: 96px; row-gap: 64px">
+<div class="strengths-grid" style="margin-top: 50px; margin-bottom: auto; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(178px, auto)); column-gap: 96px; row-gap: 64px">
 <div aria-hidden="true" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(10,42,79,0.10);"></div>
 <div aria-hidden="true" style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(10,42,79,0.10);"></div>
 
-<div style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
-<div style="position: relative; flex-shrink: 0; width: 140px;">
+<div class="strength-card" style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
+<div class="strength-icon" style="position: relative; flex-shrink: 0; width: 140px;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 32px; line-height: 1; color: #1a79f2; position: relative; z-index: 2; margin-bottom: -18px; margin-left: 5px;">01</div>
 <div style="width: 140px; height: 112px; border-radius: 54% 46% 58% 42% / 52% 46% 54% 48%; background: radial-gradient(ellipse at 40% 40%, #cbe8fb, #e6f4fd); display: flex; align-items: center; justify-content: center;">
 <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="#0a2a4f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 26h16l-2 22a3 3 0 0 1-3 2.7h-6A3 3 0 0 1 10 48z"></path><path d="M8 26c0-4.2 3.6-7.5 8-7.5s8 3.3 8 7.5"></path><path d="M29 28h11v22a3 3 0 0 1-3 3h-5a3 3 0 0 1-3-3z"></path><path d="M32 28v-6h5v6"></path><path d="M37 18h6v4"></path><circle cx="51" cy="42" r="9"></circle><path d="M47 42.2l2.8 2.8 5.4-6"></path></svg>
 </div>
 </div>
-<div style="flex: 1;">
+<div class="strength-copy" style="flex: 1;">
 <h3 style="margin: 0; font-size: 21px; font-weight: 900; color: #0a2a4f">幅広い清掃に対応</h3>
 <div style="margin: 10px 0 12px; width: 32px; height: 2px; background: #1a79f2;"></div>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 500; color: #566c86">エアコン洗浄、ハウスクリーニング、施設清掃、屋外清掃、家事代行まで、さまざまな清掃ニーズに対応します。</p>
 </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
-<div style="position: relative; flex-shrink: 0; width: 140px;">
+<div class="strength-card" style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
+<div class="strength-icon" style="position: relative; flex-shrink: 0; width: 140px;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 32px; line-height: 1; color: #1a79f2; position: relative; z-index: 2; margin-bottom: -18px; margin-left: 5px;">02</div>
 <div style="width: 140px; height: 112px; border-radius: 48% 52% 44% 56% / 56% 48% 52% 44%; background: radial-gradient(ellipse at 40% 40%, #cbe8fb, #e6f4fd); display: flex; align-items: center; justify-content: center;">
 <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="#0a2a4f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 52V15h20v37"></path><path d="M15 23h4M24 23h3M15 31h4M24 31h3M15 39h4M24 39h3"></path><path d="M34 52V32h20v20"></path><path d="M32 32l3-7h18l3 7"></path><path d="M32 32c0 2.2 1.9 4 4.4 4s4.4-1.8 4.4-4"></path><path d="M40.8 32c0 2.2 1.9 4 4.4 4s4.4-1.8 4.4-4"></path><path d="M40 52V41h8v11"></path><path d="M57 18l1.2 3.2L61 22.4l-2.8 1.1L57 27l-1.2-3.5L53 22.4l2.8-1.2z"></path></svg>
 </div>
 </div>
-<div style="flex: 1;">
+<div class="strength-copy" style="flex: 1;">
 <h3 style="margin: 0; font-size: 21px; font-weight: 900; color: #0a2a4f">法人・店舗にも柔軟に対応</h3>
 <div style="margin: 10px 0 12px; width: 32px; height: 2px; background: #1a79f2;"></div>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 500; color: #566c86">オフィスや店舗、飲食店、賃貸物件など、<br>それぞれの現場や用途に合わせて柔軟に<br>対応します。</p>
 </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
-<div style="position: relative; flex-shrink: 0; width: 140px;">
+<div class="strength-card" style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
+<div class="strength-icon" style="position: relative; flex-shrink: 0; width: 140px;">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 32px; line-height: 1; color: #1a79f2; position: relative; z-index: 2; margin-bottom: -18px; margin-left: 5px;">03</div>
 <div style="width: 140px; height: 112px; border-radius: 56% 44% 52% 48% / 46% 56% 44% 54%; background: radial-gradient(ellipse at 40% 40%, #cbe8fb, #e6f4fd); display: flex; align-items: center; justify-content: center;">
 <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="#0a2a4f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="17" width="35" height="32" rx="4"></rect><path d="M9 27h35"></path><path d="M18 13v8M35 13v8"></path><path d="M16 34h4M25 34h4M34 34h4M16 42h4M25 42h4"></path><circle cx="47" cy="44" r="10" fill="#f3fafe"></circle><path d="M47 38.5V44l3.6 2.2"></path></svg>
 </div>
 </div>
-<div style="flex: 1;">
+<div class="strength-copy" style="flex: 1;">
 <h3 style="margin: 0; font-size: 21px; font-weight: 900; color: #0a2a4f">定期清掃からスポットまで</h3>
 <div style="margin: 10px 0 12px; width: 32px; height: 2px; background: #1a79f2;"></div>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 500; color: #566c86">定期的な清掃はもちろん、必要なときだけの<br>スポット清掃にも対応。ご希望に合わせた<br>清掃プランをご提案します。</p>
 </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
-<div style="position: relative; flex-shrink: 0; width: 140px; display: block">
+<div class="strength-card" style="display: flex; align-items: center; gap: 22px; text-align: left; padding: 10px 0;">
+<div class="strength-icon" style="position: relative; flex-shrink: 0; width: 140px; display: block">
 <div style="font-family: Montserrat, sans-serif; font-style: italic; font-weight: 800; font-size: 32px; line-height: 1; color: #1a79f2; position: relative; z-index: 2; margin-bottom: -18px; margin-left: 5px;">04</div>
 <div style="width: 140px; height: 112px; border-radius: 52% 48% 46% 54% / 54% 44% 56% 46%; background: radial-gradient(ellipse at 40% 40%, #cbe8fb, #e6f4fd); display: flex; align-items: center; justify-content: center;">
 <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="#0a2a4f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 53V37a3.6 3.6 0 0 1 7.2 0V25.5a3.6 3.6 0 0 1 7.2 0V23a3.6 3.6 0 0 1 7.2 0v6.5a3.6 3.6 0 0 1 7.2 0V43c0 6.6-5 10-11 10z"></path><path d="M21.2 37v-6"></path><path d="M28.4 29.5v-4"></path><path d="M13 16l1.5 4.2L18.8 21.6L14.5 23L13 27.4l-1.5-4.3L7.2 21.6L11.5 20.2z"></path><path d="M45 14l1.2 3.4L49.6 18.6L46.2 19.8L45 23.2l-1.2-3.4L40.4 18.6L43.8 17.4z"></path><circle cx="50" cy="42" r="9"></circle><path d="M46 42.2l2.8 2.8 5.4-6"></path></svg>
 </div>
 </div>
-<div style="flex: 1;">
+<div class="strength-copy" style="flex: 1;">
 <h3 style="margin: 0; font-size: 21px; font-weight: 900; color: #0a2a4f">丁寧で安心できる作業</h3>
 <div style="margin: 10px 0 12px; width: 32px; height: 2px; background: #1a79f2;"></div>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 500; color: #566c86; height: 85px">汚れの状態をしっかり確認し、<br>環境や素材に合わせた最適な方法を選び、<br>プロの技術で丁寧に清掃します。</p>
@@ -457,23 +1436,23 @@ input,select,textarea,button{font-family:inherit}
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq" style="position: relative; height: 840px; overflow: hidden; background: #ffffff">
+<section id="faq" class="faq-section" style="position: relative; height: 840px; overflow: hidden; background: #ffffff">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><path d="M0 0H1440V34C1340 34 1240 66 1140 66C1013.3 66 886.7 18 760 18C633.3 18 506.7 64 380 64C253.3 64 126.7 28 0 28Z" fill="#edf7fe"></path></svg>
 
 <div style="position: absolute; left: -120px; top: 250px; width: 280px; height: 240px; border-radius: 58% 42% 46% 54% / 44% 58% 42% 56%; background: linear-gradient(140deg, #cbe8fc, #e9f6fe); opacity: 0.4;"></div>
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 780px; padding: 104px 130px 0; display: flex; gap: 72px;">
+<div class="faq-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 780px; padding: 104px 130px 0; display: flex; gap: 72px;">
 <div style="position: absolute; left: 120px; bottom: 20px; width: 220px; height: 180px; border-radius: 56% 44% 52% 48% / 52% 48% 52% 48%; background: linear-gradient(140deg, #d6edfd, #f1f9ff); opacity: 0.4;"></div>
 <svg width="80" height="80" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="position: absolute; left: 70px; top: 460px; opacity: 0.5;"><path d="M50 0C53 30 70 47 100 50C70 53 53 70 50 100C47 70 30 53 0 50C30 47 47 30 50 0Z" fill="#3fa9f5"></path></svg>
 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="position: absolute; left: 404px; top: 330px;"><path d="M12 21C12 21 2.5 14.8 2.5 8.8C2.5 5.8 4.8 3.5 7.6 3.5C9.4 3.5 11 4.4 12 5.9C13 4.4 14.6 3.5 16.4 3.5C19.2 3.5 21.5 5.8 21.5 8.8C21.5 14.8 12 21 12 21Z" stroke="#2f9df2" stroke-width="1.7" stroke-linejoin="round"></path></svg>
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="position: absolute; left: 440px; top: 344px;"><path d="M12 21C12 21 2.5 14.8 2.5 8.8C2.5 5.8 4.8 3.5 7.6 3.5C9.4 3.5 11 4.4 12 5.9C13 4.4 14.6 3.5 16.4 3.5C19.2 3.5 21.5 5.8 21.5 8.8C21.5 14.8 12 21 12 21Z" stroke="#1a79f2" stroke-width="1.8" stroke-linejoin="round"></path></svg>
 
-<div style="width: 372px;">
-<div style="font-family: Caveat, cursive; font-size: 66px; font-weight: 700; line-height: 1; color: #1a79f2;">FAQ</div>
-<div style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px">よくある質問</div>
-<p style="margin: 20px 0 0; font-size: 14px; font-weight: 500; color: #4c6079;">ご依頼前によくいただくご質問をまとめました。</p>
-<div style="position: relative; margin-top: 44px; width: 340px; height: 380px;">
-<img src="./assets/eef00186e361e35b9e7bf040bdc79ed2.jpg" alt="お客様に清掃内容をヒアリングするスタッフ" style="width: 300px; height: 380px; object-fit: cover; display: block; border-radius: 46% 54% 40% 60% / 44% 48% 52% 56%;">
+<div class="faq-intro" style="width: 372px;">
+<div class="faq-en" style="font-family: Caveat, cursive; font-size: 66px; font-weight: 700; line-height: 1; color: #1a79f2;">FAQ</div>
+<div class="faq-jp" style="margin-top: 12px; font-size: 15px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f; padding-left: 10px">よくある質問</div>
+<p class="faq-lead" style="margin: 20px 0 0; font-size: 14px; font-weight: 500; color: #4c6079;">ご依頼前によくいただくご質問をまとめました。</p>
+<div class="faq-photo-wrap" style="position: relative; margin-top: 44px; width: 340px; height: 380px;">
+<img src="./assets/faq-staff.jpg" alt="お客様に清掃内容をヒアリングするスタッフ" style="width: 300px; height: 380px; object-fit: cover; display: block; border-radius: 46% 54% 40% 60% / 44% 48% 52% 56%;">
 <div style="position: absolute; left: -46px; top: -26px; width: 128px; height: 128px; border-radius: 50%; background: linear-gradient(150deg, #cfe9fc, #a9d8f8); display: flex; align-items: center; justify-content: center;">
 <span style="font-family: Caveat, cursive; font-size: 23px; font-weight: 700; line-height: 1.2; text-align: center; color: #0e5fd1; transform: rotate(-8deg);">For a<br>Cleaner<br>Everyday.</span>
 </div>
@@ -488,26 +1467,26 @@ input,select,textarea,button{font-family:inherit}
 </section>
 
 <!-- ============ CONTACT ============ -->
-<section id="contact" style="position: relative; height: 1343px; overflow: hidden; background: linear-gradient(180deg, #eaf6fd 0%, #f8fcff 38%, #eef8fe 100%)">
+<section id="contact" class="contact-section" style="position: relative; height: 1343px; overflow: hidden; background: linear-gradient(180deg, #eaf6fd 0%, #f8fcff 38%, #eef8fe 100%)">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><path d="M0 0H1440V44C1340 44 1240 72 1140 72C1013.3 72 886.7 16 760 16C633.3 16 506.7 60 380 60C253.3 60 126.7 32 0 32Z" fill="#ffffff"></path></svg>
-<img src="./assets/782fa5a48122722632cbec6aca9422d9.png" alt="" aria-hidden="true" style="position: absolute; left: -130px; top: 330px; width: 280px; height: 173px; opacity: 0.4;">
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; right: -140px; top: 180px; width: 280px; height: 249px; opacity: 0.4;">
-<img src="./assets/41f17a11a833ef35e026a8b53998ad8d.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; bottom: 210px; width: 230px; height: 212px; opacity: 0.4;">
-<img src="./assets/19c7fba09fc1c226a0f1d8e10602a99e.png" alt="" aria-hidden="true" style="position: absolute; right: -120px; bottom: 150px; width: 215px; height: 220px; opacity: 0.4;">
+<img src="./assets/deco-shape-01.png" alt="" aria-hidden="true" style="position: absolute; left: -130px; top: 330px; width: 280px; height: 173px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; right: -140px; top: 180px; width: 280px; height: 249px; opacity: 0.4;">
+<img src="./assets/deco-shape-04.png" alt="" aria-hidden="true" style="position: absolute; left: -110px; bottom: 210px; width: 230px; height: 212px; opacity: 0.4;">
+<img src="./assets/deco-shape-06.png" alt="" aria-hidden="true" style="position: absolute; right: -120px; bottom: 150px; width: 215px; height: 220px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 1343px; padding: 96px 0 0; display: flex; flex-direction: column; align-items: center;">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; left: 64px; top: 236px; width: 104px; height: 96px; opacity: 0.5;">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; right: 100px; bottom: 283.5px; width: 72px; height: 66px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 54px; bottom: 458px; width: 88px; height: 88px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; right: 76px; top: 456px; width: 96px; height: 96px; opacity: 0.5;">
-<div style="position: absolute; right: 128px; top: 149px; width: 190px; height: 190px; border-radius: 50%; background: linear-gradient(150deg, #cfe9fc, #a9d8f8); display: flex; align-items: center; justify-content: center; transform: rotate(10deg)"><span style="font-family: Caveat, cursive; font-size: 26px; font-weight: 700; line-height: 1.25; text-align: center; color: rgb(14, 95, 209)">キレイな<br>空間づくりを<br>サポート</span></div>
+<div class="contact-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; height: 1343px; padding: 96px 0 0; display: flex; flex-direction: column; align-items: center;">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; left: 64px; top: 236px; width: 104px; height: 96px; opacity: 0.5;">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; right: 100px; bottom: 283.5px; width: 72px; height: 66px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 54px; bottom: 458px; width: 88px; height: 88px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; right: 76px; top: 456px; width: 96px; height: 96px; opacity: 0.5;">
+<div class="contact-badge" style="position: absolute; right: 128px; top: 149px; width: 190px; height: 190px; border-radius: 50%; background: linear-gradient(150deg, #cfe9fc, #a9d8f8); display: flex; align-items: center; justify-content: center; transform: rotate(10deg)"><span style="font-family: Caveat, cursive; font-size: 26px; font-weight: 700; line-height: 1.25; text-align: center; color: rgb(14, 95, 209)">キレイな<br>空間づくりを<br>サポート</span></div>
 <svg width="72" height="64" viewBox="0 0 52 46" fill="none" aria-hidden="true" style="position: absolute; right: 102px; top: 129px; transform: rotate(35deg)"><path d="M6 24L2 8M20 18L22 2M33 22L42 10" stroke="#1a79f2" stroke-width="2.4" stroke-linecap="round"></path></svg>
-<div style="font-family: Caveat, cursive; font-size: 68px; font-weight: 700; line-height: 1; color: #1a79f2;">Contact</div>
-<div style="margin-top: 14px; font-size: 26px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f;">お問い合わせ</div>
-<p style="margin: 22px 0 0; font-size: 17px; font-weight: 900; color: #0a2a4f;">清掃のご相談・お見積もりはお気軽にお問い合わせください。</p>
-<p style="margin: 14px 0 0; font-size: 14px; line-height: 1.95; font-weight: 500; text-align: center; color: #4c6079;">法人・店舗・住宅を問わず、清掃内容やご予算、ご希望の日時などを<br>確認のうえご案内いたします。</p>
+<div class="contact-en" style="font-family: Caveat, cursive; font-size: 68px; font-weight: 700; line-height: 1; color: #1a79f2;">Contact</div>
+<div class="contact-jp" style="margin-top: 14px; font-size: 26px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f;">お問い合わせ</div>
+<p class="contact-lead" style="margin: 22px 0 0; font-size: 17px; font-weight: 900; color: #0a2a4f;">清掃のご相談・お見積もりはお気軽にお問い合わせください。</p>
+<p class="contact-copy" style="margin: 14px 0 0; font-size: 14px; line-height: 1.95; font-weight: 500; text-align: center; color: #4c6079;">法人・店舗・住宅を問わず、清掃内容やご予算、ご希望の日時などを<br>確認のうえご案内いたします。</p>
 
-<form style="margin-top: 44px; width: 900px; background: #ffffff; border-radius: 26px; padding: 52px 60px; box-shadow: 0 18px 44px rgba(20,80,150,0.07); display: flex; flex-direction: column; gap: 26px;">
+<form class="contact-form" style="margin-top: 44px; width: 900px; background: #ffffff; border-radius: 26px; padding: 52px 60px; box-shadow: 0 18px 44px rgba(20,80,150,0.07); display: flex; flex-direction: column; gap: 26px;">
 
 <div style="display: flex; flex-direction: column; gap: 9px;">
 <div style="display: flex; align-items: center; gap: 14px;">
@@ -585,23 +1564,23 @@ input,select,textarea,button{font-family:inherit}
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer id="footer" style="position: relative; height: 470px; overflow: hidden; background: linear-gradient(180deg, #eef8fe 0%, #e8f4fd 100%);">
+<footer id="footer" class="site-footer" style="position: relative; height: 470px; overflow: hidden; background: linear-gradient(180deg, #eef8fe 0%, #e8f4fd 100%);">
 <svg width="100%" height="90" viewBox="0 0 1440 90" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; top: -1px; left: 0; display: block;"><path d="M0 0H1440V40C1340 40 1240 14 1140 14C1013.3 14 886.7 68 760 68C633.3 68 506.7 18 380 18C253.3 18 126.7 48 0 48Z" fill="#eef8fe"></path></svg>
 <svg width="100%" height="120" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; bottom: 0; left: 0; display: block;"><path d="M0 60C180 26 360 86 560 62C760 38 940 84 1140 60C1260 46 1360 34 1440 42V120H0z" fill="#dff0fc" opacity="0.6"></path></svg>
-<img src="./assets/782fa5a48122722632cbec6aca9422d9.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 120px; width: 260px; height: 160px; opacity: 0.4;">
-<img src="./assets/bc28c0568abb745ca7f3088bbfc63634.png" alt="" aria-hidden="true" style="position: absolute; right: -110px; top: 60px; width: 260px; height: 231px; opacity: 0.4;">
+<img src="./assets/deco-shape-01.png" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: 120px; width: 260px; height: 160px; opacity: 0.4;">
+<img src="./assets/deco-shape-03.png" alt="" aria-hidden="true" style="position: absolute; right: -110px; top: 60px; width: 260px; height: 231px; opacity: 0.4;">
 
-<div style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; padding: 62px 140px 30px; display: flex; flex-direction: column;">
-<img src="./assets/c43ebe0af97bc6792b9f35fb3ffd2b70.png" alt="" aria-hidden="true" style="position: absolute; left: 17px; top: 0.5px; width: 84px; height: 78px; opacity: 0.5;">
-<img src="./assets/585d5107e1f7eaedd1c21d95c47666fb.png" alt="" aria-hidden="true" style="position: absolute; left: 520px; top: 212.5px; width: 108px; height: 108px; opacity: 0.5;">
-<div style="display: flex; align-items: flex-start; gap: 80px;">
-<div style="width: 480px;">
-<img src="./assets/15ee90ff35833e7344b6cd4b006a4547.png" alt="空間衛生社" style="width: 310.1px; height: 72px; display: block; background: transparent;">
+<div class="footer-inner" style="position: relative; z-index: 3; width: 1440px; max-width: 1440px; margin: 0 auto; padding: 62px 140px 30px; display: flex; flex-direction: column;">
+<img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; left: 17px; top: 0.5px; width: 84px; height: 78px; opacity: 0.5;">
+<img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 520px; top: 212.5px; width: 108px; height: 108px; opacity: 0.5;">
+<div class="footer-main" style="display: flex; align-items: flex-start; gap: 80px;">
+<div class="footer-brand" style="width: 480px;">
+<img src="./assets/logo-footer.png" alt="空間衛生社" style="width: 310.1px; height: 72px; display: block; background: transparent;">
 <div style="margin-top: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.24em; color: #7b95b0;">Cleaning &amp; Maintenance Service</div>
 <p style="margin: 28px 0 0; font-size: 15px; line-height: 2.05; font-weight: 500; color: #29415f;">清掃を通して、働く場所も暮らす場所も、<br>もっと気持ちよく、快適な空間へ。</p>
 </div>
 
-<div style="width: 250px;">
+<div class="footer-col footer-service" style="width: 250px;">
 <div style="font-family: Montserrat, sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.2em; color: #1a79f2;">SERVICE</div>
 <div style="margin: 14px 0 6px; width: 30px; height: 3px; background: #1a79f2;"></div>
 <div style="display: flex; flex-direction: column;">
@@ -614,7 +1593,7 @@ input,select,textarea,button{font-family:inherit}
 </div>
 </div>
 
-<div style="width: 250px;">
+<div class="footer-col footer-menu" style="width: 250px;">
 <div style="font-family: Montserrat, sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.2em; color: #1a79f2;">MENU</div>
 <div style="margin: 14px 0 6px; width: 30px; height: 3px; background: #1a79f2;"></div>
 <div style="display: flex; flex-direction: column;">
@@ -629,19 +1608,53 @@ input,select,textarea,button{font-family:inherit}
 </div>
 </div>
 
-<div style="margin-top: auto; padding-top: 24px; border-top: 1px solid #bcd9f0; display: flex; align-items: center; justify-content: space-between;">
-<div style="display: flex; align-items: center; gap: 22px;">
+<div class="footer-bottom" style="margin-top: auto; padding-top: 24px; border-top: 1px solid #bcd9f0; display: flex; align-items: center; justify-content: space-between;">
+<div class="footer-legal" style="display: flex; align-items: center; gap: 22px;">
 <a href="#footer" style="font-size: 13.5px; font-weight: 500; color: #29415f; text-decoration: none;">プライバシーポリシー</a>
 <span style="color: #9cb8d2;">|</span>
 <a href="#footer" style="font-size: 13.5px; font-weight: 500; color: #29415f; text-decoration: none;">サイト利用規約</a>
 </div>
-<div style="font-size: 13.5px; font-weight: 500; color: #29415f;">© 空間衛生社 All Rights Reserved.</div>
+<div class="footer-copy" style="font-size: 13.5px; font-weight: 500; color: #29415f;">© 空間衛生社 All Rights Reserved.</div>
 </div>
 </div>
 </footer>
 
 </div>
 
+
+
+<script>
+(function () {
+  var button = document.querySelector('.mobile-menu-button');
+  var menu = document.getElementById('mobile-menu');
+  if (!button || !menu) return;
+
+  function setOpen(open) {
+    button.classList.toggle('is-open', open);
+    menu.classList.toggle('is-open', open);
+    document.body.classList.toggle('mobile-menu-open', open);
+    button.setAttribute('aria-expanded', String(open));
+    button.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    menu.setAttribute('aria-hidden', String(!open));
+  }
+
+  button.addEventListener('click', function () {
+    setOpen(!menu.classList.contains('is-open'));
+  });
+
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () { setOpen(false); });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') setOpen(false);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 767) setOpen(false);
+  });
+})();
+</script>
 
 <script>
 (function () {
