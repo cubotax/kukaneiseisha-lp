@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>空間衛生社 ランディングページ（PC 1440）</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Montserrat:ital,wght@0,600;0,700;1,700;1,800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Montserrat:ital,wght@0,600;0,700;1,700;1,800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=Yomogi&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#ffffff;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;-webkit-font-smoothing:antialiased}
@@ -982,6 +982,69 @@ button {
   }
 }
 
+
+/* Mobile hero headline refinement */
+@media (max-width: 767px) {
+
+  /* Hero見出しを画面幅の約95%まで使用 */
+  .hero-catch {
+    width: 95% !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .hero-line1,
+  .hero-line2 {
+    white-space: nowrap !important;
+  }
+
+  /* 「もっと気持ちよく。」にAboutと同じ下線 */
+  .hero-line2 {
+    display: inline-block !important;
+    background:
+      linear-gradient(
+        transparent 62%,
+        #bfe3fb 62%,
+        #bfe3fb 95%,
+        transparent 95%
+      ) !important;
+  }
+}
+
+
+/* Keep handwritten hero copy left-aligned on mobile */
+@media (max-width: 767px) {
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    display: block !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    align-self: flex-start !important;
+  }
+}
+
+
+/* Enlarge mobile hero headline */
+@media (max-width: 767px) {
+  .hero-catch {
+    width: 95% !important;
+    font-size: clamp(34px, 9.8vw, 46px) !important;
+    line-height: 1.25 !important;
+  }
+}
+
+
+/* Narrow mobile hero CTA */
+@media (max-width: 767px) {
+  .hero-cta {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1479,7 +1542,7 @@ button {
 <img src="./assets/deco-accent-01.png" alt="" aria-hidden="true" style="position: absolute; right: 100px; bottom: 283.5px; width: 72px; height: 66px; opacity: 0.5;">
 <img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; left: 54px; bottom: 458px; width: 88px; height: 88px; opacity: 0.5;">
 <img src="./assets/deco-accent-02.png" alt="" aria-hidden="true" style="position: absolute; right: 76px; top: 456px; width: 96px; height: 96px; opacity: 0.5;">
-<div class="contact-badge" style="position: absolute; right: 128px; top: 149px; width: 190px; height: 190px; border-radius: 50%; background: linear-gradient(150deg, #cfe9fc, #a9d8f8); display: flex; align-items: center; justify-content: center; transform: rotate(10deg)"><span style="font-family: Caveat, cursive; font-size: 26px; font-weight: 700; line-height: 1.25; text-align: center; color: rgb(14, 95, 209)">キレイな<br>空間づくりを<br>サポート</span></div>
+<div class="contact-badge" style="position: absolute; right: 128px; top: 149px; width: 190px; height: 190px; border-radius: 50%; background: linear-gradient(150deg, #cfe9fc, #a9d8f8); display: flex; align-items: center; justify-content: center; transform: rotate(10deg)"><span style="font-family: 'Yomogi', cursive; font-size: 26px; font-weight: 700; line-height: 1.25; text-align: center; color: rgb(14, 95, 209)">キレイな<br>空間づくりを<br>サポート</span></div>
 <svg width="72" height="64" viewBox="0 0 52 46" fill="none" aria-hidden="true" style="position: absolute; right: 102px; top: 129px; transform: rotate(35deg)"><path d="M6 24L2 8M20 18L22 2M33 22L42 10" stroke="#1a79f2" stroke-width="2.4" stroke-linecap="round"></path></svg>
 <div class="contact-en" style="font-family: Caveat, cursive; font-size: 68px; font-weight: 700; line-height: 1; color: #1a79f2;">Contact</div>
 <div class="contact-jp" style="margin-top: 14px; font-size: 26px; font-weight: 900; letter-spacing: 0.04em; color: #0a2a4f;">お問い合わせ</div>
