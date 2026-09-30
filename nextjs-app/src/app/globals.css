@@ -1491,3 +1491,59 @@ button {
     min-width: 0 !important;
   }
 }
+
+/* ===== Hero CTA mobile vertical ===== */
+@media (max-width: 767px) {
+  .hero-cta-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .hero-estimate-cta,
+  .hero-line-cta {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ===== Hero desktop image 90% ===== */
+@media (min-width: 1024px) {
+  .hero-image-desktop {
+    width: 842px !important;
+    height: 517px !important;
+    left: 590px !important;
+    top: 28px !important;
+  }
+}
+
+/* ===== Hero desktop image 85% ===== */
+@media (min-width: 1024px) {
+  .hero-image-desktop {
+    width: 795px !important;
+    height: 488px !important;
+    left: 615px !important;
+    top: 42px !important;
+  }
+}
+
+/* ===== Hero mobile CTA spacing final ===== */
+@media (max-width: 767px) {
+  .hero-cta-row {
+    gap: 18px !important;
+  }
+}
+
+/* ===== Contact form vertical spacing ===== */
+@media (min-width: 1024px) {
+  .contact-form {
+    gap: 32px !important;
+  }
+
+  .contact-form > div {
+    gap: 12px !important;
+  }
+}
