@@ -83,7 +83,7 @@ export default function Contact() {
 
           setTimeout(() => {
             success.remove();
-            form.style.display = "";
+            form.style.display = "flex";
           }, 10000);
         }
       } catch (error) {

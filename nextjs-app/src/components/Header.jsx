@@ -65,7 +65,16 @@ export default function Header() {
           justifyContent: "space-between",
         }}
       >
-        <img
+        <a
+          href="/"
+          aria-label="ホームへ戻る"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            textDecoration: "none",
+          }}
+        >
+          <img
           className="site-logo"
           src="/assets/logo-header.png"
           alt="空間衛生社"
@@ -75,6 +84,7 @@ export default function Header() {
             display: "block",
           }}
         />
+        </a>
 
         <nav
           className="pc-nav"
