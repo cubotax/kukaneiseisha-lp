@@ -76,7 +76,7 @@ export default function Header() {
         >
           <img
           className="site-logo"
-          src="/assets/logo-header.png"
+          src="/assets/logo-header.webp"
           alt="空間衛生社"
           style={{
             width: 172.3,
