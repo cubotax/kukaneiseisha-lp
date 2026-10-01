@@ -2151,3 +2151,93 @@ button {
     padding-top: 42px !important;
   }
 }
+
+/* ===== Mobile Contact badge 80% + right aligned ===== */
+@media (max-width: 767px) {
+  .contact-badge {
+    width: 90px !important;
+    height: 90px !important;
+    right: 10px !important;
+  }
+
+  .contact-badge span {
+    font-size: 10.4px !important;
+    line-height: 1.35 !important;
+  }
+
+  .contact-badge-lines {
+    transform: translate(18px, 22px) scale(.8) rotate(40deg) !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ===== PC hero underline ===== */
+@media (min-width: 1024px) {
+  .hero-line2 {
+    display: inline-block !important;
+    background:
+      linear-gradient(
+        transparent 62%,
+        #bfe3fb 62%,
+        #bfe3fb 95%,
+        transparent 95%
+      ) !important;
+  }
+}
+
+/* ===== Mobile Contact badge position final ===== */
+@media (max-width: 767px) {
+
+  /* 丸を現在位置から右へ20px */
+  .contact-badge {
+    right: -10px !important;
+  }
+
+  /* 三本ラインを現在位置から上へ10px */
+  .contact-badge-lines {
+    transform: translate(18px, 12px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== PC content width 1100px SAFE TEST ===== */
+@media (min-width: 1024px) {
+
+  .about-inner,
+  .services-inner,
+  .works-inner,
+  .strengths-inner,
+  .faq-inner,
+  .contact-inner,
+  .footer-inner {
+    width: 1100px !important;
+    max-width: 1100px !important;
+  }
+}
+
+/* ===== Mobile Contact badge position correction ===== */
+@media (max-width: 767px) {
+
+  /* 丸を左へ20px */
+  .contact-badge {
+    right: 30px !important;
+  }
+
+  /* 三本ラインは上へ10pxのまま */
+  .contact-badge-lines {
+    transform: translate(18px, 12px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge lines left 20px ===== */
+@media (max-width: 767px) {
+  .contact-badge-lines {
+    transform: translate(-2px, 12px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge lines fine tune ===== */
+@media (max-width: 767px) {
+  .contact-badge-lines {
+    transform: translate(3px, 17px) scale(.8) rotate(40deg) !important;
+  }
+}
