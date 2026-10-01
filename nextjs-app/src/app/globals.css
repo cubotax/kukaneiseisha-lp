@@ -2274,3 +2274,9 @@ button {
     transform: translate(3px, 20px) scale(.8) rotate(40deg) !important;
   }
 }
+
+/* ===== Hero "もっと気持ちよく。" underline remove ===== */
+.hero-line2 {
+  background: none !important;
+  text-decoration: none !important;
+}
