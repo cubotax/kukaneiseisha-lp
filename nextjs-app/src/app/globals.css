@@ -2280,3 +2280,15 @@ button {
   background: none !important;
   text-decoration: none !important;
 }
+
+/* ===== Mobile JP section titles 14px ===== */
+@media (max-width: 767px) {
+  .about-jp,
+  .services-jp,
+  .works-jp,
+  .strengths-jp,
+  .faq-jp,
+  .contact-jp {
+    font-size: 14px !important;
+  }
+}
