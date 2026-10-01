@@ -1547,3 +1547,607 @@ button {
     gap: 12px !important;
   }
 }
+
+/* ===== About -> Services seamless wave mobile ===== */
+@media (max-width: 767px) {
+  #services {
+    margin-top: -2px !important;
+  }
+
+  #services > svg:first-child {
+    top: -2px !important;
+    height: 48px !important;
+    display: block !important;
+  }
+
+  #services > svg:first-child path {
+    fill: #f7fcff !important;
+  }
+}
+
+/* ===== About -> Services seamless wave FINAL ===== */
+@media (max-width: 767px) {
+
+  #about {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  #about::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 52px;
+    z-index: 1;
+    pointer-events: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0 48 C120 48 240 18 360 18 C480 18 600 58 720 58 C840 58 960 20 1080 20 C1200 20 1320 50 1440 50 V90 H0 Z' fill='%23eaf6fe'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  #services {
+    margin-top: -1px !important;
+    background: #eaf6fe !important;
+  }
+
+  #services > svg:first-child {
+    display: none !important;
+  }
+}
+
+/* ===== Services mobile top spacing after seamless wave ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 28px !important;
+  }
+}
+
+/* ===== Works -> Strengths seamless wave mobile ===== */
+@media (max-width: 767px) {
+  #strengths {
+    margin-top: -2px !important;
+  }
+
+  #strengths > svg:first-child {
+    top: -2px !important;
+    height: 48px !important;
+  }
+
+  #strengths > svg:first-child path {
+    fill: #ffffff !important;
+  }
+}
+
+/* ===== Services mobile top spacing tighter ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 20px !important;
+  }
+}
+
+/* ===== Strengths mobile top spacing tighter ===== */
+@media (max-width: 767px) {
+  #strengths {
+    padding-top: 22px !important;
+  }
+}
+
+/* ===== Mobile section top spacing FINAL ===== */
+@media (max-width: 767px) {
+
+  /* Services */
+  #services .services-inner {
+    position: relative !important;
+    top: -18px !important;
+  }
+
+  /* Strengths */
+  #strengths .strengths-inner {
+    padding-top: 38px !important;
+  }
+}
+
+/* ===== Mobile clear white / blue boundaries ===== */
+@media (max-width: 767px) {
+
+  /* ---------- Strengths -> FAQ ---------- */
+
+  /* Strengthsの下側を明確なブルーに */
+  #strengths {
+    background: #e3f3fd !important;
+  }
+
+  /* FAQは完全な白 */
+  #faq {
+    margin-top: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Strengthsのブルーを波としてFAQ上部に残す */
+  #faq > svg:first-child {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 58px !important;
+    z-index: 1 !important;
+  }
+
+  #faq > svg:first-child path {
+    fill: #e3f3fd !important;
+  }
+
+
+  /* ---------- Contact -> Footer ---------- */
+
+  /* Contact下部は白へ */
+  #contact {
+    background:
+      linear-gradient(
+        180deg,
+        #eaf6fd 0%,
+        #f8fcff 45%,
+        #ffffff 82%,
+        #ffffff 100%
+      ) !important;
+  }
+
+  /* Footerは明確なブルー */
+  .site-footer {
+    margin-top: 0 !important;
+    background: #e3f3fd !important;
+  }
+
+  /* Footer上側を白い波にする */
+  .site-footer > svg:first-of-type {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    z-index: 1 !important;
+  }
+
+  .site-footer > svg:first-of-type path {
+    fill: #ffffff !important;
+  }
+}
+
+/* ===== Mobile gentler section waves ===== */
+@media (max-width: 767px) {
+
+  /* Strengths -> FAQ */
+  #faq > svg:first-child {
+    height: 38px !important;
+  }
+
+  /* Contact -> Footer */
+  .site-footer > svg:first-of-type {
+    height: 40px !important;
+  }
+}
+
+/* ===== Mobile FAQ closer to wave ===== */
+@media (max-width: 767px) {
+  #faq .faq-inner {
+    padding-top: 46px !important;
+  }
+}
+
+/* ===== Mobile section spacing + gentle waves FINAL ===== */
+@media (max-width: 767px) {
+
+  /* --------------------------------
+     波を全セクションで緩やかに
+  --------------------------------- */
+
+  #about > svg:first-child,
+  #services > svg:first-child,
+  #works > svg:first-child,
+  #strengths > svg:first-child,
+  #faq > svg:first-child,
+  #contact > svg:first-child {
+    height: 34px !important;
+  }
+
+  .site-footer > svg:first-of-type {
+    height: 36px !important;
+  }
+
+
+  /* --------------------------------
+     波と見出しの距離を統一
+  --------------------------------- */
+
+  /* About */
+  #about {
+    padding-top: 34px !important;
+  }
+
+  /* Services */
+  #services {
+    padding-top: 34px !important;
+  }
+
+  #services .services-inner {
+    top: 0 !important;
+  }
+
+  /* Works */
+  #works {
+    padding-top: 34px !important;
+  }
+
+  /* Strengths */
+  #strengths .strengths-inner {
+    padding-top: 44px !important;
+  }
+
+  /* FAQ */
+  #faq .faq-inner {
+    padding-top: 42px !important;
+  }
+
+  /* Contact */
+  #contact .contact-inner {
+    padding-top: 48px !important;
+  }
+
+  /* Footer */
+  .site-footer .footer-inner {
+    padding-top: 48px !important;
+  }
+}
+
+/* ===== Mobile header logo + hero top spacing ===== */
+@media (max-width: 767px) {
+
+  /* ヘッダーロゴを現在の約80%へ */
+  .site-logo {
+    width: 117px !important;
+    height: auto !important;
+  }
+
+  /* 「きれいな空間で」の上余白を縮める */
+  .hero-inner {
+    padding-top: 12px !important;
+  }
+}
+
+/* ===== Mobile header vertical spacing ===== */
+@media (max-width: 767px) {
+  .site-header {
+    height: 60px !important;
+  }
+
+  .header-inner {
+    height: 60px !important;
+  }
+
+  .mobile-menu {
+    top: 60px !important;
+    height: calc(100dvh - 60px) !important;
+  }
+}
+
+/* ===== Mobile header 50px + Contact JP title ===== */
+@media (max-width: 767px) {
+
+  /* ヘッダーをさらにコンパクトに */
+  .site-header {
+    height: 50px !important;
+  }
+
+  .header-inner {
+    height: 50px !important;
+  }
+
+  .mobile-menu {
+    top: 50px !important;
+    height: calc(100dvh - 50px) !important;
+  }
+
+  /* 「お問い合わせ」だけ少し小さく */
+  #contact .contact-jp {
+    font-size: 14px !important;
+  }
+}
+
+/* ===== Mobile About vertical layout REAPPLY ===== */
+@media (max-width: 767px) {
+
+  /* About全体 */
+  #about .about-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* about-copyの箱を外して各要素を並べ替える */
+  #about .about-copy {
+    display: contents !important;
+  }
+
+  /* About */
+  #about .about-en {
+    order: 1 !important;
+  }
+
+  /* 私たちについて */
+  #about .about-jp {
+    order: 2 !important;
+  }
+
+  /* 写真を先に */
+  #about .about-visual {
+    order: 3 !important;
+    width: 82% !important;
+    height: 300px !important;
+    margin: 24px auto 0 !important;
+    align-self: center !important;
+  }
+
+  #about .about-photo {
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+    object-position: center 28% !important;
+  }
+
+  /* 写真上の丸いコピー */
+  #about .about-badge {
+    right: -18px !important;
+    top: -24px !important;
+  }
+
+  /* キレイな空間から、気持ちのいい毎日を。 */
+  #about .about-title {
+    order: 4 !important;
+    width: 100% !important;
+    margin: 20px auto 0 !important;
+    text-align: center !important;
+  }
+
+  /* 説明文 */
+  #about .about-text {
+    order: 5 !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+  }
+
+  /* 文字に重なる星・ドットはスマホでは非表示 */
+  #about .about-inner > img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+/* ===== Mobile Services top spacing tighter ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 14px !important;
+  }
+}
+
+/* ===== Mobile About bottom / Services top balance ===== */
+@media (max-width: 767px) {
+
+  /* 「存在を目指しています。」の下に余白を追加 */
+  #about {
+    padding-bottom: 78px !important;
+  }
+
+  /* 波からServicesまでは詰める */
+  #services {
+    padding-top: 6px !important;
+  }
+}
+
+/* ===== Mobile About / Services spacing stronger ===== */
+@media (max-width: 767px) {
+
+  /* 「存在を目指しています。」の下をさらに広げる */
+  #about {
+    padding-bottom: 105px !important;
+  }
+
+  /* 波とServicesをかなり近づける */
+  #services {
+    padding-top: 0 !important;
+  }
+
+  #services .services-inner {
+    position: relative !important;
+    top: -10px !important;
+  }
+}
+
+/* ===== Fix hidden Services heading ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 8px !important;
+  }
+
+  #services .services-inner {
+    top: 0 !important;
+  }
+}
+
+/* ===== Mobile Works blue to white gradient ===== */
+@media (max-width: 767px) {
+  #works {
+    background:
+      linear-gradient(
+        180deg,
+        #eaf6fe 0%,
+        #f3faff 42%,
+        #fbfdff 72%,
+        #ffffff 100%
+      ) !important;
+  }
+}
+
+/* ===== Mobile Services -> Works clear separator ===== */
+@media (max-width: 767px) {
+
+  /* Worksの水色→白グラデーションは維持 */
+  #works {
+    background:
+      linear-gradient(
+        180deg,
+        #eaf6fe 0%,
+        #f3faff 42%,
+        #fbfdff 72%,
+        #ffffff 100%
+      ) !important;
+  }
+
+  /* ServicesとWorksの間だけ白い浅い波にする */
+  #works > svg:first-child {
+    display: block !important;
+    height: 28px !important;
+    opacity: 1 !important;
+  }
+
+  #works > svg:first-child path {
+    fill: #ffffff !important;
+  }
+}
+
+/* ===== Mobile Works pure white ===== */
+@media (max-width: 767px) {
+  #works {
+    background: #ffffff !important;
+  }
+}
+
+/* ===== Mobile reordered section colors + boundaries ===== */
+@media (max-width: 767px) {
+
+  /* Section colors */
+  #services {
+    background: #eaf6fe !important;
+  }
+
+  #works {
+    background: #ffffff !important;
+  }
+
+  #about {
+    background: #eaf6fe !important;
+  }
+
+  #strengths {
+    background: #ffffff !important;
+  }
+
+  /* Gentle top waves */
+  #services > svg:first-child,
+  #works > svg:first-child,
+  #about > svg:first-child,
+  #strengths > svg:first-child {
+    display: block !important;
+    position: absolute !important;
+    top: -1px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 32px !important;
+    opacity: 1 !important;
+  }
+
+  /* Hero white -> Services blue */
+  #services > svg:first-child path {
+    fill: #ffffff !important;
+  }
+
+  /* Services blue -> Works white */
+  #works > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+
+  /* Works white -> About blue */
+  #about > svg:first-child path {
+    fill: #ffffff !important;
+  }
+
+  /* About blue -> Strengths white */
+  #strengths > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+}
+
+/* ===== Mobile Strengths -> FAQ smooth gradient ===== */
+@media (max-width: 767px) {
+
+  /* Strengths：上は白、下に向かって水色 */
+  #strengths {
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #ffffff 35%,
+        #f7fcff 65%,
+        #eaf6fe 100%
+      ) !important;
+  }
+
+  /* FAQ本体は白 */
+  #faq {
+    background: #ffffff !important;
+  }
+
+  /* Strengths最下部の水色からFAQへ波で接続 */
+  #faq > svg:first-child {
+    display: block !important;
+    height: 32px !important;
+    opacity: 1 !important;
+  }
+
+  #faq > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+}
+
+/* ===== Mobile spacing final adjustment ===== */
+@media (max-width: 767px) {
+
+  /* Services：波から少し離して見出しのはみ出し防止 */
+  #services {
+    padding-top: 22px !important;
+  }
+
+  #services .services-inner {
+    top: 0 !important;
+  }
+
+  /* About本文の最後から下の波までを詰める */
+  #about {
+    padding-bottom: 42px !important;
+  }
+
+  /* 波からStrengths見出しまでを詰める */
+  #strengths .strengths-inner {
+    padding-top: 20px !important;
+  }
+}
+
+/* ===== Mobile Services slightly lower ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 32px !important;
+  }
+}
+
+/* ===== Mobile Services lower again ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 42px !important;
+  }
+}
