@@ -2292,3 +2292,70 @@ button {
     font-size: 14px !important;
   }
 }
+
+/* ===== Contact dedicated page only ===== */
+.contact-page-only .contact-copy {
+  text-align: left !important;
+}
+
+/* 専用お問い合わせページでは丸と3本ラインを非表示 */
+.contact-page-only .contact-badge,
+.contact-page-only .contact-badge-lines {
+  display: none !important;
+}
+
+/* ===== Contact dedicated page gradient ===== */
+.contact-page-only .contact-section {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8fcff 22%,
+    #eef8fe 58%,
+    #eaf6fe 100%
+  ) !important;
+}
+
+/* 上部の波を非表示 */
+.contact-page-only .contact-section > svg:first-child {
+  display: none !important;
+}
+
+/* ===== Contact page left star position ===== */
+@media (min-width: 768px) {
+  .contact-page-only .contact-inner > img[aria-hidden="true"]:nth-of-type(2) {
+    left: 100px !important;
+    top: 110px !important;
+  }
+}
+
+/* ===== Contact page bottom spacing ===== */
+@media (min-width: 768px) {
+  .contact-page-only .contact-section {
+    height: auto !important;
+    padding-bottom: 140px !important;
+  }
+}
+
+/* ===== Contact page -> Footer seamless ===== */
+.contact-page-only .contact-section {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8fcff 22%,
+    #eef8fe 58%,
+    #eef8fe 100%
+  ) !important;
+}
+
+.contact-page-only + .site-footer {
+  margin-top: 0 !important;
+  border-top: 0 !important;
+}
+
+/* ===== Contact page left star final position ===== */
+@media (min-width: 768px) {
+  .contact-page-only .contact-inner > img[aria-hidden="true"]:nth-of-type(2) {
+    left: -150px !important;
+    top: 155px !important;
+  }
+}

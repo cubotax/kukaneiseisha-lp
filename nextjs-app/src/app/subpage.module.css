@@ -1,0 +1,288 @@
+.page {
+  min-height: 100vh;
+  background: #f8fcff;
+  color: #0a2a4f;
+}
+
+.header {
+  height: 76px;
+  background: #ffffff;
+  border-bottom: 1px solid #e3edf5;
+}
+
+.headerInner {
+  width: min(1100px, calc(100% - 48px));
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: #0873d9;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0a2a4f;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink span {
+  color: #1a79f2;
+  font-size: 18px;
+}
+
+.main {
+  width: min(920px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 82px 0 110px;
+}
+
+.heading {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.en {
+  margin-bottom: 10px;
+  color: #1a79f2;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.heading h1 {
+  margin: 0;
+  color: #0a2a4f;
+  font-size: 40px;
+  line-height: 1.4;
+  font-weight: 900;
+}
+
+.heading p {
+  margin: 16px 0 0;
+  color: #60748a;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.article {
+  padding: 58px 64px;
+  background: #ffffff;
+  border: 1px solid #dfedf7;
+  border-radius: 24px;
+  box-shadow: 0 12px 38px rgba(20, 80, 150, 0.06);
+}
+
+.intro {
+  margin: 0 0 46px;
+  color: #40566e;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.section {
+  padding: 34px 0;
+  border-top: 1px solid #e2edf6;
+}
+
+.section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.section h2 {
+  margin: 0 0 18px;
+  color: #0a2a4f;
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 900;
+}
+
+.section p {
+  margin: 0 0 12px;
+  color: #435a72;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.section ul {
+  margin: 12px 0 0;
+  padding-left: 1.4em;
+}
+
+.section li {
+  margin: 7px 0;
+  color: #435a72;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.contactBox {
+  margin-top: 20px;
+  padding: 24px 28px;
+  background: #edf7fe;
+  border-radius: 14px;
+}
+
+.contactBox strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.contactBox p {
+  margin: 3px 0;
+}
+
+.contactBox a {
+  color: #1a79f2;
+}
+
+.date {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid #e2edf6;
+  color: #6b7e91;
+  font-size: 13px;
+  text-align: right;
+}
+
+.footer {
+  padding: 32px 20px;
+  background: #eaf6fe;
+  color: #526a82;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .header {
+    height: 58px;
+  }
+
+  .headerInner {
+    width: calc(100% - 36px);
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .backLink {
+    font-size: 12px;
+  }
+
+  .main {
+    width: calc(100% - 32px);
+    padding: 52px 0 72px;
+  }
+
+  .heading {
+    margin-bottom: 30px;
+  }
+
+  .en {
+    font-size: 14px;
+  }
+
+  .heading h1 {
+    font-size: 27px;
+  }
+
+  .heading p {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .article {
+    padding: 32px 22px;
+    border-radius: 18px;
+  }
+
+  .intro {
+    margin-bottom: 34px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .section {
+    padding: 28px 0;
+  }
+
+  .section h2 {
+    margin-bottom: 14px;
+    font-size: 17px;
+  }
+
+  .section p,
+  .section li {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .contactBox {
+    padding: 20px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+}
+
+/* ===== Company ===== */
+.companyTable {
+  width: 100%;
+  border-top: 1px solid #dceaf5;
+}
+
+.companyRow {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border-bottom: 1px solid #dceaf5;
+}
+
+.companyLabel {
+  padding: 24px 22px;
+  background: #edf7fe;
+  color: #0a2a4f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.companyValue {
+  padding: 24px 28px;
+  color: #435a72;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.companyValue a {
+  color: #1a79f2;
+}
+
+@media (max-width: 767px) {
+  .companyRow {
+    grid-template-columns: 100px 1fr;
+  }
+
+  .companyLabel {
+    padding: 20px 12px;
+    font-size: 12px;
+  }
+
+  .companyValue {
+    padding: 20px 16px;
+    font-size: 13px;
+  }
+}
