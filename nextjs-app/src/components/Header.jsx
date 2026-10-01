@@ -94,55 +94,12 @@ export default function Header() {
             gap: 34,
           }}
         >
-          <a href="#services" style={navStyle}>サービス紹介</a>
-          <a href="#works" style={navStyle}>対応実績</a>
-          <a href="#strengths" style={navStyle}>私たちの強み</a>
-          <a href="#faq" style={navStyle}>よくある質問</a>
-
-          <a
-            href="#contact"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 11,
-              height: 56,
-              padding: "0 30px",
-              marginLeft: 8,
-              borderRadius: 28,
-              background: "#1a79f2",
-              color: "#fff",
-              fontSize: 15,
-              fontWeight: 700,
-              textDecoration: "none",
-              boxShadow: "0 10px 20px rgba(26,121,242,0.26)",
-            }}
-          >
-            <svg
-              width="19"
-              height="19"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <rect
-                x="2.5"
-                y="5"
-                width="19"
-                height="14"
-                rx="2.5"
-                stroke="#fff"
-                strokeWidth="1.7"
-              />
-              <path
-                d="M3.5 7l8.5 6 8.5-6"
-                stroke="#fff"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            無料で相談する
-          </a>
+          <a href="/#services" style={navStyle}>サービス紹介</a>
+          <a href="/#works" style={navStyle}>対応実績</a>
+          <a href="/#about" style={navStyle}>私たちについて</a>
+          <a href="/#strengths" style={navStyle}>私たちの強み</a>
+          <a href="/#faq" style={navStyle}>よくある質問</a>
+          
         </nav>
 
         <button
@@ -167,12 +124,12 @@ export default function Header() {
             className="mobile-menu-nav"
             aria-label="スマートフォンメニュー"
           >
-            <a href="#about" onClick={close}>私たちについて</a>
-            <a href="#services" onClick={close}>サービス紹介</a>
-            <a href="#works" onClick={close}>対応実績</a>
-            <a href="#strengths" onClick={close}>私たちの強み</a>
-            <a href="#faq" onClick={close}>よくある質問</a>
-            <a href="#contact" onClick={close}>お問い合わせ</a>
+            <a href="/#about" onClick={close}>私たちについて</a>
+            <a href="/#services" onClick={close}>サービス紹介</a>
+            <a href="/#works" onClick={close}>対応実績</a>
+            <a href="/#strengths" onClick={close}>私たちの強み</a>
+            <a href="/#faq" onClick={close}>よくある質問</a>
+            <a href="/contact" onClick={close}>お問い合わせ</a>
           </nav>
         </div>
       </div>

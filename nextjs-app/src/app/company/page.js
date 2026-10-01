@@ -74,7 +74,9 @@ export default function CompanyPage() {
             <div className={styles.companyRow}>
               <div className={styles.companyLabel}>Webサイト</div>
               <div className={styles.companyValue}>
-                kukaneiseisha.com
+                <a href="https://kukaneiseisha.com">
+                  https://kukaneiseisha.com
+                </a>
               </div>
             </div>
           </div>

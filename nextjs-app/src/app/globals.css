@@ -2359,3 +2359,59 @@ button {
     top: 155px !important;
   }
 }
+
+/* ===== PC Header text link hover ===== */
+@media (min-width: 768px) {
+  .pc-nav > a {
+    position: relative !important;
+    transition: color .22s ease !important;
+  }
+
+  .pc-nav > a::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: -7px !important;
+    width: 100% !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #1a79f2 !important;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .24s ease;
+  }
+
+  .pc-nav > a:hover {
+    color: #1a79f2 !important;
+  }
+
+  .pc-nav > a:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ===== Contact dedicated page mobile refine ===== */
+@media (max-width: 767px) {
+
+  /* 「清掃のご相談・お見積もりは〜」を削除 */
+  .contact-page-only .contact-lead {
+    display: none !important;
+  }
+
+  /* Contact / お問い合わせ を中央揃え */
+  .contact-page-only .contact-en,
+  .contact-page-only .contact-jp {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* 説明文を横幅いっぱいに */
+  .contact-page-only .contact-copy {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 24px !important;
+    text-align: left !important;
+  }
+}
