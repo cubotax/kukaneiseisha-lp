@@ -2415,3 +2415,236 @@ button {
     text-align: left !important;
   }
 }
+
+/* ===== PC Contact badge refine ===== */
+@media (min-width: 1024px) {
+  .contact-badge {
+    width: 150px !important;
+    height: 150px !important;
+    right: 185px !important;
+  }
+
+  .contact-badge span {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+
+  .contact-badge-lines {
+    right: 165px !important;
+    transform: rotate(35deg) scale(.85) !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ===== PC Contact badge align with form right edge ===== */
+@media (min-width: 1024px) {
+  .contact-badge {
+    width: 150px !important;
+    height: 150px !important;
+    right: 140px !important;
+  }
+
+  .contact-badge span {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+
+  .contact-badge-lines {
+    right: 114px !important;
+    transform: rotate(35deg) scale(.85) !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ===== Footer SERVICE temporary hide ===== */
+
+/* サービス詳細ページ完成まで非表示 */
+.footer-service {
+  display: none !important;
+}
+
+/* PC：ブランド左、MENU右 */
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 80px !important;
+  }
+
+  .footer-brand {
+    width: 480px !important;
+  }
+
+  .footer-menu {
+    width: 300px !important;
+    margin-left: auto !important;
+  }
+}
+
+/* Smartphone：MENUを2列に整理 */
+@media (max-width: 767px) {
+  .footer-main {
+    grid-template-columns: 1fr !important;
+  }
+
+  .footer-brand {
+    grid-column: 1 !important;
+  }
+
+  .footer-menu {
+    grid-column: 1 !important;
+    width: 100% !important;
+  }
+
+  .footer-menu > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 28px !important;
+  }
+}
+
+/* ===== Footer column swap ===== */
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 60px !important;
+  }
+
+  .footer-brand {
+    order: 1 !important;
+    width: 480px !important;
+  }
+
+  /* MENUを旧SERVICE位置へ */
+  .footer-menu {
+    order: 2 !important;
+    width: 250px !important;
+    margin-left: 0 !important;
+  }
+
+  /* SERVICEは旧MENU位置。現在は非表示 */
+  .footer-service {
+    order: 3 !important;
+    width: 250px !important;
+    display: none !important;
+  }
+}
+
+/* ===== Footer temporary reset to original layout ===== */
+.footer-service {
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 60px !important;
+  }
+
+  .footer-brand {
+    order: 1 !important;
+    width: 480px !important;
+  }
+
+  .footer-service {
+    order: 2 !important;
+    width: 250px !important;
+  }
+
+  .footer-menu {
+    order: 3 !important;
+    width: 250px !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-main {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 34px 24px !important;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1 !important;
+  }
+
+  .footer-service,
+  .footer-menu {
+    width: 100% !important;
+    grid-column: auto !important;
+  }
+
+  .footer-menu > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* ===== Footer MENU only ===== */
+.footer-service {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 80px !important;
+  }
+
+  .footer-brand {
+    order: 1 !important;
+    width: 480px !important;
+  }
+
+  .footer-menu {
+    order: 2 !important;
+    width: 300px !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-main {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .footer-brand,
+  .footer-menu {
+    width: 100% !important;
+    grid-column: 1 !important;
+  }
+
+  .footer-menu > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 24px !important;
+  }
+}
+
+/* ===== Footer MENU bottom spacing ===== */
+.footer-menu {
+  padding-bottom: 28px !important;
+}
+
+/* ===== Footer MENU bottom spacing mobile ===== */
+@media (max-width: 767px) {
+  .footer-menu {
+    padding-bottom: 8px !important;
+  }
+}
+
+/* ===== Footer MENU bottom spacing mobile tighter ===== */
+@media (max-width: 767px) {
+  .footer-menu {
+    padding-bottom: 0 !important;
+  }
+}
