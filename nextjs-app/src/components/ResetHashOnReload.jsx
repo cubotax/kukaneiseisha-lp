@@ -4,27 +4,37 @@ import { useEffect } from "react";
 
 export default function ResetHashOnReload() {
   useEffect(() => {
-    if (window.location.pathname !== "/" || !window.location.hash) return;
+    let hasLeftTop = window.scrollY > 80;
 
-    const navEntry = performance.getEntriesByType("navigation")[0];
+    const handleScroll = () => {
+      const y = window.scrollY;
 
-    const isReload =
-      navEntry?.type === "reload" ||
-      performance.navigation?.type === 1;
+      // 一度ページ下部へ移動したことを記録
+      if (y > 80) {
+        hasLeftTop = true;
+        return;
+      }
 
-    if (!isReload) return;
+      // トップまで戻ったら、画面位置を変えずにハッシュだけ削除
+      if (
+        hasLeftTop &&
+        y <= 2 &&
+        window.location.pathname === "/" &&
+        window.location.hash
+      ) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          "/"
+        );
+      }
+    };
 
-    history.replaceState(null, "", "/");
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "auto",
-        });
-      });
-    });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return null;
