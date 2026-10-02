@@ -7,10 +7,12 @@ import Strengths from "../components/Strengths";
 import Faq from "../components/Faq";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import ResetHashOnReload from "../components/ResetHashOnReload";
 
 export default function Home() {
   return (
     <>
+      <ResetHashOnReload />
       <Header />
       <Hero />
       <Services />
