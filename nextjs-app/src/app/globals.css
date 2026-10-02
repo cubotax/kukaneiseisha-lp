@@ -2812,3 +2812,25 @@ button {
     transform: translateX(30px);
   }
 }
+
+/* ===== Mobile LINE CTA same width as contact form ===== */
+@media (max-width: 767px) {
+  .contact-form,
+  .contact-line-cta,
+  .contact-page-only .contact-line-cta {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ===== Mobile LINE button width 80% ===== */
+@media (max-width: 767px) {
+  .contact-line-button {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
