@@ -2886,7 +2886,7 @@ button {
 /* ===== PC hero image position fix ===== */
 @media (min-width: 768px) {
   .hero-image-desktop {
-    top: 85px !important;
+    top: 120px !important;
   }
 }
 
