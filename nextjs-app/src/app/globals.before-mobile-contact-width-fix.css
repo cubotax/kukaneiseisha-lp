@@ -1526,7 +1526,7 @@ button {
     width: 795px !important;
     height: 488px !important;
     left: 615px !important;
-    top: -138px !important;
+    top: 42px !important;
   }
 }
 
@@ -2837,14 +2837,13 @@ button {
 
 /* ===== Mobile Contact wider layout ===== */
 @media (max-width: 767px) {
-  .contact-copy,
   .contact-form,
   .contact-line-cta,
   .contact-page-only .contact-line-cta {
-    width: 100% !important;
+    width: calc(100% - 24px) !important;
     max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     box-sizing: border-box !important;
   }
 
@@ -2861,25 +2860,3 @@ button {
     box-sizing: border-box !important;
   }
 }
-
-/* ===== Top contact height after LINE CTA ===== */
-@media (min-width: 768px) {
-  .contact-section {
-    height: 1500px !important;
-  }
-
-  .contact-page-only .contact-section {
-    height: auto !important;
-  }
-}
-
-/* ===== Strengths mobile dots move right ===== */
-@media (max-width: 767px) {
-  #strengths .strengths-inner > img[src="/assets/deco-accent-02.webp"] {
-    left: auto !important;
-    right: 12px !important;
-    top: -3px !important;
-    bottom: auto !important;
-  }
-}
-

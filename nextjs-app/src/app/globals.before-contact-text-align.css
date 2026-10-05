@@ -1526,7 +1526,7 @@ button {
     width: 795px !important;
     height: 488px !important;
     left: 615px !important;
-    top: -138px !important;
+    top: 42px !important;
   }
 }
 
@@ -2779,7 +2779,6 @@ button {
   }
 }
 
-
 /* ===== Contact heading text alignment PC ===== */
 @media (min-width: 768px) {
   .contact-lead,
@@ -2792,94 +2791,3 @@ button {
     text-align: left !important;
   }
 }
-
-/* ===== Contact text centered block / left aligned ===== */
-@media (min-width: 768px) {
-  .contact-lead,
-  .contact-copy {
-    width: 560px !important;
-    max-width: 560px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: left !important;
-  }
-}
-
-/* ===== Contact text visual centering PC ===== */
-@media (min-width: 768px) {
-  .contact-lead,
-  .contact-copy {
-    transform: translateX(30px);
-  }
-}
-
-/* ===== Mobile LINE CTA same width as contact form ===== */
-@media (max-width: 767px) {
-  .contact-form,
-  .contact-line-cta,
-  .contact-page-only .contact-line-cta {
-    width: calc(100% - 40px) !important;
-    max-width: none !important;
-    box-sizing: border-box !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-/* ===== Mobile LINE button width 80% ===== */
-@media (max-width: 767px) {
-  .contact-line-button {
-    width: 80% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-/* ===== Mobile Contact wider layout ===== */
-@media (max-width: 767px) {
-  .contact-copy,
-  .contact-form,
-  .contact-line-cta,
-  .contact-page-only .contact-line-cta {
-    width: 100% !important;
-    max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .contact-line-cta,
-  .contact-page-only .contact-line-cta {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-
-  .contact-line-button {
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-}
-
-/* ===== Top contact height after LINE CTA ===== */
-@media (min-width: 768px) {
-  .contact-section {
-    height: 1500px !important;
-  }
-
-  .contact-page-only .contact-section {
-    height: auto !important;
-  }
-}
-
-/* ===== Strengths mobile dots move right ===== */
-@media (max-width: 767px) {
-  #strengths .strengths-inner > img[src="/assets/deco-accent-02.webp"] {
-    left: auto !important;
-    right: 12px !important;
-    top: -3px !important;
-    bottom: auto !important;
-  }
-}
-

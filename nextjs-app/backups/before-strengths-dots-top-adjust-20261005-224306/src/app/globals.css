@@ -1526,7 +1526,7 @@ button {
     width: 795px !important;
     height: 488px !important;
     left: 615px !important;
-    top: -138px !important;
+    top: -38px !important;
   }
 }
 
@@ -2878,7 +2878,7 @@ button {
   #strengths .strengths-inner > img[src="/assets/deco-accent-02.webp"] {
     left: auto !important;
     right: 12px !important;
-    top: -3px !important;
+    top: 42px !important;
     bottom: auto !important;
   }
 }
