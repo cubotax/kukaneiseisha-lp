@@ -2861,3 +2861,14 @@ button {
     box-sizing: border-box !important;
   }
 }
+
+/* ===== Top contact height after LINE CTA ===== */
+@media (min-width: 768px) {
+  .contact-section {
+    height: 1500px !important;
+  }
+
+  .contact-page-only .contact-section {
+    height: auto !important;
+  }
+}
