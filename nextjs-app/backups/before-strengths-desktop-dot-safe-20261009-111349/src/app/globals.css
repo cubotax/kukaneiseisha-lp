@@ -2938,11 +2938,4 @@ button {
   pointer-events: none !important;
 }
 
-/* ===== Strengths desktop dot safe position ===== */
-@media (min-width: 768px) {
-  #strengths .strengths-inner > img[src="/assets/deco-accent-02.webp"] {
-    left: clamp(-70px, -4vw, -45px) !important;
-    right: auto !important;
-  }
-}
 
