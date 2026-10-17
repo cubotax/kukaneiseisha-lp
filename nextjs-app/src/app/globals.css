@@ -3039,3 +3039,59 @@ button {
     transition: none !important;
   }
 }
+
+
+/* ===== Contact submit hover action ===== */
+
+.contact-form button[type="submit"] {
+  transform-origin: center center !important;
+  transition:
+    transform .24s cubic-bezier(.22,.61,.36,1),
+    box-shadow .24s ease,
+    filter .24s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-form button[type="submit"]:hover {
+    transform: translateY(-2px) scale(1.04) !important;
+    background: #176fe6 !important;
+    filter: brightness(1.04) !important;
+    box-shadow: 0 16px 30px rgba(26, 121, 242, 0.30) !important;
+  }
+
+  .contact-form button[type="submit"]:active {
+    transform: translateY(0) scale(1.01) !important;
+    filter: brightness(0.98) !important;
+  }
+}
+
+
+/* ===== Contact PC auto height for validation errors ===== */
+@media (min-width: 768px) {
+  .contact-section {
+    height: auto !important;
+    min-height: 1343px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .contact-inner {
+    height: auto !important;
+    min-height: 1343px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+
+/* ===== Contact validation message spacing ===== */
+.contact-form [data-error],
+.contact-form .error-message,
+.contact-form .field-error {
+  margin-top: -10px !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* ===== Contact error closer to field ===== */
+.contact-form .contact-error {
+  margin-top: -5px !important;
+}
