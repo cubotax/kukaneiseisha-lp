@@ -3163,3 +3163,39 @@ button {
     letter-spacing: -0.02em !important;
   }
 }
+
+
+/* ===== Services mobile title-description spacing ===== */
+@media (max-width: 767px) {
+  .services-grid .svc-card p {
+    margin-top: 3px !important;
+  }
+}
+
+
+/* ===== Works mobile typography readability ===== */
+@media (max-width: 767px) {
+  .works-jp {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  .works-lead {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  .works-item h3 {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  .works-item p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  .works-item > div > div:last-child span {
+    font-size: 11px !important;
+  }
+}
