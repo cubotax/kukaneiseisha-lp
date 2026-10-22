@@ -3225,3 +3225,96 @@ button {
     min-height: 143px !important;
   }
 }
+
+
+/* ===== FAQ mobile typography readability ===== */
+@media (max-width: 767px) {
+  .faq-jp {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  .faq-lead {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  #faq-list > div > div:first-child > span:first-child {
+    font-size: 14px !important;
+  }
+
+  #faq-list > div > div:first-child > span:nth-child(3) {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  #faq-list > div > div:nth-child(2) span {
+    font-size: 14px !important;
+  }
+
+  #faq-list > div > div:nth-child(2) p {
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+  }
+}
+
+
+/* ===== Contact + Footer mobile typography readability ===== */
+@media (max-width: 767px) {
+  .contact-lead {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  .contact-copy {
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+  }
+
+  .contact-form label {
+    font-size: 14px !important;
+  }
+
+  .contact-form div[style*="margin-left: 36px"] {
+    font-size: 12px !important;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="tel"] {
+    font-size: 16px !important;
+  }
+
+  .contact-form textarea {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  .contact-form button[type="submit"] {
+    font-size: 16px !important;
+  }
+
+  .footer-brand > div {
+    font-size: 12px !important;
+  }
+
+  .footer-brand > p {
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+  }
+
+  .footer-col > div:first-child {
+    font-size: 14px !important;
+  }
+
+  .footer-col a {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .footer-legal a,
+  .footer-legal span,
+  .footer-copy {
+    font-size: 11px !important;
+  }
+}
