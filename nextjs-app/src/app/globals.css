@@ -274,7 +274,7 @@ input,select,textarea,button{font-family:inherit}
   .about-inner > img[aria-hidden="true"]{opacity:.34 !important;transform:scale(.62)}
   .about-copy{width:auto !important;min-width:0 !important;padding-top:2px}
   .about-en{font-size:42px !important;line-height:1 !important}
-  .about-jp{margin-top:5px !important;padding-left:2px !important;font-size:11px !important}
+  .about-jp{margin-top:5px !important;padding-left:2px !important;font-size:15px !important}
   .about-title{
     margin-top:20px !important;
     font-size:24px !important;
@@ -283,7 +283,7 @@ input,select,textarea,button{font-family:inherit}
   }
   .about-text{margin-top:20px !important;gap:10px !important}
   .about-text p{
-    font-size:11.5px !important;
+    font-size:15px !important;
     line-height:1.8 !important;
   }
   .about-visual{
@@ -304,7 +304,7 @@ input,select,textarea,button{font-family:inherit}
     width:82px !important;
     height:82px !important;
   }
-  .about-badge span{font-size:12px !important;line-height:1.15 !important}
+  .about-badge span{font-size:10px !important;line-height:1.15 !important}
   .about-visual > div:last-child{
     width:50px !important;
     height:50px !important;
@@ -3196,6 +3196,32 @@ button {
   }
 
   .works-item > div > div:last-child span {
-    font-size: 11px !important;
+    font-size: 10px !important;
+  }
+}
+
+
+/* ===== Strengths mobile typography and alignment ===== */
+@media (max-width: 767px) {
+  .strengths-jp {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  .strengths-lead {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  .strength-copy h3 {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+    min-height: 46.4px !important;
+  }
+
+  .strength-copy p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    min-height: 143px !important;
   }
 }
