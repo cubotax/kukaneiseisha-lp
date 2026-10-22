@@ -3318,3 +3318,73 @@ button {
     font-size: 11px !important;
   }
 }
+
+
+/* ===== Mobile section spacing + Strengths slider ===== */
+@media (max-width: 767px) {
+
+  /* section heading → content spacing */
+  .about-title {
+    margin-top: 28px !important;
+  }
+
+  .services-lead,
+  .works-lead,
+  .strengths-lead,
+  .faq-lead {
+    margin-top: 18px !important;
+  }
+
+  .contact-lead {
+    margin-top: 30px !important;
+  }
+
+  /* Strengths horizontal slider */
+  .strengths-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    gap: 14px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+
+    padding: 0 28px 10px 0 !important;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .strengths-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .strength-card {
+    flex: 0 0 86% !important;
+    width: 86% !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+
+/* ===== Mobile section heading spacing refinement ===== */
+@media (max-width: 767px) {
+  .about-title {
+    margin-top: 32px !important;
+  }
+
+  .services-lead,
+  .works-lead,
+  .strengths-lead,
+  .faq-lead {
+    margin-top: 24px !important;
+  }
+
+  .contact-lead {
+    margin-top: 34px !important;
+  }
+}
