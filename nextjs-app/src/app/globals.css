@@ -3095,3 +3095,11 @@ button {
 .contact-form .contact-error {
   margin-top: -5px !important;
 }
+
+
+/* ===== Hero LINE mobile shadow adjustment ===== */
+@media (max-width: 767px) {
+  .hero-line-cta {
+    box-shadow: 0 8px 18px rgba(6, 199, 85, 0.16) !important;
+  }
+}

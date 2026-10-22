@@ -1,0 +1,3097 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Next.js font fix */
+.about-en,
+.services-en,
+.works-en,
+.strengths-en,
+.faq-en,
+.contact-en {
+  font-family: var(--font-caveat), cursive !important;
+  font-weight: 700 !important;
+}
+
+body,
+input,
+select,
+textarea,
+button {
+  font-family: var(--font-zen-kaku), sans-serif;
+}
+
+
+/* ===== Legacy LP migrated styles ===== */
+
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1a79f2}
+a:hover{color:#0e5fd1}
+input,select,textarea,button{font-family:inherit}
+.svc-card{transition:transform 0.25s ease}
+.svc-illust{transition:transform 0.25s ease}
+.svc-num{transition:color 0.25s ease}
+.svc-name{transition:color 0.25s ease}
+@media (hover: hover) and (pointer: fine){
+.svc-card:hover{transform:translateY(-6px);cursor:pointer}
+.svc-card:hover .svc-illust{transform:scale(1.08)}
+.svc-card:hover .svc-num{color:#0e5fd1 !important}
+.svc-card:hover .svc-name{color:#0e5fd1 !important}
+}
+
+
+/* ===== Responsive step 1: Header + Hero ===== */
+.mobile-menu-button,
+.mobile-menu,
+.hero-image-mobile{display:none}
+
+@media (max-width: 767px){
+  html{scroll-behavior:smooth}
+  body{overflow-x:hidden}
+  body.mobile-menu-open{overflow:hidden}
+
+  .site-header{
+    position:sticky !important;
+    top:0;
+    height:64px !important;
+    border-bottom:1px solid rgba(10,42,79,.06) !important;
+    box-shadow:0 3px 16px rgba(10,42,79,.04);
+  }
+  .header-inner{
+    width:100% !important;
+    max-width:none !important;
+    padding:0 18px !important;
+  }
+  .site-logo{
+    width:128px !important;
+    height:auto !important;
+    position:relative;
+    z-index:32;
+  }
+  .pc-nav{display:none !important}
+
+  .mobile-menu-button{
+    display:flex;
+    position:relative;
+    z-index:32;
+    width:44px;
+    height:44px;
+    padding:0;
+    border:0;
+    background:transparent;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+  }
+  .mobile-menu-button span{
+    display:block;
+    width:23px;
+    height:2px;
+    border-radius:999px;
+    background:#0a2a4f;
+    transform-origin:center;
+    transition:transform .28s ease, opacity .2s ease;
+  }
+  .mobile-menu-button.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .mobile-menu-button.is-open span:nth-child(2){opacity:0;transform:scaleX(.3)}
+  .mobile-menu-button.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .mobile-menu{
+    display:block;
+    position:fixed;
+    z-index:30;
+    left:0;
+    right:0;
+    top:64px;
+    height:calc(100dvh - 64px);
+    padding:26px 22px 34px;
+    background:rgba(248,252,255,.98);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-12px);
+    pointer-events:none;
+    transition:opacity .26s ease, transform .32s cubic-bezier(.22,.61,.36,1), visibility .26s ease;
+  }
+  .mobile-menu.is-open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .mobile-menu-nav{display:flex;flex-direction:column}
+  .mobile-menu-nav a{
+    display:flex;
+    align-items:center;
+    min-height:58px;
+    border-bottom:1px solid #dbeaf6;
+    color:#0a2a4f;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .mobile-menu-nav a::after{
+    content:'→';
+    margin-left:auto;
+    color:#1a79f2;
+    font-family:Montserrat,sans-serif;
+    font-weight:700;
+  }
+
+  .hero{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 0 34px !important;
+    background:linear-gradient(160deg,#f4fafe 0%,#ffffff 55%,#f6fbff 100%) !important;
+  }
+  .hero > img[aria-hidden="true"]{opacity:.22 !important}
+  .hero-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    min-height:0 !important;
+    padding:24px 18px 0 !important;
+    display:block !important;
+  }
+  .hero-image-desktop,
+  .hero-scroll{display:none !important}
+  .hero-content{
+    width:100% !important;
+    height:auto !important;
+    padding:0 !important;
+  }
+  .hero-catch{
+    width:132px !important;
+    height:auto !important;
+    margin:0 0 8px 6px !important;
+  }
+  .hero-title{
+    width:auto !important;
+    height:auto !important;
+    margin:0 6px !important;
+    font-size:clamp(34px,10.4vw,43px) !important;
+    line-height:1.2 !important;
+    letter-spacing:0 !important;
+  }
+  .hero-lead{
+    width:auto !important;
+    height:auto !important;
+    margin:12px 6px 0 !important;
+    text-align:left !important;
+    font-size:14px !important;
+    line-height:1.75 !important;
+  }
+  .hero-image-mobile{
+    display:block;
+    width:calc(100% + 12px);
+    max-width:none;
+    height:auto;
+    margin:4px -6px 0;
+    object-fit:contain;
+  }
+  .hero-actions{
+    width:100% !important;
+    margin-top:-2px !important;
+    align-items:stretch !important;
+  }
+  .hero-badges{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:8px !important;
+    width:100% !important;
+  }
+  .hero-badge{
+    width:100% !important;
+    min-width:0 !important;
+    height:92px !important;
+    padding:10px 5px !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    gap:7px !important;
+    border-radius:18px !important;
+    font-size:12px !important;
+    line-height:1.35 !important;
+    text-align:center !important;
+    white-space:normal !important;
+  }
+  .hero-badge svg{width:25px !important;height:25px !important;flex:0 0 auto}
+  .hero-cta{
+    width:100% !important;
+    height:58px !important;
+    margin-top:16px !important;
+    padding:0 22px !important;
+    justify-content:center !important;
+    border-radius:29px !important;
+    font-size:15px !important;
+    gap:12px !important;
+    box-shadow:0 12px 24px rgba(26,121,242,.25) !important;
+  }
+  .hero-note{display:none !important}
+}
+
+
+/* ===== Responsive step 2: About + Services ===== */
+@media (max-width: 767px){
+  /* Small polish carried forward from the review */
+  .site-logo{width:146px !important}
+  .hero-title{text-align:center !important;margin-left:auto !important;margin-right:auto !important}
+  .hero-lead{text-align:center !important;margin-left:auto !important;margin-right:auto !important}
+
+  /* About */
+  .about{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:54px 0 58px !important;
+    background:linear-gradient(180deg,#eaf6fe 0%,#fbfdff 52%,#f7fcff 100%) !important;
+  }
+  .about > svg{height:44px !important}
+  .about > img[aria-hidden="true"]{opacity:.22 !important}
+  .about-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:0 20px !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1.22fr) minmax(118px,.78fr) !important;
+    gap:12px !important;
+    align-items:start !important;
+  }
+  .about-inner > img[aria-hidden="true"]{opacity:.34 !important;transform:scale(.62)}
+  .about-copy{width:auto !important;min-width:0 !important;padding-top:2px}
+  .about-en{font-size:42px !important;line-height:1 !important}
+  .about-jp{margin-top:5px !important;padding-left:2px !important;font-size:11px !important}
+  .about-title{
+    margin-top:20px !important;
+    font-size:24px !important;
+    line-height:1.5 !important;
+    letter-spacing:0 !important;
+  }
+  .about-text{margin-top:20px !important;gap:10px !important}
+  .about-text p{
+    font-size:11.5px !important;
+    line-height:1.8 !important;
+  }
+  .about-visual{
+    width:100% !important;
+    height:270px !important;
+    margin-top:50px !important;
+  }
+  .about-photo{
+    width:100% !important;
+    height:250px !important;
+    object-fit:cover !important;
+    object-position:center 28% !important;
+    border-radius:50% 50% 44% 56% / 42% 38% 62% 58% !important;
+  }
+  .about-badge{
+    right:-8px !important;
+    top:-38px !important;
+    width:82px !important;
+    height:82px !important;
+  }
+  .about-badge span{font-size:12px !important;line-height:1.15 !important}
+  .about-visual > div:last-child{
+    width:50px !important;
+    height:50px !important;
+    left:-8px !important;
+    bottom:-2px !important;
+  }
+
+  /* Services */
+  .services{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:58px 0 72px !important;
+    background:linear-gradient(180deg,#e7f5fe 0%,#f6fcff 58%,#eaf6fe 100%) !important;
+  }
+  .services > svg{height:44px !important}
+  .services > img[aria-hidden="true"]{opacity:.20 !important}
+  .services-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:0 20px !important;
+    display:block !important;
+  }
+  .services-inner > img[aria-hidden="true"]{opacity:.34 !important;transform:scale(.62)}
+  .services-en{font-size:42px !important}
+  .services-jp{margin-top:5px !important;padding-left:2px !important;font-size:11px !important}
+  .services-lead{
+    margin-top:10px !important;
+    padding-left:2px !important;
+    font-size:11.5px !important;
+    line-height:1.75 !important;
+  }
+  .services-grid{
+    margin-top:30px !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    column-gap:10px !important;
+    row-gap:12px !important;
+  }
+  .services-grid .svc-card{
+    min-width:0 !important;
+    min-height:214px !important;
+    padding:16px 10px 15px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.88) !important;
+    border:1px solid rgba(222,237,249,.88) !important;
+    box-shadow:0 6px 16px rgba(10,42,79,.035) !important;
+  }
+  .services-grid .svc-num{
+    align-self:flex-start !important;
+    font-size:23px !important;
+    margin-left:2px !important;
+  }
+  .services-grid .svc-illust{
+    width:min(100%,112px) !important;
+    margin-top:8px !important;
+  }
+  .services-grid .svc-name{
+    margin-top:10px !important;
+    font-size:13px !important;
+    line-height:1.45 !important;
+  }
+  .services-grid .svc-card p{
+    margin-top:7px !important;
+    font-size:10.5px !important;
+    line-height:1.65 !important;
+  }
+}
+
+
+/* ===== Responsive step 3: Works ===== */
+@media (max-width: 767px){
+  .works{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:54px 0 64px !important;
+    background:#fff !important;
+  }
+  .works > svg{height:44px !important}
+  .works > img[aria-hidden="true"]{opacity:.20 !important;transform:scale(.66)}
+  .works-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:0 20px !important;
+  }
+  .works-inner > img[aria-hidden="true"]{opacity:.30 !important;transform:scale(.58)}
+  .works-en{font-size:42px !important;line-height:1 !important}
+  .works-jp{margin-top:5px !important;font-size:11px !important}
+  .works-lead{
+    margin-top:10px !important;
+    font-size:11.5px !important;
+    line-height:1.75 !important;
+  }
+  .works-list{
+    margin-top:30px !important;
+    gap:22px !important;
+  }
+  .works-item{
+    display:flex !important;
+    flex-direction:row-reverse !important;
+    align-items:center !important;
+    gap:12px !important;
+    height:auto !important;
+    min-height:0 !important;
+  }
+  .works-item > div{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+  }
+  .works-item > img{
+    flex:0 0 46% !important;
+    width:46% !important;
+    height:132px !important;
+    max-width:none !important;
+    object-fit:cover !important;
+    position:static !important;
+    left:auto !important;
+    border-radius:48% 52% 46% 54% / 48% 44% 56% 52% !important;
+  }
+  .works-item > div > div:first-child{
+    font-size:23px !important;
+    line-height:1 !important;
+  }
+  .works-item > div > div:nth-child(2){
+    display:none !important;
+  }
+  .works-item h3{
+    margin-top:6px !important;
+    font-size:14px !important;
+    line-height:1.4 !important;
+  }
+  .works-item p{
+    width:auto !important;
+    height:auto !important;
+    margin:7px 0 0 !important;
+    font-size:10.5px !important;
+    line-height:1.65 !important;
+  }
+  .works-item p br{display:none !important}
+  .works-item > div > div:last-child{
+    margin-top:8px !important;
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:5px !important;
+  }
+  .works-item > div > div:last-child span{
+    padding:4px 8px !important;
+    font-size:8.5px !important;
+  }
+}
+
+/* ===== Responsive step 4: Strengths ===== */
+@media (max-width: 767px){
+  .strengths{
+    height:auto !important;
+    min-height:0 !important;
+    padding:0 0 56px !important;
+    overflow:hidden !important;
+  }
+  .strengths > svg{height:42px !important}
+  .strengths > img[aria-hidden="true"]{opacity:.18 !important;transform:scale(.62)}
+  .strengths-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:74px 20px 0 !important;
+    display:block !important;
+  }
+  .strengths-inner > img[aria-hidden="true"]{opacity:.28 !important;transform:scale(.58)}
+  .strengths-en{
+    left:0 !important;
+    font-size:42px !important;
+    line-height:1 !important;
+  }
+  .strengths-jp{
+    left:0 !important;
+    margin-top:6px !important;
+    padding-left:0 !important;
+    font-size:11px !important;
+  }
+  .strengths-lead{
+    left:0 !important;
+    margin-top:10px !important;
+    padding-left:0 !important;
+    font-size:11px !important;
+    line-height:1.75 !important;
+  }
+  .strengths-lead br{display:none !important}
+  .strengths-grid{
+    margin-top:24px !important;
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-template-rows:none !important;
+    column-gap:10px !important;
+    row-gap:10px !important;
+  }
+  .strengths-grid > div[aria-hidden="true"]{display:none !important}
+  .strength-card{
+    min-width:0 !important;
+    padding:16px 12px 18px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:10px !important;
+    background:rgba(255,255,255,.92) !important;
+    border:1px solid rgba(255,255,255,.95) !important;
+    border-radius:18px !important;
+    box-shadow:0 8px 22px rgba(10,42,79,.05) !important;
+  }
+  .strength-icon{
+    width:68px !important;
+    margin:0 !important;
+  }
+  .strength-icon > div:first-child{
+    font-size:21px !important;
+    margin:0 0 -11px 2px !important;
+  }
+  .strength-icon > div:nth-child(2){
+    width:68px !important;
+    height:58px !important;
+  }
+  .strength-icon svg{
+    width:32px !important;
+    height:32px !important;
+  }
+  .strength-copy{width:100% !important;min-width:0 !important}
+  .strength-copy h3{
+    margin:0 !important;
+    font-size:13px !important;
+    line-height:1.45 !important;
+  }
+  .strength-copy > div{
+    margin:7px 0 8px !important;
+    width:24px !important;
+  }
+  .strength-copy p{
+    height:auto !important;
+    margin:0 !important;
+    font-size:10px !important;
+    line-height:1.65 !important;
+  }
+  .strength-copy p br{display:none !important}
+}
+
+
+/* ===== Responsive step 5: FAQ + Contact ===== */
+@media (max-width: 767px){
+  .faq-section{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 0 58px !important;
+  }
+  .faq-section > svg{height:42px !important}
+  .faq-section > div[style*="position: absolute"]{opacity:.18 !important;transform:scale(.7)}
+  .faq-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:72px 20px 0 !important;
+    display:block !important;
+  }
+  .faq-inner > svg,
+  .faq-inner > div[style*="position: absolute"]{display:none !important}
+  .faq-intro{width:100% !important}
+  .faq-en{font-size:43px !important}
+  .faq-jp{
+    margin-top:6px !important;
+    padding-left:0 !important;
+    font-size:11px !important;
+  }
+  .faq-lead{
+    margin-top:10px !important;
+    font-size:10.5px !important;
+    line-height:1.7 !important;
+  }
+  .faq-photo-wrap{display:none !important}
+  #faq-list{
+    width:100% !important;
+    margin-top:24px !important;
+  }
+  #faq-list > div{
+    margin-top:0 !important;
+    padding:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+  }
+  #faq-list > div > div:first-child{
+    min-height:54px !important;
+    height:auto !important;
+    padding:13px 4px !important;
+    gap:9px !important;
+    border-bottom:1px solid #d5e7f6 !important;
+  }
+  #faq-list > div > div:first-child > span:first-child{
+    width:33px !important;
+    flex:0 0 33px !important;
+    font-size:13px !important;
+  }
+  #faq-list > div > div:first-child > span:nth-child(2){display:none !important}
+  #faq-list > div > div:first-child > span:nth-child(3){
+    font-size:11px !important;
+    line-height:1.5 !important;
+  }
+  #faq-list button{
+    width:27px !important;
+    height:27px !important;
+  }
+  #faq-list > div > div:nth-child(2) > div > div{
+    margin:8px 0 10px !important;
+    padding:14px !important;
+    gap:10px !important;
+    border-radius:12px !important;
+  }
+  #faq-list > div > div:nth-child(2) span{
+    font-size:13px !important;
+  }
+  #faq-list > div > div:nth-child(2) p{
+    font-size:10.5px !important;
+    line-height:1.75 !important;
+  }
+
+  .contact-section{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 0 58px !important;
+  }
+  .contact-section > svg{height:42px !important}
+  .contact-section > img[aria-hidden="true"]{opacity:.16 !important;transform:scale(.6)}
+  .contact-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    padding:76px 20px 0 !important;
+    display:block !important;
+  }
+  .contact-inner > img[aria-hidden="true"]{opacity:.24 !important;transform:scale(.55)}
+  .contact-inner > svg{
+    width:34px !important;
+    height:30px !important;
+    right:26px !important;
+    top:68px !important;
+  }
+  .contact-badge{
+    width:108px !important;
+    height:108px !important;
+    right:18px !important;
+    top:92px !important;
+  }
+  .contact-badge span{
+    font-size:16px !important;
+    line-height:1.18 !important;
+  }
+  .contact-en{
+    font-size:44px !important;
+    text-align:left !important;
+  }
+  .contact-jp{
+    margin-top:7px !important;
+    font-size:18px !important;
+    text-align:left !important;
+  }
+  .contact-lead{
+    width:68% !important;
+    margin-top:26px !important;
+    font-size:11px !important;
+    line-height:1.7 !important;
+  }
+  .contact-copy{
+    width:72% !important;
+    margin-top:9px !important;
+    font-size:10px !important;
+    line-height:1.8 !important;
+    text-align:left !important;
+  }
+  .contact-copy br{display:none !important}
+  .contact-form{
+    width:100% !important;
+    margin-top:28px !important;
+    padding:26px 18px 24px !important;
+    gap:20px !important;
+    border-radius:20px !important;
+    box-shadow:0 12px 30px rgba(20,80,150,.07) !important;
+  }
+  .contact-form > div{
+    gap:7px !important;
+  }
+  .contact-form > div > div:first-child{
+    gap:8px !important;
+    flex-wrap:wrap !important;
+  }
+  .contact-form span[style*="Montserrat"]{
+    font-size:12px !important;
+  }
+  .contact-form label{
+    font-size:12px !important;
+  }
+  .contact-form div[style*="margin-left: 36px"]{
+    margin-left:0 !important;
+    font-size:9.5px !important;
+  }
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="tel"]{
+    width:100% !important;
+    height:46px !important;
+    padding:0 13px !important;
+    font-size:12px !important;
+    border-radius:9px !important;
+  }
+  .contact-form textarea{
+    width:100% !important;
+    height:118px !important;
+    padding:13px !important;
+    font-size:11px !important;
+    line-height:1.7 !important;
+    border-radius:9px !important;
+  }
+  .contact-form input[type="radio"]{
+    width:18px !important;
+    height:18px !important;
+  }
+  .contact-form button[type="submit"]{
+    width:100% !important;
+    height:58px !important;
+    margin-top:4px !important;
+    border-radius:29px !important;
+    font-size:13px !important;
+  }
+}
+
+
+/* ===== Responsive step 6: Footer ===== */
+@media (max-width: 767px){
+  .site-footer{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    padding:0 !important;
+  }
+  .site-footer > svg:first-of-type{height:54px !important;}
+  .site-footer > svg:nth-of-type(2){height:86px !important;}
+  .site-footer > img[aria-hidden="true"]{opacity:.22 !important;}
+  .site-footer > img[aria-hidden="true"]:nth-of-type(1){
+    width:150px !important;height:auto !important;left:-74px !important;top:120px !important;
+  }
+  .site-footer > img[aria-hidden="true"]:nth-of-type(2){
+    width:160px !important;height:auto !important;right:-76px !important;top:74px !important;
+  }
+  .footer-inner{
+    width:100% !important;
+    max-width:none !important;
+    padding:72px 24px 24px !important;
+    min-height:0 !important;
+  }
+  .footer-inner > img[aria-hidden="true"]{opacity:.28 !important;transform:scale(.58);transform-origin:center;}
+  .footer-inner > img[aria-hidden="true"]:nth-of-type(1){left:-18px !important;top:24px !important;}
+  .footer-inner > img[aria-hidden="true"]:nth-of-type(2){left:auto !important;right:-12px !important;top:296px !important;}
+  .footer-main{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:34px 24px !important;
+    align-items:start !important;
+  }
+  .footer-brand{
+    width:100% !important;
+    grid-column:1 / -1 !important;
+  }
+  .footer-brand > img{
+    width:178px !important;
+    height:auto !important;
+  }
+  .footer-brand > div{
+    margin-top:8px !important;
+    font-size:9px !important;
+    letter-spacing:.18em !important;
+  }
+  .footer-brand > p{
+    margin-top:18px !important;
+    font-size:11px !important;
+    line-height:1.8 !important;
+  }
+  .footer-brand > p br{display:none !important;}
+  .footer-col{width:100% !important;}
+  .footer-col > div:first-child{
+    font-size:12px !important;
+    letter-spacing:.14em !important;
+  }
+  .footer-col > div:nth-child(2){
+    margin:9px 0 4px !important;
+    width:24px !important;
+    height:2px !important;
+  }
+  .footer-col a{
+    height:32px !important;
+    font-size:10.5px !important;
+    line-height:1.3 !important;
+  }
+  .footer-col a svg{width:13px !important;height:9px !important;flex:0 0 auto;}
+  .footer-bottom{
+    margin-top:34px !important;
+    padding-top:18px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:12px !important;
+  }
+  .footer-legal{
+    gap:10px !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+  }
+  .footer-legal a{font-size:9px !important;}
+  .footer-legal span{font-size:9px !important;}
+  .footer-copy{font-size:9px !important;text-align:center !important;}
+}
+
+
+/* Hero catch 2-line lock */
+@media (max-width: 767px) {
+  .hero-catch {
+    width: 100% !important;
+    height: auto !important;
+    text-align: center !important;
+    font-size: clamp(31px, 9vw, 42px) !important;
+    line-height: 1.28 !important;
+  }
+
+  .hero-line1,
+  .hero-line2 {
+    white-space: nowrap !important;
+  }
+
+  .hero-line1,
+  .hero-line2 {
+    display: inline-block;
+  }
+}
+
+
+/* Fix mobile handwritten catch size */
+@media (max-width: 767px) {
+  .hero-catch {
+    font-size: clamp(31px, 9vw, 42px) !important;
+  }
+
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    width: 230px !important;
+    height: 115px !important;
+    max-width: none !important;
+  }
+}
+
+
+/* Smaller mobile handwritten catch */
+@media (max-width: 767px) {
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    width: 115px !important;
+    height: auto !important;
+  }
+}
+
+
+/* Tune mobile handwritten catch size */
+@media (max-width: 767px) {
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    width: 150px !important;
+    height: auto !important;
+  }
+}
+
+
+/* Mobile hero gradient fade to pure white */
+@media (max-width: 767px) {
+  section:first-of-type {
+    background:
+      linear-gradient(
+        180deg,
+        #f4fafe 0%,
+        #f8fcff 55%,
+        #ffffff 82%,
+        #ffffff 100%
+      ) !important;
+  }
+}
+
+
+/* Add mobile section spacing: Hero -> About */
+@media (max-width: 767px) {
+  #about {
+    margin-top: 20px !important;
+  }
+}
+
+
+/* Clip About decorations at section boundary on mobile */
+@media (max-width: 767px) {
+  #about {
+    overflow: hidden !important;
+  }
+}
+
+
+/* Remove About bottom decorations on mobile */
+@media (max-width: 767px) {
+  #about img[src*="c43ebe0af97bc6792b9f35fb3ffd2b70"] {
+    display: none !important;
+  }
+
+  #about img[src*="41f17a11a833ef35e026a8b53998ad8d"] {
+    display: none !important;
+  }
+}
+
+
+/* Clean About background decorations near Services on mobile */
+@media (max-width: 767px) {
+  #about > img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+
+/* Clean Works background on mobile */
+@media (max-width: 767px) {
+
+  /* Works全体を完全な白背景にする */
+  #works {
+    background: #ffffff !important;
+  }
+
+  /* Works内の背景装飾だけすべて非表示 */
+  #works img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+
+/* Sharpen Services -> Works boundary on mobile */
+@media (max-width: 767px) {
+  #services {
+    background: #eaf6fe !important;
+  }
+
+  #works > svg:first-child {
+    opacity: 1 !important;
+  }
+
+  #works > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+}
+
+
+/* Works mobile item spacing - final */
+@media (max-width: 767px) {
+  #works div[style*="flex-direction: column"][style*="gap: 70px"] {
+    gap: 40px !important;
+  }
+}
+
+
+/* Restore original typography */
+body,
+input,
+select,
+textarea,
+button {
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif !important;
+}
+
+/* Hero main copy */
+.hero-catch,
+.hero-line1,
+.hero-line2 {
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif !important;
+  font-weight: 900 !important;
+}
+
+/* English handwritten section headings */
+.about-en,
+.services-en,
+.works-en,
+.strengths-en,
+.faq-en,
+.contact-en {
+  font-family: 'Caveat', cursive !important;
+  font-weight: 700 !important;
+}
+
+
+/* Remove Contact background decorations on mobile */
+@media (max-width: 767px) {
+  #contact > img[aria-hidden="true"],
+  #contact img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+
+/* Mobile hero headline refinement */
+@media (max-width: 767px) {
+
+  /* Hero見出しを画面幅の約95%まで使用 */
+  .hero-catch {
+    width: 95% !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .hero-line1,
+  .hero-line2 {
+    white-space: nowrap !important;
+  }
+
+  /* 「もっと気持ちよく。」にAboutと同じ下線 */
+  .hero-line2 {
+    display: inline-block !important;
+    background:
+      linear-gradient(
+        transparent 62%,
+        #bfe3fb 62%,
+        #bfe3fb 95%,
+        transparent 95%
+      ) !important;
+  }
+}
+
+
+/* Keep handwritten hero copy left-aligned on mobile */
+@media (max-width: 767px) {
+  section img[alt="きれいな空間で、いい毎日を。"] {
+    display: block !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    align-self: flex-start !important;
+  }
+}
+
+
+/* Enlarge mobile hero headline */
+@media (max-width: 767px) {
+  .hero-catch {
+    width: 95% !important;
+    font-size: clamp(34px, 9.8vw, 46px) !important;
+    line-height: 1.25 !important;
+  }
+}
+
+
+/* Narrow mobile hero CTA */
+@media (max-width: 767px) {
+  .hero-cta {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+  }
+}
+
+
+/* Contact badge refinement */
+.contact-badge span {
+  font-family: 'Zen Kaku Gothic New', sans-serif !important;
+}
+
+@media (max-width: 767px) {
+  .contact-badge {
+    width: 112px !important;
+    height: 112px !important;
+  }
+
+  .contact-badge span {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    font-weight: 700 !important;
+  }
+}
+
+
+/* Contact badge lines mobile position */
+@media (max-width: 767px) {
+  .contact-badge-lines {
+    transform: translate(12px, 20px) rotate(40deg) !important;
+  }
+}
+
+
+/* Match mobile contact submit button to hero CTA */
+@media (max-width: 767px) {
+  .contact-form button[type="submit"] {
+    width: calc(80vw - 28.8px) !important;
+    max-width: 100% !important;
+    height: 58px !important;
+    margin: 4px auto 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 29px !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-company-info {
+    margin-top: 24px !important;
+    padding-top: 18px !important;
+    font-size: 10px !important;
+    line-height: 1.8 !important;
+    text-align: center !important;
+  }
+}
+
+/* ===== Hero CTA buttons ===== */
+
+.hero-cta-row {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 576px;
+}
+
+.hero-cta-row .hero-cta {
+  margin-top: 0 !important;
+  width: 282px !important;
+  height: 68px !important;
+  padding: 0 24px !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  border-radius: 34px !important;
+  font-size: 17px !important;
+  box-sizing: border-box !important;
+}
+
+.hero-line-cta {
+  width: 282px;
+  height: 68px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-sizing: border-box;
+  border-radius: 34px;
+  background: #06c755;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 16px 30px rgba(6, 199, 85, 0.24);
+}
+
+.hero-line-icon {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #06c755;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+@media (max-width: 767px) {
+  .hero-cta-row {
+    width: 100%;
+    margin-top: 16px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-cta-row .hero-cta,
+  .hero-line-cta {
+    width: 80% !important;
+    height: 58px !important;
+    margin: 0 auto !important;
+    border-radius: 29px !important;
+    font-size: 15px !important;
+  }
+
+  .hero-line-icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    font-size: 9px;
+  }
+}
+
+/* ===== Hero estimate button fix ===== */
+
+.hero-estimate-cta {
+  width: 282px !important;
+  height: 68px !important;
+  padding: 0 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  box-sizing: border-box !important;
+  border-radius: 34px !important;
+  background: linear-gradient(135deg, #1a79f2, #0e5fd1) !important;
+  color: #ffffff !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  box-shadow: 0 16px 30px rgba(26, 121, 242, 0.28) !important;
+}
+
+.hero-estimate-cta:hover,
+.hero-estimate-cta:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.hero-estimate-cta .hero-mail-icon {
+  width: 28px !important;
+  height: 28px !important;
+  flex: 0 0 auto !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 767px) {
+  .hero-estimate-cta {
+    width: 80% !important;
+    height: 58px !important;
+    margin: 0 auto !important;
+    border-radius: 29px !important;
+    font-size: 15px !important;
+  }
+
+  .hero-estimate-cta .hero-mail-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* ===== Hero CTA hover unified ===== */
+
+.hero-estimate-cta,
+.hero-line-cta {
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+.hero-estimate-cta:hover,
+.hero-line-cta:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.03);
+}
+
+.hero-estimate-cta:hover {
+  box-shadow: 0 20px 34px rgba(26, 121, 242, 0.34) !important;
+}
+
+.hero-line-cta:hover {
+  box-shadow: 0 20px 34px rgba(6, 199, 85, 0.30) !important;
+}
+
+.hero-estimate-cta:active,
+.hero-line-cta:active {
+  transform: translateY(-1px);
+}
+
+/* ===== Hero CTA hover color fix ===== */
+
+.hero-estimate-cta,
+.hero-line-cta,
+.hero-estimate-cta:hover,
+.hero-line-cta:hover,
+.hero-estimate-cta:visited,
+.hero-line-cta:visited {
+  color: #ffffff !important;
+}
+
+.hero-estimate-cta,
+.hero-line-cta {
+  transition:
+    transform 0.22s ease,
+    filter 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.hero-estimate-cta:hover,
+.hero-line-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.90);
+}
+
+.hero-estimate-cta:active,
+.hero-line-cta:active {
+  transform: translateY(0);
+  filter: brightness(0.84);
+}
+
+/* ===== Contact submit result ===== */
+
+.contact-success {
+  margin-top: 20px;
+  padding: 42px 32px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e3edf7;
+  border-radius: 24px;
+  box-shadow: 0 14px 32px rgba(10, 42, 79, 0.08);
+}
+
+.contact-success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #1a79f2;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.contact-success h3 {
+  margin: 0 0 14px;
+  color: #0a2a4f;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.contact-success p {
+  margin: 0;
+  color: #4c6079;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.contact-success-sub {
+  margin-top: 18px !important;
+  color: #7b95b0 !important;
+  font-size: 13px !important;
+}
+
+.contact-submit-error {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff2f2;
+  color: #c73c3c;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .contact-success {
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+
+  .contact-success-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 16px;
+    font-size: 28px;
+  }
+
+  .contact-success h3 {
+    font-size: 20px;
+  }
+
+  .contact-success p {
+    font-size: 14px;
+  }
+}
+
+/* ===== Works PC layout clean ===== */
+@media (min-width: 1024px) {
+
+  .works-item {
+    display: grid !important;
+    grid-template-columns: 440px 460px !important;
+    column-gap: 100px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .works-item > img {
+    width: 460px !important;
+    max-width: 460px !important;
+    left: auto !important;
+    transform: none !important;
+    position: relative !important;
+  }
+
+  .works-item > div {
+    width: 440px !important;
+    max-width: 440px !important;
+    min-width: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: left !important;
+  }
+
+  .works-item > div p {
+    width: auto !important;
+    max-width: 440px !important;
+  }
+}
+
+/* ===== Footer star position ===== */
+@media (min-width: 1024px) {
+  .footer-inner > img[aria-hidden="true"]:first-of-type {
+    transform: translate(-20px, -100px) !important;
+  }
+}
+
+/* ===== Footer star position fix ===== */
+@media (min-width: 1024px) {
+  .footer-inner > img[aria-hidden="true"]:first-of-type {
+    transform: translate(-20px, -60px) !important;
+  }
+}
+
+/* ===== Contact bottom star fine tune ===== */
+@media (min-width: 1024px) {
+  .contact-bottom-star {
+    transform: translateX(-30px) !important;
+  }
+}
+
+/* ===== Contact right star fine tune ===== */
+@media (min-width: 1024px) {
+  .contact-inner > img[aria-hidden="true"]:not(.contact-bottom-star) {
+    transform: translateX(40px) !important;
+  }
+}
+
+/* ===== Contact stars outward 60px ===== */
+@media (min-width: 1024px) {
+  .contact-bottom-star {
+    transform: translateX(-90px) !important;
+  }
+
+  .contact-inner > img[aria-hidden="true"]:not(.contact-bottom-star) {
+    transform: translateX(100px) !important;
+  }
+}
+
+/* ===== Contact left dots move ===== */
+@media (min-width: 1024px) {
+  .contact-inner > img[src*="deco-accent-02"] {
+    transform: translateX(-120px) !important;
+  }
+}
+
+/* ===== FAQ PC width safe adjustment ===== */
+@media (min-width: 1024px) {
+  .faq-inner {
+    width: 1180px !important;
+    max-width: 1180px !important;
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+    gap: 60px !important;
+  }
+
+  .faq-intro {
+    width: 340px !important;
+    flex: 0 0 340px !important;
+  }
+
+  #faq-list {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+}
+
+/* ===== Hero CTA mobile vertical ===== */
+@media (max-width: 767px) {
+  .hero-cta-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .hero-estimate-cta,
+  .hero-line-cta {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ===== Hero desktop image 90% ===== */
+@media (min-width: 1024px) {
+  .hero-image-desktop {
+    width: 842px !important;
+    height: 517px !important;
+    left: 590px !important;
+    top: 28px !important;
+  }
+}
+
+/* ===== Hero desktop image 85% ===== */
+@media (min-width: 1024px) {
+  .hero-image-desktop {
+    width: 795px !important;
+    height: 488px !important;
+    left: 615px !important;
+    top: -138px !important;
+  }
+}
+
+/* ===== Hero mobile CTA spacing final ===== */
+@media (max-width: 767px) {
+  .hero-cta-row {
+    gap: 18px !important;
+  }
+}
+
+/* ===== Contact form vertical spacing ===== */
+@media (min-width: 1024px) {
+  .contact-form {
+    gap: 32px !important;
+  }
+
+  .contact-form > div {
+    gap: 12px !important;
+  }
+}
+
+/* ===== About -> Services seamless wave mobile ===== */
+@media (max-width: 767px) {
+  #services {
+    margin-top: -2px !important;
+  }
+
+  #services > svg:first-child {
+    top: -2px !important;
+    height: 48px !important;
+    display: block !important;
+  }
+
+  #services > svg:first-child path {
+    fill: #f7fcff !important;
+  }
+}
+
+/* ===== About -> Services seamless wave FINAL ===== */
+@media (max-width: 767px) {
+
+  #about {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  #about::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 52px;
+    z-index: 1;
+    pointer-events: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0 48 C120 48 240 18 360 18 C480 18 600 58 720 58 C840 58 960 20 1080 20 C1200 20 1320 50 1440 50 V90 H0 Z' fill='%23eaf6fe'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  #services {
+    margin-top: -1px !important;
+    background: #eaf6fe !important;
+  }
+
+  #services > svg:first-child {
+    display: none !important;
+  }
+}
+
+/* ===== Services mobile top spacing after seamless wave ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 28px !important;
+  }
+}
+
+/* ===== Works -> Strengths seamless wave mobile ===== */
+@media (max-width: 767px) {
+  #strengths {
+    margin-top: -2px !important;
+  }
+
+  #strengths > svg:first-child {
+    top: -2px !important;
+    height: 48px !important;
+  }
+
+  #strengths > svg:first-child path {
+    fill: #ffffff !important;
+  }
+}
+
+/* ===== Services mobile top spacing tighter ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 20px !important;
+  }
+}
+
+/* ===== Strengths mobile top spacing tighter ===== */
+@media (max-width: 767px) {
+  #strengths {
+    padding-top: 22px !important;
+  }
+}
+
+/* ===== Mobile section top spacing FINAL ===== */
+@media (max-width: 767px) {
+
+  /* Services */
+  #services .services-inner {
+    position: relative !important;
+    top: -18px !important;
+  }
+
+  /* Strengths */
+  #strengths .strengths-inner {
+    padding-top: 38px !important;
+  }
+}
+
+/* ===== Mobile clear white / blue boundaries ===== */
+@media (max-width: 767px) {
+
+  /* ---------- Strengths -> FAQ ---------- */
+
+  /* Strengthsの下側を明確なブルーに */
+  #strengths {
+    background: #e3f3fd !important;
+  }
+
+  /* FAQは完全な白 */
+  #faq {
+    margin-top: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Strengthsのブルーを波としてFAQ上部に残す */
+  #faq > svg:first-child {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 58px !important;
+    z-index: 1 !important;
+  }
+
+  #faq > svg:first-child path {
+    fill: #e3f3fd !important;
+  }
+
+
+  /* ---------- Contact -> Footer ---------- */
+
+  /* Contact下部は白へ */
+  #contact {
+    background:
+      linear-gradient(
+        180deg,
+        #eaf6fd 0%,
+        #f8fcff 45%,
+        #ffffff 82%,
+        #ffffff 100%
+      ) !important;
+  }
+
+  /* Footerは明確なブルー */
+  .site-footer {
+    margin-top: 0 !important;
+    background: #e3f3fd !important;
+  }
+
+  /* Footer上側を白い波にする */
+  .site-footer > svg:first-of-type {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    z-index: 1 !important;
+  }
+
+  .site-footer > svg:first-of-type path {
+    fill: #ffffff !important;
+  }
+}
+
+/* ===== Mobile gentler section waves ===== */
+@media (max-width: 767px) {
+
+  /* Strengths -> FAQ */
+  #faq > svg:first-child {
+    height: 38px !important;
+  }
+
+  /* Contact -> Footer */
+  .site-footer > svg:first-of-type {
+    height: 40px !important;
+  }
+}
+
+/* ===== Mobile FAQ closer to wave ===== */
+@media (max-width: 767px) {
+  #faq .faq-inner {
+    padding-top: 46px !important;
+  }
+}
+
+/* ===== Mobile section spacing + gentle waves FINAL ===== */
+@media (max-width: 767px) {
+
+  /* --------------------------------
+     波を全セクションで緩やかに
+  --------------------------------- */
+
+  #about > svg:first-child,
+  #services > svg:first-child,
+  #works > svg:first-child,
+  #strengths > svg:first-child,
+  #faq > svg:first-child,
+  #contact > svg:first-child {
+    height: 34px !important;
+  }
+
+  .site-footer > svg:first-of-type {
+    height: 36px !important;
+  }
+
+
+  /* --------------------------------
+     波と見出しの距離を統一
+  --------------------------------- */
+
+  /* About */
+  #about {
+    padding-top: 34px !important;
+  }
+
+  /* Services */
+  #services {
+    padding-top: 34px !important;
+  }
+
+  #services .services-inner {
+    top: 0 !important;
+  }
+
+  /* Works */
+  #works {
+    padding-top: 34px !important;
+  }
+
+  /* Strengths */
+  #strengths .strengths-inner {
+    padding-top: 44px !important;
+  }
+
+  /* FAQ */
+  #faq .faq-inner {
+    padding-top: 42px !important;
+  }
+
+  /* Contact */
+  #contact .contact-inner {
+    padding-top: 48px !important;
+  }
+
+  /* Footer */
+  .site-footer .footer-inner {
+    padding-top: 48px !important;
+  }
+}
+
+/* ===== Mobile header logo + hero top spacing ===== */
+@media (max-width: 767px) {
+
+  /* ヘッダーロゴを現在の約80%へ */
+  .site-logo {
+    width: 117px !important;
+    height: auto !important;
+  }
+
+  /* 「きれいな空間で」の上余白を縮める */
+  .hero-inner {
+    padding-top: 12px !important;
+  }
+}
+
+/* ===== Mobile header vertical spacing ===== */
+@media (max-width: 767px) {
+  .site-header {
+    height: 60px !important;
+  }
+
+  .header-inner {
+    height: 60px !important;
+  }
+
+  .mobile-menu {
+    top: 60px !important;
+    height: calc(100dvh - 60px) !important;
+  }
+}
+
+/* ===== Mobile header 50px + Contact JP title ===== */
+@media (max-width: 767px) {
+
+  /* ヘッダーをさらにコンパクトに */
+  .site-header {
+    height: 50px !important;
+  }
+
+  .header-inner {
+    height: 50px !important;
+  }
+
+  .mobile-menu {
+    top: 50px !important;
+    height: calc(100dvh - 50px) !important;
+  }
+
+  /* 「お問い合わせ」だけ少し小さく */
+  #contact .contact-jp {
+    font-size: 14px !important;
+  }
+}
+
+/* ===== Mobile About vertical layout REAPPLY ===== */
+@media (max-width: 767px) {
+
+  /* About全体 */
+  #about .about-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* about-copyの箱を外して各要素を並べ替える */
+  #about .about-copy {
+    display: contents !important;
+  }
+
+  /* About */
+  #about .about-en {
+    order: 1 !important;
+  }
+
+  /* 私たちについて */
+  #about .about-jp {
+    order: 2 !important;
+  }
+
+  /* 写真を先に */
+  #about .about-visual {
+    order: 3 !important;
+    width: 82% !important;
+    height: 300px !important;
+    margin: 24px auto 0 !important;
+    align-self: center !important;
+  }
+
+  #about .about-photo {
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+    object-position: center 28% !important;
+  }
+
+  /* 写真上の丸いコピー */
+  #about .about-badge {
+    right: -18px !important;
+    top: -24px !important;
+  }
+
+  /* キレイな空間から、気持ちのいい毎日を。 */
+  #about .about-title {
+    order: 4 !important;
+    width: 100% !important;
+    margin: 20px auto 0 !important;
+    text-align: center !important;
+  }
+
+  /* 説明文 */
+  #about .about-text {
+    order: 5 !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+  }
+
+  /* 文字に重なる星・ドットはスマホでは非表示 */
+  #about .about-inner > img[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+/* ===== Mobile Services top spacing tighter ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 14px !important;
+  }
+}
+
+/* ===== Mobile About bottom / Services top balance ===== */
+@media (max-width: 767px) {
+
+  /* 「存在を目指しています。」の下に余白を追加 */
+  #about {
+    padding-bottom: 78px !important;
+  }
+
+  /* 波からServicesまでは詰める */
+  #services {
+    padding-top: 6px !important;
+  }
+}
+
+/* ===== Mobile About / Services spacing stronger ===== */
+@media (max-width: 767px) {
+
+  /* 「存在を目指しています。」の下をさらに広げる */
+  #about {
+    padding-bottom: 105px !important;
+  }
+
+  /* 波とServicesをかなり近づける */
+  #services {
+    padding-top: 0 !important;
+  }
+
+  #services .services-inner {
+    position: relative !important;
+    top: -10px !important;
+  }
+}
+
+/* ===== Fix hidden Services heading ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 8px !important;
+  }
+
+  #services .services-inner {
+    top: 0 !important;
+  }
+}
+
+/* ===== Mobile Works blue to white gradient ===== */
+@media (max-width: 767px) {
+  #works {
+    background:
+      linear-gradient(
+        180deg,
+        #eaf6fe 0%,
+        #f3faff 42%,
+        #fbfdff 72%,
+        #ffffff 100%
+      ) !important;
+  }
+}
+
+/* ===== Mobile Services -> Works clear separator ===== */
+@media (max-width: 767px) {
+
+  /* Worksの水色→白グラデーションは維持 */
+  #works {
+    background:
+      linear-gradient(
+        180deg,
+        #eaf6fe 0%,
+        #f3faff 42%,
+        #fbfdff 72%,
+        #ffffff 100%
+      ) !important;
+  }
+
+  /* ServicesとWorksの間だけ白い浅い波にする */
+  #works > svg:first-child {
+    display: block !important;
+    height: 28px !important;
+    opacity: 1 !important;
+  }
+
+  #works > svg:first-child path {
+    fill: #ffffff !important;
+  }
+}
+
+/* ===== Mobile Works pure white ===== */
+@media (max-width: 767px) {
+  #works {
+    background: #ffffff !important;
+  }
+}
+
+/* ===== Mobile reordered section colors + boundaries ===== */
+@media (max-width: 767px) {
+
+  /* Section colors */
+  #services {
+    background: #eaf6fe !important;
+  }
+
+  #works {
+    background: #ffffff !important;
+  }
+
+  #about {
+    background: #eaf6fe !important;
+  }
+
+  #strengths {
+    background: #ffffff !important;
+  }
+
+  /* Gentle top waves */
+  #services > svg:first-child,
+  #works > svg:first-child,
+  #about > svg:first-child,
+  #strengths > svg:first-child {
+    display: block !important;
+    position: absolute !important;
+    top: -1px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 32px !important;
+    opacity: 1 !important;
+  }
+
+  /* Hero white -> Services blue */
+  #services > svg:first-child path {
+    fill: #ffffff !important;
+  }
+
+  /* Services blue -> Works white */
+  #works > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+
+  /* Works white -> About blue */
+  #about > svg:first-child path {
+    fill: #ffffff !important;
+  }
+
+  /* About blue -> Strengths white */
+  #strengths > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+}
+
+/* ===== Mobile Strengths -> FAQ smooth gradient ===== */
+@media (max-width: 767px) {
+
+  /* Strengths：上は白、下に向かって水色 */
+  #strengths {
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #ffffff 35%,
+        #f7fcff 65%,
+        #eaf6fe 100%
+      ) !important;
+  }
+
+  /* FAQ本体は白 */
+  #faq {
+    background: #ffffff !important;
+  }
+
+  /* Strengths最下部の水色からFAQへ波で接続 */
+  #faq > svg:first-child {
+    display: block !important;
+    height: 32px !important;
+    opacity: 1 !important;
+  }
+
+  #faq > svg:first-child path {
+    fill: #eaf6fe !important;
+  }
+}
+
+/* ===== Mobile spacing final adjustment ===== */
+@media (max-width: 767px) {
+
+  /* Services：波から少し離して見出しのはみ出し防止 */
+  #services {
+    padding-top: 22px !important;
+  }
+
+  #services .services-inner {
+    top: 0 !important;
+  }
+
+  /* About本文の最後から下の波までを詰める */
+  #about {
+    padding-bottom: 42px !important;
+  }
+
+  /* 波からStrengths見出しまでを詰める */
+  #strengths .strengths-inner {
+    padding-top: 20px !important;
+  }
+}
+
+/* ===== Mobile Services slightly lower ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 32px !important;
+  }
+}
+
+/* ===== Mobile Services lower again ===== */
+@media (max-width: 767px) {
+  #services {
+    padding-top: 42px !important;
+  }
+}
+
+/* ===== Mobile Contact badge 80% + right aligned ===== */
+@media (max-width: 767px) {
+  .contact-badge {
+    width: 90px !important;
+    height: 90px !important;
+    right: 10px !important;
+  }
+
+  .contact-badge span {
+    font-size: 10.4px !important;
+    line-height: 1.35 !important;
+  }
+
+  .contact-badge-lines {
+    transform: translate(18px, 22px) scale(.8) rotate(40deg) !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ===== PC hero underline ===== */
+@media (min-width: 1024px) {
+  .hero-line2 {
+    display: inline-block !important;
+    background:
+      linear-gradient(
+        transparent 62%,
+        #bfe3fb 62%,
+        #bfe3fb 95%,
+        transparent 95%
+      ) !important;
+  }
+}
+
+/* ===== Mobile Contact badge position final ===== */
+@media (max-width: 767px) {
+
+  /* 丸を現在位置から右へ20px */
+  .contact-badge {
+    right: -10px !important;
+  }
+
+  /* 三本ラインを現在位置から上へ10px */
+  .contact-badge-lines {
+    transform: translate(18px, 12px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== PC content width 1100px SAFE TEST ===== */
+@media (min-width: 1024px) {
+
+  .about-inner,
+  .services-inner,
+  .works-inner,
+  .strengths-inner,
+  .faq-inner,
+  .contact-inner,
+  .footer-inner {
+    width: 1100px !important;
+    max-width: 1100px !important;
+  }
+}
+
+/* ===== Mobile Contact badge position correction ===== */
+@media (max-width: 767px) {
+
+  /* 丸を左へ20px */
+  .contact-badge {
+    right: 30px !important;
+  }
+
+  /* 三本ラインは上へ10pxのまま */
+  .contact-badge-lines {
+    transform: translate(18px, 12px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge lines left 20px ===== */
+@media (max-width: 767px) {
+  .contact-badge-lines {
+    transform: translate(-2px, 12px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge lines fine tune ===== */
+@media (max-width: 767px) {
+  .contact-badge-lines {
+    transform: translate(3px, 17px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge set up 25px ===== */
+@media (max-width: 767px) {
+  .contact-badge {
+    transform: translateY(-25px) rotate(10deg) !important;
+  }
+
+  .contact-badge-lines {
+    transform: translate(3px, -5px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge set up another 25px ===== */
+@media (max-width: 767px) {
+  .contact-badge {
+    transform: translateY(-50px) rotate(10deg) !important;
+  }
+
+  .contact-badge-lines {
+    transform: translate(3px, -30px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Mobile Contact badge set down 50px ===== */
+@media (max-width: 767px) {
+  .contact-badge {
+    transform: translateY(0) rotate(10deg) !important;
+  }
+
+  .contact-badge-lines {
+    transform: translate(3px, 20px) scale(.8) rotate(40deg) !important;
+  }
+}
+
+/* ===== Hero "もっと気持ちよく。" underline remove ===== */
+.hero-line2 {
+  background: none !important;
+  text-decoration: none !important;
+}
+
+/* ===== Mobile JP section titles 14px ===== */
+@media (max-width: 767px) {
+  .about-jp,
+  .services-jp,
+  .works-jp,
+  .strengths-jp,
+  .faq-jp,
+  .contact-jp {
+    font-size: 14px !important;
+  }
+}
+
+/* ===== Contact dedicated page only ===== */
+.contact-page-only .contact-copy {
+  text-align: left !important;
+}
+
+/* 専用お問い合わせページでは丸と3本ラインを非表示 */
+.contact-page-only .contact-badge,
+.contact-page-only .contact-badge-lines {
+  display: none !important;
+}
+
+/* ===== Contact dedicated page gradient ===== */
+.contact-page-only .contact-section {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8fcff 22%,
+    #eef8fe 58%,
+    #eaf6fe 100%
+  ) !important;
+}
+
+/* 上部の波を非表示 */
+.contact-page-only .contact-section > svg:first-child {
+  display: none !important;
+}
+
+/* ===== Contact page left star position ===== */
+@media (min-width: 768px) {
+  .contact-page-only .contact-inner > img[aria-hidden="true"]:nth-of-type(2) {
+    left: 100px !important;
+    top: 110px !important;
+  }
+}
+
+/* ===== Contact page bottom spacing ===== */
+@media (min-width: 768px) {
+  .contact-page-only .contact-section {
+    height: auto !important;
+    padding-bottom: 140px !important;
+  }
+}
+
+/* ===== Contact page -> Footer seamless ===== */
+.contact-page-only .contact-section {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8fcff 22%,
+    #eef8fe 58%,
+    #eef8fe 100%
+  ) !important;
+}
+
+.contact-page-only + .site-footer {
+  margin-top: 0 !important;
+  border-top: 0 !important;
+}
+
+/* ===== Contact page left star final position ===== */
+@media (min-width: 768px) {
+  .contact-page-only .contact-inner > img[aria-hidden="true"]:nth-of-type(2) {
+    left: -150px !important;
+    top: 155px !important;
+  }
+}
+
+/* ===== PC Header text link hover ===== */
+@media (min-width: 768px) {
+  .pc-nav > a {
+    position: relative !important;
+    transition: color .22s ease !important;
+  }
+
+  .pc-nav > a::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: -7px !important;
+    width: 100% !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #1a79f2 !important;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .24s ease;
+  }
+
+  .pc-nav > a:hover {
+    color: #1a79f2 !important;
+  }
+
+  .pc-nav > a:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ===== Contact dedicated page mobile refine ===== */
+@media (max-width: 767px) {
+
+  /* 「清掃のご相談・お見積もりは〜」を削除 */
+  .contact-page-only .contact-lead {
+    display: none !important;
+  }
+
+  /* Contact / お問い合わせ を中央揃え */
+  .contact-page-only .contact-en,
+  .contact-page-only .contact-jp {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* 説明文を横幅いっぱいに */
+  .contact-page-only .contact-copy {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 24px !important;
+    text-align: left !important;
+  }
+}
+
+/* ===== PC Contact badge refine ===== */
+@media (min-width: 1024px) {
+  .contact-badge {
+    width: 150px !important;
+    height: 150px !important;
+    right: 185px !important;
+  }
+
+  .contact-badge span {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+
+  .contact-badge-lines {
+    right: 165px !important;
+    transform: rotate(35deg) scale(.85) !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ===== PC Contact badge align with form right edge ===== */
+@media (min-width: 1024px) {
+  .contact-badge {
+    width: 150px !important;
+    height: 150px !important;
+    right: 140px !important;
+  }
+
+  .contact-badge span {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+
+  .contact-badge-lines {
+    right: 114px !important;
+    transform: rotate(35deg) scale(.85) !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ===== Footer SERVICE temporary hide ===== */
+
+/* サービス詳細ページ完成まで非表示 */
+.footer-service {
+  display: none !important;
+}
+
+/* PC：ブランド左、MENU右 */
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 80px !important;
+  }
+
+  .footer-brand {
+    width: 480px !important;
+  }
+
+  .footer-menu {
+    width: 300px !important;
+    margin-left: auto !important;
+  }
+}
+
+/* Smartphone：MENUを2列に整理 */
+@media (max-width: 767px) {
+  .footer-main {
+    grid-template-columns: 1fr !important;
+  }
+
+  .footer-brand {
+    grid-column: 1 !important;
+  }
+
+  .footer-menu {
+    grid-column: 1 !important;
+    width: 100% !important;
+  }
+
+  .footer-menu > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 28px !important;
+  }
+}
+
+/* ===== Footer column swap ===== */
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 60px !important;
+  }
+
+  .footer-brand {
+    order: 1 !important;
+    width: 480px !important;
+  }
+
+  /* MENUを旧SERVICE位置へ */
+  .footer-menu {
+    order: 2 !important;
+    width: 250px !important;
+    margin-left: 0 !important;
+  }
+
+  /* SERVICEは旧MENU位置。現在は非表示 */
+  .footer-service {
+    order: 3 !important;
+    width: 250px !important;
+    display: none !important;
+  }
+}
+
+/* ===== Footer temporary reset to original layout ===== */
+.footer-service {
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 60px !important;
+  }
+
+  .footer-brand {
+    order: 1 !important;
+    width: 480px !important;
+  }
+
+  .footer-service {
+    order: 2 !important;
+    width: 250px !important;
+  }
+
+  .footer-menu {
+    order: 3 !important;
+    width: 250px !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-main {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 34px 24px !important;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1 !important;
+  }
+
+  .footer-service,
+  .footer-menu {
+    width: 100% !important;
+    grid-column: auto !important;
+  }
+
+  .footer-menu > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* ===== Footer MENU only ===== */
+.footer-service {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .footer-main {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 80px !important;
+  }
+
+  .footer-brand {
+    order: 1 !important;
+    width: 480px !important;
+  }
+
+  .footer-menu {
+    order: 2 !important;
+    width: 300px !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-main {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .footer-brand,
+  .footer-menu {
+    width: 100% !important;
+    grid-column: 1 !important;
+  }
+
+  .footer-menu > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 24px !important;
+  }
+}
+
+/* ===== Footer MENU bottom spacing ===== */
+.footer-menu {
+  padding-bottom: 28px !important;
+}
+
+/* ===== Footer MENU bottom spacing mobile ===== */
+@media (max-width: 767px) {
+  .footer-menu {
+    padding-bottom: 8px !important;
+  }
+}
+
+/* ===== Footer MENU bottom spacing mobile tighter ===== */
+@media (max-width: 767px) {
+  .footer-menu {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* ===== PC Contact description left align ===== */
+@media (min-width: 768px) {
+  .contact-copy {
+    text-align: left !important;
+  }
+}
+
+/* ===== LINE Contact CTA ===== */
+.contact-line-cta {
+  width: 820px;
+  max-width: calc(100% - 40px);
+  box-sizing: border-box;
+  margin-top: 26px;
+  padding: 16px 18px 16px 22px;
+  border: 1px solid rgba(6, 199, 85, 0.28);
+  border-left: 5px solid #06c755;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 30px rgba(30, 110, 70, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.contact-line-message {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.contact-line-title {
+  color: #163d2a;
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 800;
+}
+
+.contact-line-sub {
+  margin-top: 3px;
+  color: #60766a;
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.contact-line-button {
+  flex: 0 0 auto;
+  min-width: 218px;
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: #06c755;
+  color: #fff !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 10px 20px rgba(6, 199, 85, 0.22);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.contact-line-button:hover {
+  transform: translateY(-2px);
+  opacity: .9;
+}
+
+.contact-line-arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.contact-line-cta + .contact-form {
+  margin-top: 26px !important;
+}
+
+/* お問い合わせ専用ページはLINE案内を強調 */
+.contact-page-only .contact-line-cta {
+  margin-top: 28px;
+  padding: 22px 24px;
+  border: 1px solid rgba(6, 199, 85, 0.38);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #effcf4 0%, #e4f9ec 100%);
+  box-shadow: 0 14px 34px rgba(6, 120, 65, 0.09);
+}
+
+.contact-page-only .contact-line-title {
+  font-size: 16px;
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .contact-line-cta {
+    width: calc(100% - 40px);
+    max-width: none;
+    margin-top: 22px;
+    padding: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .contact-line-title {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .contact-line-sub {
+    font-size: 11px;
+  }
+
+  .contact-line-button {
+    width: 100%;
+    min-width: 0;
+    height: 54px;
+    box-sizing: border-box;
+  }
+
+  .contact-line-cta + .contact-form {
+    margin-top: 24px !important;
+  }
+
+  .contact-page-only .contact-line-cta {
+    width: calc(100% - 40px);
+    padding: 20px 18px;
+  }
+}
+
+
+/* ===== Contact heading text alignment PC ===== */
+@media (min-width: 768px) {
+  .contact-lead,
+  .contact-copy {
+    width: 820px !important;
+    max-width: 820px !important;
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: left !important;
+  }
+}
+
+/* ===== Contact text centered block / left aligned ===== */
+@media (min-width: 768px) {
+  .contact-lead,
+  .contact-copy {
+    width: 560px !important;
+    max-width: 560px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: left !important;
+  }
+}
+
+/* ===== Contact text visual centering PC ===== */
+@media (min-width: 768px) {
+  .contact-lead,
+  .contact-copy {
+    transform: translateX(30px);
+  }
+}
+
+/* ===== Mobile LINE CTA same width as contact form ===== */
+@media (max-width: 767px) {
+  .contact-form,
+  .contact-line-cta,
+  .contact-page-only .contact-line-cta {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ===== Mobile LINE button width 80% ===== */
+@media (max-width: 767px) {
+  .contact-line-button {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ===== Mobile Contact wider layout ===== */
+@media (max-width: 767px) {
+  .contact-copy,
+  .contact-form,
+  .contact-line-cta,
+  .contact-page-only .contact-line-cta {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .contact-line-cta,
+  .contact-page-only .contact-line-cta {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .contact-line-button {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ===== Top contact height after LINE CTA ===== */
+@media (min-width: 768px) {
+  .contact-section {
+    height: 1500px !important;
+  }
+
+  .contact-page-only .contact-section {
+    height: auto !important;
+  }
+}
+
+/* ===== Strengths mobile dots move right ===== */
+@media (max-width: 767px) {
+  #strengths .strengths-inner > img[src="/assets/deco-accent-02.webp"] {
+    left: auto !important;
+    right: 12px !important;
+    top: -3px !important;
+    bottom: auto !important;
+  }
+}
+
+/* ===== PC hero image position fix ===== */
+@media (min-width: 768px) {
+  .hero-image-desktop {
+    top: 85px !important;
+  }
+}
+
+/* ===== Responsive decorative overlap safety ===== */
+
+/*
+  Decorative objects must never interfere with readable content.
+
+  Wide desktop:
+  Keep the original decoration layout.
+
+  Tablet / narrow desktop:
+  Hide only decorative objects placed inside content containers.
+  Main text, cards, photos, badges and section separators are untouched.
+
+  Mobile:
+  Existing section-specific mobile rules remain responsible for placement.
+*/
+
+@media (min-width: 768px) and (max-width: 1279px) {
+
+  .about-inner > img[aria-hidden="true"],
+
+  .services-inner > img[aria-hidden="true"],
+
+  .works-inner > img[aria-hidden="true"],
+
+  .strengths-inner > img[aria-hidden="true"],
+
+  .faq-inner > svg[aria-hidden="true"],
+
+  .contact-inner > img[aria-hidden="true"],
+  .contact-inner > svg[aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+/*
+  Decorative elements must never capture clicks.
+*/
+
+.about img[aria-hidden="true"],
+.services img[aria-hidden="true"],
+.works img[aria-hidden="true"],
+.strengths img[aria-hidden="true"],
+.faq-section svg[aria-hidden="true"],
+.contact-section img[aria-hidden="true"],
+.contact-section svg[aria-hidden="true"] {
+  pointer-events: none !important;
+}
+
+/* ===== Strengths desktop dot safe position ===== */
+@media (min-width: 768px) {
+  #strengths .strengths-inner > img[src="/assets/deco-accent-02.webp"] {
+    left: clamp(-70px, -4vw, -45px) !important;
+    right: auto !important;
+  }
+}
+
+
+
+/* ===== Hero CTA shine + stronger hover ===== */
+
+.hero-estimate-cta,
+.hero-line-cta {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
+}
+
+.hero-estimate-cta::before,
+.hero-line-cta::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -60% !important;
+  left: -45% !important;
+  width: 28% !important;
+  height: 220% !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.18) 35%,
+    rgba(255,255,255,0.78) 50%,
+    rgba(255,255,255,0.18) 65%,
+    rgba(255,255,255,0) 100%
+  ) !important;
+  transform: skewX(-18deg) translateX(-260%);
+  animation: heroCtaShine 5.5s ease-in-out infinite !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.hero-estimate-cta > *,
+.hero-line-cta > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes heroCtaShine {
+  0%,
+  62% {
+    transform: skewX(-18deg) translateX(-260%);
+  }
+
+  82%,
+  100% {
+    transform: skewX(-18deg) translateX(620%);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-estimate-cta,
+  .hero-line-cta {
+    transform-origin: center center !important;
+    transition:
+      transform .24s cubic-bezier(.22,.61,.36,1),
+      box-shadow .24s ease,
+      filter .24s ease !important;
+  }
+
+  .hero-estimate-cta:hover,
+  .hero-line-cta:hover {
+    transform: translateY(-3px) scale(1.07) !important;
+    filter: brightness(1.03) !important;
+  }
+
+  .hero-estimate-cta:active,
+  .hero-line-cta:active {
+    transform: translateY(-1px) scale(1.02) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-estimate-cta:hover,
+  .hero-line-cta:hover,
+  .hero-estimate-cta:active,
+  .hero-line-cta:active {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-estimate-cta::before,
+  .hero-line-cta::before {
+    animation: none !important;
+  }
+
+  .hero-estimate-cta,
+  .hero-line-cta {
+    transition: none !important;
+  }
+}
+
+
+/* ===== Contact submit hover action ===== */
+
+.contact-form button[type="submit"] {
+  transform-origin: center center !important;
+  transition:
+    transform .24s cubic-bezier(.22,.61,.36,1),
+    box-shadow .24s ease,
+    filter .24s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-form button[type="submit"]:hover {
+    transform: translateY(-2px) scale(1.04) !important;
+    background: #176fe6 !important;
+    filter: brightness(1.04) !important;
+    box-shadow: 0 16px 30px rgba(26, 121, 242, 0.30) !important;
+  }
+
+  .contact-form button[type="submit"]:active {
+    transform: translateY(0) scale(1.01) !important;
+    filter: brightness(0.98) !important;
+  }
+}
+
+
+/* ===== Contact PC auto height for validation errors ===== */
+@media (min-width: 768px) {
+  .contact-section {
+    height: auto !important;
+    min-height: 1343px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .contact-inner {
+    height: auto !important;
+    min-height: 1343px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+
+/* ===== Contact validation message spacing ===== */
+.contact-form [data-error],
+.contact-form .error-message,
+.contact-form .field-error {
+  margin-top: -10px !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* ===== Contact error closer to field ===== */
+.contact-form .contact-error {
+  margin-top: -5px !important;
+}
