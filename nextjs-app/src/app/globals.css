@@ -3103,3 +3103,12 @@ button {
     box-shadow: 0 8px 18px rgba(6, 199, 85, 0.16) !important;
   }
 }
+
+
+/* ===== Services mobile description left align ===== */
+@media (max-width: 767px) {
+  .services-grid .svc-card p {
+    width: 100% !important;
+    text-align: left !important;
+  }
+}
