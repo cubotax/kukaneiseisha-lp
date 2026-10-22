@@ -3388,3 +3388,33 @@ button {
     margin-top: 34px !important;
   }
 }
+
+
+/* ===== Works spacing + mobile star cleanup ===== */
+
+/* PC: description → labels spacing */
+@media (min-width: 768px) {
+  .works-item p {
+    height: auto !important;
+    margin-bottom: 0 !important;
+  }
+
+  .works-item > div > div:last-child {
+    margin-top: 20px !important;
+  }
+}
+
+/* Mobile: hide Works star decorations */
+@media (max-width: 767px) {
+  .works-inner > img[src="/assets/deco-accent-01.webp"] {
+    display: none !important;
+  }
+}
+
+
+/* ===== Strengths mobile star hide ===== */
+@media (max-width: 767px) {
+  .strengths-inner > img[src="/assets/deco-accent-01.webp"] {
+    display: none !important;
+  }
+}
