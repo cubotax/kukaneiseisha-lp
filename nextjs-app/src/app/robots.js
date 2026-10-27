@@ -3,6 +3,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
+        disallow: "/aircon-diagnosis",
     },
     sitemap: "https://kukaneiseisha.com/sitemap.xml",
     host: "https://kukaneiseisha.com",
