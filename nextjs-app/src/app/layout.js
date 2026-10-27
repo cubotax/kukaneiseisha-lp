@@ -20,8 +20,9 @@ const zenKaku = Zen_Kaku_Gothic_New({
 });
 
 export const metadata = {
-  title: "空間衛生社",
-  description: "清潔で快適な空間づくりをサポートする空間衛生社",
+  metadataBase: new URL("https://kukaneiseisha.com"),
+  title: "空間衛生社｜青森県の総合清掃サービス",
+  description: "空間衛生社は青森県を中心に、法人・個人向けの清掃に幅広く対応する総合清掃サービスです。エアコン洗浄、店舗・施設清掃、退去後清掃、新築美装、ハウスクリーニング、草刈り・除雪まで、現場に合わせて丁寧に対応します。",
 };
 
 export default function RootLayout({ children }) {
