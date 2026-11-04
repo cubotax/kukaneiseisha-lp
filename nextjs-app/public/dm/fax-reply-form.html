@@ -391,8 +391,15 @@
   
     /* FAX MOBILE FIT V1 */
     @media screen and (max-width: 820px) {
+      .paper-viewport {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
       .paper {
-        margin: 8px auto 16px;
+        margin: 8px 0 0;
+        transform-origin: top left;
       }
 
       .toolbar {
@@ -415,8 +422,14 @@
     }
 
     @media print {
+      .paper-viewport {
+        height: auto !important;
+        overflow: visible !important;
+      }
+
       .paper {
         zoom: 1 !important;
+        transform: none !important;
       }
     }
 
@@ -428,6 +441,7 @@
     <button type="button" onclick="window.print()">印刷・PDFとして保存</button>
   </div>
 
+  <div class="paper-viewport">
   <main class="paper">
     <div class="top-title">エアコン洗浄　お見積り・無料点検　返信用紙</div>
 
@@ -525,30 +539,45 @@
       </div>
     </div>
   </main>
+  </div>
 
   <script>
     (() => {
       const paper = document.querySelector('.paper');
+      const viewport = document.querySelector('.paper-viewport');
 
       function fitPaper() {
-        paper.style.zoom = '1';
+        paper.style.transform = 'none';
+        paper.style.marginLeft = '';
+        viewport.style.height = '';
 
-        const paperWidth = paper.getBoundingClientRect().width;
-        const availableWidth = document.documentElement.clientWidth - 12;
+        if (!window.matchMedia('(max-width: 820px)').matches) {
+          return;
+        }
+
+        const paperWidth = paper.offsetWidth;
+        const availableWidth = viewport.clientWidth - 12;
         const scale = Math.min(1, availableWidth / paperWidth);
 
-        paper.style.zoom = String(scale);
-      }
+        paper.style.transform = `scale(${scale})`;
+        paper.style.marginLeft =
+          `${Math.max(0, (viewport.clientWidth - paperWidth * scale) / 2)}px`;
 
-      fitPaper();
+        viewport.style.height =
+          `${8 + paper.offsetHeight * scale + 16}px`;
+      }
 
       window.addEventListener('resize', fitPaper);
 
       window.addEventListener('beforeprint', () => {
-        paper.style.zoom = '1';
+        paper.style.transform = 'none';
+        paper.style.marginLeft = '';
+        viewport.style.height = '';
       });
 
       window.addEventListener('afterprint', fitPaper);
+
+      fitPaper();
     })();
   </script>
 
