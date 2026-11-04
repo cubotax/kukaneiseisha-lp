@@ -388,6 +388,38 @@
       line-height: 1;
     }
 
+  
+    /* FAX MOBILE FIT V1 */
+    @media screen and (max-width: 820px) {
+      .paper {
+        margin: 8px auto 16px;
+      }
+
+      .toolbar {
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .toolbar span {
+        min-width: 0;
+        white-space: nowrap;
+      }
+
+      .toolbar button {
+        padding: 8px;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+    }
+
+    @media print {
+      .paper {
+        zoom: 1 !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -413,7 +445,7 @@
             <span class="checkbox"></span>A｜概算見積もり
           </div>
           <p class="choice-lead">台数と種類から概算費用をご案内</p>
-          <p class="choice-desc">電話・メール・LINEで対応。現地訪問は不要です。</p>
+          <p class="choice-desc">ご記入の内容をもとに概算費用を電話・メール・LINEでご案内します。現地訪問は不要です。</p>
 
           <div class="count-lines">
             <div class="count-line"><span>・通常壁掛け型</span><span class="fill"></span><span>台</span></div>
@@ -437,7 +469,7 @@
             <span class="checkbox"></span>B｜現地無料レポート点検
           </div>
           <p class="choice-lead">写真付き無料点検レポートを進呈</p>
-          <p class="choice-desc">専門スタッフが訪問し、汚れの状態と設置状況を確認します。</p>
+          <p class="choice-desc">専門スタッフが現地でエアコン内部の汚れを確認し、写真付きレポートで状態をご報告します。</p>
 
           <ul class="check-list">
             <li>アルミフィン・送風ファン・送風口の汚れを写真で確認</li>
@@ -493,5 +525,32 @@
       </div>
     </div>
   </main>
+
+  <script>
+    (() => {
+      const paper = document.querySelector('.paper');
+
+      function fitPaper() {
+        paper.style.zoom = '1';
+
+        const paperWidth = paper.getBoundingClientRect().width;
+        const availableWidth = document.documentElement.clientWidth - 12;
+        const scale = Math.min(1, availableWidth / paperWidth);
+
+        paper.style.zoom = String(scale);
+      }
+
+      fitPaper();
+
+      window.addEventListener('resize', fitPaper);
+
+      window.addEventListener('beforeprint', () => {
+        paper.style.zoom = '1';
+      });
+
+      window.addEventListener('afterprint', fitPaper);
+    })();
+  </script>
+
 </body>
 </html>
