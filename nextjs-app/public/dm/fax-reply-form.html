@@ -260,6 +260,31 @@
       align-items: center;
       justify-content: center;
     }
+    /* FAX COMPANY INFO */
+    .footer > .company-details {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      text-align: left;
+      gap: 1.2mm;
+      font-size: 9.5pt;
+      line-height: 1.25;
+      padding: 2mm 5mm;
+    }
+
+    .company-details .company-name {
+      font-size: 16pt;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .company-details .company-meta {
+      width: max-content;
+      max-width: 100%;
+      margin: 0 auto;
+      line-height: 1.35;
+    }
+
     .qrcode-placeholder {
       margin-top: 2mm;
       font-weight: 700;
@@ -523,6 +548,47 @@
         inset 0 -2px 0 #000;
     }
 
+
+    /* FAX TWO LINE FOOTER V1 */
+    .fax {
+      padding: 1mm;
+    }
+
+    .fax-instruction {
+      display: block;
+      font-size: 11pt;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .fax-number {
+      display: block;
+      font-size: 20pt;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .footer {
+      min-height: 24mm;
+    }
+
+    .footer > div {
+      padding: 2mm 5mm 1mm;
+    }
+
+    .footer .small-note {
+      margin-top: 4mm;
+    }
+
+    .footer > .company-details {
+      padding: 1mm 4mm;
+      gap: 0.5mm;
+    }
+
+    .company-details .company-meta {
+      line-height: 1.1;
+    }
+
 </style>
 </head>
 <body>
@@ -616,7 +682,10 @@
         </div>
       </section>
 
-      <div class="fax">【FAX返信先】0172-75-2751まで</div>
+      <div class="fax">
+        <span class="fax-instruction">この用紙をこのままお送りください。</span>
+        <span class="fax-number">【FAX返信先】0172-75-2751まで</span>
+      </div>
 
       <div class="footer">
         <div>
@@ -624,7 +693,15 @@
           <div class="qrcode-placeholder">［QRコード］</div>
           <div class="small-note">※無料点検後の施工契約は必須ではありません。</div>
         </div>
-        <div>会社情報</div>
+        <div class="company-details">
+          <div class="company-name">空間衛生社</div>
+          <div class="company-meta">
+            <div>青森県弘前市撫牛子3-6-7</div>
+            <div>TEL：017-275-2751</div>
+            <div>MAIL：info@kukaneiseisha.com</div>
+            <div>担当：久保田</div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
