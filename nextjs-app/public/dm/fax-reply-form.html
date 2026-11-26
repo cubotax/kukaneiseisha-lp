@@ -516,6 +516,389 @@
       line-height: 1.1;
     }
 
+
+    /* FAX BENEFITS PANEL V1 */
+
+    .fax-benefits {
+      box-sizing: border-box;
+      width: 100%;
+      border: 1.2px solid #222;
+      padding: 2mm 4mm;
+      margin: 2mm 0;
+      color: #111;
+      background: #fff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .fax-benefits-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-align: center;
+      padding-bottom: 1mm;
+      margin-bottom: 1.5mm;
+      border-bottom: 1px solid #555;
+    }
+
+    .fax-benefits-item {
+      font-size: 9.5pt;
+      font-weight: 700;
+      line-height: 1.3;
+      padding: 0.8mm 0;
+    }
+
+
+.fax-benefits-max {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.35;
+  margin: 0.6mm 0 0 0;
+}
+
+
+    .fax-benefits-notes {
+      border-top: 1px solid #aaa;
+      margin-top: 1.5mm;
+      padding-top: 1mm;
+      font-size: 7pt;
+      line-height: 1.45;
+    }
+
+    
+
+
+/* FAX LAYOUT ALIGNMENT V3 */
+
+/* A・B欄の高さを内容に合わせる */
+.paper div:has(> section.choice) {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  grid-template-rows: auto !important;
+  grid-auto-rows: max-content !important;
+  overflow: visible !important;
+  align-items: stretch;
+}
+
+.paper section.choice {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  box-sizing: border-box;
+  padding-bottom: 4mm !important;
+}
+
+/* 施設情報と特典欄を密着 */
+.paper .info {
+  margin-bottom: 0 !important;
+}
+
+.paper .fax-benefits {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 特典欄とFAX返信先を密着 */
+.paper .fax {
+  margin-top: 0 !important;
+}
+
+
+/* FAX BENEFITS PANEL V4 */
+
+.fax-benefits {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #222;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+}
+
+.fax-benefits-title {
+  margin: 0;
+  padding: 1.6mm 2mm 1.2mm;
+  font-size: 10.5pt;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 1px solid #777;
+}
+
+.fax-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.fax-benefit-card {
+  padding: 2mm 2mm 1.8mm;
+  min-height: 20mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.fax-benefit-card + .fax-benefit-card {
+  border-left: 1px solid #777;
+}
+
+.fax-benefit-label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  margin-bottom: 1mm;
+}
+
+.fax-benefit-main {
+  font-size: 8.5pt;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.fax-benefit-sub {
+  margin-top: 1mm;
+  font-size: 8.5pt;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.fax-benefits-notes {
+  border-top: 1px solid #777;
+  padding: 1.2mm 2mm 1.2mm;
+  font-size: 6.8pt;
+  line-height: 1.35;
+}
+
+/* 特典欄まわりの余白を詰める */
+.info {
+  margin-bottom: 0 !important;
+}
+
+.fax {
+  margin-top: 0 !important;
+}
+
+/* A・B欄の改行幅を詰める */
+.check-list {
+  margin: 1.5mm 0 0 !important;
+  padding-left: 4.5mm !important;
+}
+
+.check-list li {
+  margin: 0 0 1mm 0 !important;
+  line-height: 1.25 !important;
+}
+
+.choice-lead,
+.choice-desc {
+  margin-bottom: 1.2mm !important;
+  line-height: 1.3 !important;
+}
+
+/* 台数欄の改行幅を詰める */
+.count-lines {
+  margin-top: 1.2mm !important;
+}
+
+.count-line {
+  margin: 0 !important;
+  padding: 0.6mm 0 !important;
+  line-height: 1.15 !important;
+}
+
+.count-line span {
+  line-height: 1.15 !important;
+}
+
+
+/* FAX BENEFIT TRIAL PRICES V1 */
+.fax-benefit-prices {
+  margin-top: 1.2mm;
+  font-size: 7pt;
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: left;
+}
+
+.fax-benefit-prices > div {
+  white-space: nowrap;
+}
+
+
+/* FAX BENEFIT TEXT ALIGN V1 */
+
+.fax-benefit-card {
+  text-align: center;
+}
+
+.fax-benefit-label {
+  font-size: 11pt;
+  font-weight: 700;
+  text-align: center;
+}
+
+.fax-benefit-main {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.fax-benefit-sub {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.35;
+}
+
+/* 特典①の料金だけ左揃え */
+.fax-benefit-prices {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 7.5pt;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.fax-benefit-prices > div {
+  text-align: left;
+}
+
+
+/* FAX BENEFITS GUARANTEE V2 */
+
+/* 特典③の説明 */
+.fax-benefit-desc {
+  margin-top: 1.5mm;
+  font-size: 8pt;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* 毎月3社限定を強調 */
+.fax-benefits-notes {
+  border-top: 1px solid #777;
+  padding: 2mm 3mm;
+}
+
+.fax-benefits-limited {
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  color: #111;
+}
+
+
+/* FAX BENEFITS TEXT V3 */
+
+.fax-benefit-desc {
+  font-size: 7.5pt;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.fax-benefits-limited {
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
+
+/* FAX BENEFITS BACKGROUND V1 */
+
+/* 特典見出し：黒背景・白文字 */
+.fax-benefits-title {
+  background: #111 !important;
+  color: #fff !important;
+}
+
+/* 毎月先着3社限定：薄いグレー背景 */
+.fax-benefits-notes {
+  background: #e6e6e6 !important;
+}
+
+.fax-benefits-limited {
+  color: #111 !important;
+}
+
+
+
+/* FAX LIST SPACING V3 */
+
+/* 左側：箇条書き */
+.paper .choice .check-list {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 2mm !important;
+  height: auto !important;
+}
+
+.paper .choice .check-list li {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* 右側：機種別台数欄 */
+.paper .choice .count-lines {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  height: auto !important;
+}
+
+.paper .choice .count-line {
+  flex: 0 0 6.5mm !important;
+  height: 6.5mm !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.3 !important;
+  align-items: center !important;
+}
+
+
+
+/* FAX BENEFIT DISCOUNT NOTE V1 */
+.fax-benefit-discount-note {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 1.5mm;
+  font-size: 7.5pt;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+}
+
+
+/* FAX BENEFITS TITLE SIZE V1 */
+.fax-benefits-title {
+  font-size: 12pt !important;
+}
+
+
+/* FAX LIMITED TEXT SIZE V4 */
+.fax-benefits-limited {
+  font-size: calc(11pt - 1px) !important;
+}
+
+
+/* FAX LIMITED FONT SYNC V2 */
+.fax-benefits-limited {
+  text-align: center !important;
+}
+
 </style>
 </head>
 <body>
@@ -550,13 +933,6 @@
             <li>後日ご連絡し、訪問日時を調整します。</li>
           </ul>
 
-          <div class="notes-block">
-            <div class="notes-title b-notes-title">その他・ご要望（任意）</div>
-            <div class="note-line"></div>
-            <div class="note-line"></div>
-            <div class="note-line"></div>
-            <div class="note-line"></div>
-          </div>
 </section>
 
         <section class="choice">
@@ -574,13 +950,6 @@
             <div class="count-line"><span>・その他の機種</span><span class="fill"></span><span>台</span></div>
           </div>
 
-          <div class="notes-block">
-            <div class="notes-title">その他・ご要望（任意）</div>
-            <div class="note-line"></div>
-            <div class="note-line"></div>
-            <div class="note-line"></div>
-            <div class="note-line"></div>
-          </div>
 </section>
       </div>
 
@@ -608,6 +977,41 @@
           <span class="method-item"><i class="checkbox"></i>メール</span>
         </div>
       </section>
+
+
+      <!-- FAX BENEFITS PANEL V1 -->
+<section class="fax-benefits">
+  <div class="fax-benefits-title">無料点検のお申し込み特典</div>
+
+  <div class="fax-benefits-grid">
+    <div class="fax-benefit-card">
+  <div class="fax-benefit-label">特典①</div>
+  <div class="fax-benefit-main">お試し1台洗浄の特別価格</div>
+  <div class="fax-benefit-prices">
+    <div>・通常の壁掛け型：5,000円</div>
+    <div>・お掃除機能付き壁掛け型：10,000円</div>
+    <div>・天井埋込型・天井吊り型：15,000円</div>
+  </div>
+</div>
+
+    <div class="fax-benefit-card">
+      <div class="fax-benefit-label">特典②</div>
+      <div class="fax-benefit-main">初回エアコン洗浄費用10％OFF</div>
+      <div class="fax-benefit-sub">〜最大100,000円割引〜</div>
+<div class="fax-benefit-discount-note">※割引額は初回施工金額の10％です。</div>
+    </div>
+
+    <div class="fax-benefit-card">
+      <div class="fax-benefit-label">特典③</div>
+      <div class="fax-benefit-main">施工後30日間の無料再施工保証</div>
+<div class="fax-benefit-desc">施工後30日以内に洗浄の仕上がりにご満足いただけなかった場合は、該当箇所を無料で再施工いたします。</div>
+    </div>
+  </div>
+
+  <div class="fax-benefits-notes">
+  <div class="fax-benefits-limited">無料点検は対応できるスタッフや日程に限りがあるため、毎月先着3社様限定とさせていただいております。</div>
+</div>
+</section>
 
       <div class="fax">
         <span class="fax-instruction">この用紙をこのままお送りください。</span>
@@ -673,6 +1077,30 @@
       fitPaper();
     })();
   </script>
+
+
+<script>
+/* FAX LIMITED FONT SYNC V2 */
+(() => {
+  function applySize() {
+    const heading = document.querySelector('.section-head.info-head');
+    const target = document.querySelector('.fax-benefits-title');
+
+    if (!heading || !target) return;
+
+    const size = window.getComputedStyle(heading).fontSize;
+    target.style.setProperty('font-size', size, 'important');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applySize);
+  } else {
+    applySize();
+  }
+
+  window.addEventListener('beforeprint', applySize);
+})();
+</script>
 
 </body>
 </html>
