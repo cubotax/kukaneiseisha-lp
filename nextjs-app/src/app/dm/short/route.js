@@ -38,6 +38,11 @@ export function GET() {
         : withSticker;
       // Omit unavailable large-facility work photos and their captions only.
       cached = cached.replaceAll("<div class=\"wide-photo\"><div class=\"placeholder large\" style=\";height:36mm!important\">実際の大型施設での施工写真を掲載</div><div class=\"figure-caption\">大型施設でのエアコン洗浄作業</div></div>", '');
+      // Swap the first two photo rows; retain alternating sides and unchanged copy.
+      const photoOrder = /(<section class="item"><figure><img alt="送風ファンの汚れ"[\s\S]*?<\/section>)(<section class="item reverse"><figure><img alt="ドレンパンの汚れ"[\s\S]*?<\/section>)/g;
+      if ([...cached.matchAll(photoOrder)].length === 4) {
+        cached = cached.replace(photoOrder, (_match, fan, drain) => drain.replace('<section class="item reverse">', '<section class="item">') + fan.replace('<section class="item">', '<section class="item reverse">'));
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
