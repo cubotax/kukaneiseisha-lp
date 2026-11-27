@@ -43,6 +43,8 @@ export function GET() {
       if ([...cached.matchAll(photoOrder)].length === 4) {
         cached = cached.replace(photoOrder, (_match, fan, drain) => drain.replace('<section class="item reverse">', '<section class="item">') + fan.replace('<section class="item">', '<section class="item reverse">'));
       }
+      // Separate and emphasize the specified sentence in the three applicable DMs.
+      cached = cached.replaceAll("しかし、エアコン内部は、日々の清掃だけでは手が届かない場所です。</p>", "</p><p><strong><span class=\"body-emphasis\">しかし、エアコン内部は、日々の清掃だけでは手が届かない場所です。</span></strong></p>");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
