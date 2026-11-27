@@ -68,6 +68,13 @@ export function GET() {
       // Move the existing sticker directly after its introductory paragraph.
       const stickerPosition = /(できる「エアコン内部洗浄済シール」もご用意しています。<\/p>)([\s\S]*?)(<figure class="hotel-sticker"[^>]*>[\s\S]*?<\/figure>)/;
       cached = cached.replace(stickerPosition, '$1$3$2');
+      // Move the hotel dirt introduction intact to the top of its photo page.
+      const hotelDirtBlock = '<h2 class="section">' + hotelSectionTitle + '</h2><p>' + hotelDirtParagraph + '</p>';
+      const hotelPhotoPageBoundary = '</div><footer class="footer"><span>01 / 07</span></footer></section><section class="sheet photo-explanation-sheet"><div class="content">';
+      const hotelOverflow = hotelDirtBlock + hotelPhotoPageBoundary;
+      if (cached.split(hotelOverflow).length === 2) {
+        cached = cached.replace(hotelOverflow, hotelPhotoPageBoundary + hotelDirtBlock);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
