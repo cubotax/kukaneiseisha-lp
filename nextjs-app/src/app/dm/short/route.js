@@ -65,6 +65,9 @@ export function GET() {
         const sampleHeading = cached.match(/<h2([^>]*)>実際に、あるホテルのご担当者からこんなお話を伺いました。<\/h2>/);
         return '<h2' + (sampleHeading ? sampleHeading[1] : '') + '>' + hotelSectionTitle + '</h2>' + paragraph;
       });
+      // Move the existing sticker directly after its introductory paragraph.
+      const stickerPosition = /(できる「エアコン内部洗浄済シール」もご用意しています。<\/p>)([\s\S]*?)(<figure class="hotel-sticker"[^>]*>[\s\S]*?<\/figure>)/;
+      cached = cached.replace(stickerPosition, '$1$3$2');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
