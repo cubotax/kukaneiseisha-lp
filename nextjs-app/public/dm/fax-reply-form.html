@@ -681,7 +681,7 @@
 /* A・B欄の改行幅を詰める */
 .check-list {
   margin: 1.5mm 0 0 !important;
-  padding-left: 4.5mm !important;
+  padding-left: 0 !important;
 }
 
 .check-list li {
@@ -878,7 +878,7 @@
   font-size: 7.5pt;
   font-weight: 400;
   line-height: 1.4;
-  text-align: left;
+  text-align: center;
 }
 
 
@@ -899,6 +899,108 @@
   text-align: center !important;
 }
 
+
+
+/* FAX FRAME FINAL V4 */
+
+/* 親枠の線をなくし、各ブロックで線を管理 */
+.paper .form-area {
+  border: 0 !important;
+}
+
+/* お申し込み方法：太枠を維持 */
+.paper .section-head:not(.info-head) {
+  border-top: 3px solid #111 !important;
+  border-left: 3px solid #111 !important;
+  border-right: 3px solid #111 !important;
+  border-bottom: 1px solid #222 !important;
+  box-shadow: none !important;
+}
+
+.paper .choices {
+  border-top: 0 !important;
+  border-left: 3px solid #111 !important;
+  border-right: 3px solid #111 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ご施設情報：細線に統一 */
+.paper .section-head.info-head {
+  border-top: 1px solid #222 !important;
+  border-left: 3px solid #111 !important;
+  border-right: 3px solid #111 !important;
+  border-bottom: 1px solid #222 !important;
+  box-shadow: none !important;
+}
+
+.paper .info {
+  border-top: 0 !important;
+  border-left: 3px solid #111 !important;
+  border-right: 3px solid #111 !important;
+  border-bottom: 3px solid #111 !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+}
+
+/* 特典欄：上に余白を設け、独立した細枠に */
+.paper .fax-benefits {
+  border: 1px solid #222 !important;
+  box-shadow: none !important;
+  margin-top: 4mm !important;
+  margin-bottom: 0 !important;
+}
+
+/* FAX返信先の太枠 */
+.paper .fax {
+  border: 2px solid #111 !important;
+}
+
+
+
+
+/* FAX FOOTER BORDER FIX V1 */
+.paper .footer {
+  border-left: 1px solid #222 !important;
+  border-right: 1px solid #222 !important;
+  border-bottom: 1px solid #222 !important;
+}
+
+
+/* FAX BENEFIT DETAIL FONT +1PX V1 */
+
+/* 特典①：料金3行 */
+.fax-benefit-prices {
+  font-size: calc(7.5pt + 1px) !important;
+}
+
+/* 特典③：保証説明 */
+.fax-benefit-desc {
+  font-size: calc(7.5pt + 1px) !important;
+}
+
+
+/* FAX PRINT SAFE MARGINS V1 */
+
+.paper {
+  position: relative;
+  padding: 0 !important;
+}
+
+.paper-inner {
+  position: absolute;
+  top: 12.4125mm;
+  left: 10.95mm;
+  width: 198mm;
+  height: 286.5mm;
+
+  display: flex;
+  flex-direction: column;
+
+  transform: scale(0.95);
+  transform-origin: top left;
+}
+
 </style>
 </head>
 <body>
@@ -909,6 +1011,7 @@
 
   <div class="paper-viewport">
   <main class="paper">
+    <div class="paper-inner">
     <div class="top-title">エアコン洗浄　お見積り・無料点検　返信用紙</div>
 
     <div class="intro">
@@ -927,10 +1030,10 @@
           <p class="choice-desc">専門スタッフが現地でエアコン内部の汚れを確認し、写真付きレポートで状態をご報告します。</p>
 
           <ul class="check-list">
-            <li>アルミフィン・送風ファン・送風口の汚れを写真で確認</li>
+            <li>FAX受信後、ご連絡のうえ訪問日時を調整</li>
+            <li>エアコン内部の汚れを写真で確認</li>
             <li>部位別の汚れ判定と総合判定をレポートでご報告</li>
             <li>汚れの状態を踏まえ、正式見積もりをご提出</li>
-            <li>後日ご連絡し、訪問日時を調整します。</li>
           </ul>
 
 </section>
@@ -947,7 +1050,7 @@
             <div class="count-line"><span>・お掃除機能付き</span><span class="fill"></span><span>台</span></div>
             <div class="count-line"><span>・天井埋込型</span><span class="fill"></span><span>台</span></div>
             <div class="count-line"><span>・天井吊り型</span><span class="fill"></span><span>台</span></div>
-            <div class="count-line"><span>・その他の機種</span><span class="fill"></span><span>台</span></div>
+            <div class="count-line"><span>・床置き型</span><span class="fill"></span><span>台</span></div>
           </div>
 
 </section>
@@ -1014,7 +1117,7 @@
 </section>
 
       <div class="fax">
-        <span class="fax-instruction">この用紙をこのままお送りください。</span>
+        <span class="fax-instruction">太枠内にご記入のうえ、この用紙をそのままお送りください。</span>
         <span class="fax-number">【FAX返信先】0172-75-2751まで</span>
       </div>
 
@@ -1035,6 +1138,7 @@
         </div>
       </div>
     </div>
+      </div>
   </main>
   </div>
 
@@ -1099,6 +1203,48 @@
   }
 
   window.addEventListener('beforeprint', applySize);
+})();
+</script>
+
+
+<script>
+/* FAX INDUSTRY LABEL V2 */
+(() => {
+  const labels = {
+    hospital: "病院名",
+    hotel: "ホテル名",
+    nursery: "保育園名",
+    care: "施設名",
+    factory: "事業所名"
+  };
+
+  const type = new URLSearchParams(window.location.search).get("type");
+
+  if (!Object.prototype.hasOwnProperty.call(labels, type)) {
+    return;
+  }
+
+  const name = labels[type];
+
+  // 記入欄
+  const label = document.querySelector(
+    ".info .info-row:first-child .entry:first-child label"
+  );
+
+  if (label) {
+    label.textContent = name;
+  }
+
+  // ご施設情報の説明文
+  const guidance = document.querySelector(
+    ".info-head .info-guidance"
+  );
+
+  if (guidance) {
+    guidance.textContent =
+      name +
+      "・ご担当者名と、ご希望の連絡方法に対応する連絡先のみご記入ください。";
+  }
 })();
 </script>
 
