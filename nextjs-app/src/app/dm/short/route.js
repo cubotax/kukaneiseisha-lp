@@ -75,6 +75,13 @@ export function GET() {
       if (cached.split(hotelOverflow).length === 2) {
         cached = cached.replace(hotelOverflow, hotelPhotoPageBoundary + hotelDirtBlock);
       }
+      // Rebalance hotel pages 3 and 4 without changing text or typography.
+      const hotelHealthBoundary = "</div><footer class=\"footer\"><span>03 / 07</span></footer></section><section class=\"sheet\"><div class=\"content\">";
+      const hotelHealthParagraphs = "<p>米国疾病対策センター（CDC）によると、免疫機能が低下した方は、特定のカビによって感染症を起こす場合があります。</p><p>製品評価技術基盤機構（NITE）も、エアコン内部のカビが室内空気の汚染源となる可能性を指摘しています。</p>";
+      const hotelHealthSplit = hotelHealthBoundary + hotelHealthParagraphs;
+      if (cached.split(hotelHealthSplit).length === 2) {
+        cached = cached.replace(hotelHealthSplit, hotelHealthParagraphs + hotelHealthBoundary);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
