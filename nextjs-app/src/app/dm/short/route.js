@@ -84,6 +84,8 @@ export function GET() {
       }
       // Change only hotel headings and paragraph opening after pagination.
       cached = cached.replace("実際に、あるホテルのご担当者からこんなお話を伺いました。", "あるホテルのご担当者からこんなお話を伺いました。").replace("ホテルのエアコン内部で目にした汚れとは？", "実際にホテルのエアコン内部で目にした汚れとは？").replace("実際に私たちが洗浄してきたホテルでも、", "私たちが洗浄してきたホテルでも、");
+      // Focus on inspection rather than recommending washing in the corresponding paragraphs.
+      cached = cached.replaceAll("そのため、内部を定期的に点検し、汚れに応じて洗浄することが大切です。", "そのため、定期的にエアコン内部を点検し、汚れの状態を把握しておくことが大切です。").replaceAll("だからこそ、日常清掃とは別にエアコン内部の状態を定期的に確認し、汚れの程度に応じて適切な洗浄を行うことが大切なのです。", "そのため、定期的にエアコン内部を点検し、汚れの状態を把握しておくことが大切です。").replaceAll("だからこそ、お客様からニオイを指摘されて初めて対応するのではなく、定期的に内部の状態を確認し、必要に応じて専門的な洗浄を行うことが大切なのです。", "だからこそ、お客様からニオイを指摘されて初めて対応するのではなく、定期的にエアコン内部を点検し、汚れの状態を把握しておくことが大切です。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
