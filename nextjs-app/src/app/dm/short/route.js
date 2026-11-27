@@ -53,6 +53,8 @@ export function GET() {
       if ([...cached.matchAll(serviceHeadings)].length === 9) {
         cached = cached.replace(serviceHeadings, '<h3 class="minor service-underline">$1</h3>').replace('</head>', '<style>.sheet .minor.service-underline{padding-bottom:2mm;border-bottom:1px solid var(--line)}</style></head>');
       }
+      // Apply the approved wording to the disinfectant description only.
+      cached = cached.replaceAll("新型コロナウイルス、インフルエンザウイルス、ノロウイルスなどへの有効性が確認された除菌剤を採用しています。", "新型コロナウイルス、インフルエンザウイルス、ノロウイルスなどへの有効性が確認された、米国環境保護庁（EPA）登録の除菌剤を採用しています。").replaceAll("米国環境保護庁（EPA）に登録された除菌剤による処理を、ご希望に応じて追加できます。", "通常の洗浄に加え、菌やウイルスの除去・不活化を目的とした除菌処理を、ご希望に応じて追加できます。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
