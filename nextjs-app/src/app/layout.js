@@ -1,23 +1,11 @@
 import "./globals.css";
-import { Caveat, Montserrat, Zen_Kaku_Gothic_New } from "next/font/google";
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-caveat",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-});
-
-const zenKaku = Zen_Kaku_Gothic_New({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  variable: "--font-zen-kaku",
-});
+// Font families are loaded by the existing Google Fonts CSS import in globals.css.
+// Avoid next/font build-time downloads while preserving the same CSS variables.
+const fontVariables = {
+  "--font-caveat": "'Caveat', cursive",
+  "--font-montserrat": "'Montserrat', sans-serif",
+  "--font-zen-kaku": "'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif",
+};
 
 export const metadata = {
   metadataBase: new URL("https://kukaneiseisha.com"),
@@ -28,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body className={`${caveat.variable} ${montserrat.variable} ${zenKaku.variable}`}>
+      <body style={fontVariables}>
         {children}
       </body>
     </html>
