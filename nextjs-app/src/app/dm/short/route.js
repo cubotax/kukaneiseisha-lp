@@ -29,7 +29,13 @@ export function GET() {
       const approvedHtml = html.toString('utf8');
       const stickerStyle = "alt=\"エアコン内部洗浄済シール\" data-dm-image=\"asset4\" style=\"display:block;width:76mm;height:auto;max-width:100%;margin:0 auto;\"";
       // Enlarge only the hotel sticker; keep the approved encrypted document intact.
-      cached = approvedHtml.replace(stickerStyle, stickerStyle.replace('76mm', '96mm'));
+      const withSticker = approvedHtml.replace(stickerStyle, stickerStyle.replace('76mm', '96mm'));
+      const offerPattern = /(<div class="offer">[\s\S]*?<\/div>)(<p>[^<]*10％割引[^<]*<\/p>)/g;
+      const offerMatches = [...withSticker.matchAll(offerPattern)];
+      // Keep the document available even if a future source changes the markup.
+      cached = offerMatches.length === 4
+        ? withSticker.replace(offerPattern, '$2$1').replace('</head>', "<style id=\"offer-v23\">\n.sheet .offer{position:relative;border:1px solid var(--navy);background:#fff;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 4px var(--line);padding:5mm 6mm;width:65%;margin:3mm auto 4mm;text-align:center;break-inside:avoid;color:var(--navy)}\n.sheet .offer::before,.sheet .offer::after{content:\"\";position:absolute;left:50%;transform:translateX(-50%);width:23mm;height:2px;background:var(--navy)}\n.sheet .offer::before{top:3px}.sheet .offer::after{bottom:3px}\n.sheet .offer .sub:first-child{display:flex;align-items:center;justify-content:center;gap:4mm;font-size:15pt;line-height:1.35;letter-spacing:.06em;font-weight:600}\n.sheet .offer .sub:first-child::before,.sheet .offer .sub:first-child::after{content:\"\";width:15mm;height:1px;background:var(--line)}\n.sheet .offer .big{font-size:41pt;font-weight:700;line-height:1.08;letter-spacing:.035em;margin:1mm 0!important}\n.sheet .offer .sub:last-child{display:inline-block;font-size:15pt;line-height:1.35;border-top:1px solid var(--line);padding:1.4mm 8mm 0;font-weight:600;letter-spacing:.025em}\n</style></head>")
+        : withSticker;
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
