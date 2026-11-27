@@ -47,6 +47,7 @@ export function GET() {
       cached = cached.replaceAll("しかし、エアコン内部は、日々の清掃だけでは手が届かない場所です。</p>", "</p><p><strong><span class=\"body-emphasis\">しかし、エアコン内部は、日々の清掃だけでは手が届かない場所です。</span></strong></p>");
       // Update the drain-pan description only, in each industry DM.
       cached = cached.replaceAll("冷房や除湿運転で発生した結露水がたまるため、カビやニオイの温床になりやすい場所です。汚れでドレンホースが詰まると、排水できなくなり、水があふれ出して水漏れにつながるおそれがあります。", "エアコン運転で発生した結露水がたまるため、カビやニオイの温床になりやすい場所です。ごみやヘドロでドレンホースが詰まると、排水できなくなり、水があふれ出して水漏れにつながるおそれがあります。");
+      cached = cached.replaceAll("。カビへの曝露でせきや鼻づまり、喉の不快感が現れたり、喘息が悪化したりすることがあります。</p>", "。</p><p>カビへの曝露でせきや鼻づまり、喉の不快感が現れたり、喘息が悪化したりすることがあります。</p>");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
