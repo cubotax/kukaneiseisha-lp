@@ -82,6 +82,8 @@ export function GET() {
       if (cached.split(hotelHealthSplit).length === 2) {
         cached = cached.replace(hotelHealthSplit, hotelHealthParagraphs + hotelHealthBoundary);
       }
+      // Change only hotel headings and paragraph opening after pagination.
+      cached = cached.replace("実際に、あるホテルのご担当者からこんなお話を伺いました。", "あるホテルのご担当者からこんなお話を伺いました。").replace("ホテルのエアコン内部で目にした汚れとは？", "実際にホテルのエアコン内部で目にした汚れとは？").replace("実際に私たちが洗浄してきたホテルでも、", "私たちが洗浄してきたホテルでも、");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
