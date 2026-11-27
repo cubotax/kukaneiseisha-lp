@@ -26,7 +26,10 @@ export function GET() {
       decipher.setAuthTag(payload.subarray(-16));
       const html = gunzipSync(Buffer.concat([decipher.update(payload.subarray(12,-16)),decipher.final()]));
       if (createHash('sha256').update(html).digest('hex') !== '70cabdca52acc6e433e1970cef4caef75092e0fbea992f94d58af4b052b9b5f9') throw Error('DM integrity check failed');
-      cached = html.toString('utf8');
+      const approvedHtml = html.toString('utf8');
+      const stickerStyle = "alt=\"エアコン内部洗浄済シール\" data-dm-image=\"asset4\" style=\"display:block;width:76mm;height:auto;max-width:100%;margin:0 auto;\"";
+      // Enlarge only the hotel sticker; keep the approved encrypted document intact.
+      cached = approvedHtml.replace(stickerStyle, stickerStyle.replace('76mm', '96mm'));
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
