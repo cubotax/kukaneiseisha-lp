@@ -48,6 +48,11 @@ export function GET() {
       // Update the drain-pan description only, in each industry DM.
       cached = cached.replaceAll("冷房や除湿運転で発生した結露水がたまるため、カビやニオイの温床になりやすい場所です。汚れでドレンホースが詰まると、排水できなくなり、水があふれ出して水漏れにつながるおそれがあります。", "エアコン運転で発生した結露水がたまるため、カビやニオイの温床になりやすい場所です。ごみやヘドロでドレンホースが詰まると、排水できなくなり、水があふれ出して水漏れにつながるおそれがあります。");
       cached = cached.replaceAll("。カビへの曝露でせきや鼻づまり、喉の不快感が現れたり、喘息が悪化したりすることがあります。</p>", "。</p><p>カビへの曝露でせきや鼻づまり、喉の不快感が現れたり、喘息が悪化したりすることがあります。</p>");
+      // Match only the three optional-service subheadings.
+      const serviceHeadings = /<h3 class="minor">([①②③] (?:さまざまなウイルスに対応する除菌処理|専用洗剤によるカビ除去|防カビ・抗菌コーティング))<\/h3>/g;
+      if ([...cached.matchAll(serviceHeadings)].length === 9) {
+        cached = cached.replace(serviceHeadings, '<h3 class="minor service-underline">$1</h3>').replace('</head>', '<style>.sheet .minor.service-underline{padding-bottom:2mm;border-bottom:1px solid var(--line)}</style></head>');
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
