@@ -14,7 +14,7 @@ const headers = {
 const digest = value => createHash('sha256').update(value).digest();
 const unavailable = () => new Response('DM viewer unavailable', { status: 503, headers });
 
-function addHotelSticker(html, image) {
+function addHotelSticker(html) {
   const start = html.indexOf('<main class="dm-document" data-design="11" hidden="" id="dm-hotel">');
   const end = html.indexOf('</main>', start);
   if (start < 0 || end < 0) throw Error('Hotel document not found');
@@ -37,7 +37,7 @@ function addHotelSticker(html, image) {
   }
   transfer(4,5,trial);
   transfer(3,4,report);
-  pages[3] = pages[3].replace(anchor,anchor + '<figure class="hotel-sticker" style="margin:3mm 0 4mm;text-align:center;break-inside:avoid;"><img alt="エアコン内部洗浄済シール" src="data:image/webp;base64,' + image + '" style="display:block;width:76mm;height:auto;max-width:100%;margin:0 auto;"></figure>');
+  pages[3] = pages[3].replace(anchor,anchor + '<figure class="hotel-sticker" style="margin:3mm 0 4mm;text-align:center;break-inside:avoid;"><img alt="エアコン内部洗浄済シール" src="/dm/short-assets/hotel-sticker-20261127.png" style="display:block;width:76mm;height:auto;max-width:100%;margin:0 auto;"></figure>');
   return html.slice(0,start) + pages.join('<section class="sheet">') + html.slice(end);
 }
 
@@ -46,10 +46,13 @@ export function GET() {
   if (parts.some(p => typeof p !== 'string' || !p)) return unavailable();
   const html = parts.join('');
   if (digest(html).toString('hex') !== '2fc39f994cfcb61180907f9a9369e66f9b09d4cd31525c93fd308169c23b0ded') return unavailable();
-  const sticker = process.env.DM_HOTEL_STICKER_WEBP;
-  if (!sticker || sticker.length !== 7748 || digest(Buffer.from(sticker,'base64')).toString('hex') !== 'eb901fc42646a539b5b445d7539b2ebd3c1e73766c524c2222884504ff01e25e') return unavailable();
   let updatedHtml;
-  try { updatedHtml = addHotelSticker(html,sticker); } catch { return unavailable(); }
+  try {
+    updatedHtml = addHotelSticker(html);
+    const brand = '<span class="brand">空間衛生社</span>';
+    if (updatedHtml.split(brand).length !== 5) return unavailable();
+    updatedHtml = updatedHtml.replaceAll(brand, '<span class="brand" style="display:inline-flex;align-items:center;flex-shrink:0"><img alt="空間衛生社" src="/dm/short-assets/logo-20261127.png" style="display:block;width:47mm;height:auto;max-height:11mm;object-fit:contain"></span>');
+  } catch { return unavailable(); }
   // Mobile preview only; the approved document and print CSS stay unchanged.
   const responsiveHtml = updatedHtml.replace('</head>', "<style>@media screen and (max-width: 830px) {\n  html,body{width:100%;max-width:100%;margin:0;-webkit-text-size-adjust:100%}\n  .toolbar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 12px 10px;max-width:100%;font-size:14px}\n  .toolbar .nav-label,.toolbar .print-action,.toolbar .page-summary,.toolbar .help{grid-column:1/-1;text-align:center;min-width:0}\n  .toolbar .nav-label{font-size:16px;margin-bottom:3px}\n  .toolbar .dm-tab,.toolbar .print-action{width:100%;margin:0;min-height:44px;padding:8px 4px;white-space:normal}\n  .toolbar .page-summary{font-size:12px}\n  .toolbar .help{font-size:11px;line-height:1.5}\n  .workspace{width:100%;max-width:100%;padding:0 8px;overflow-x:auto}\n  .workspace .sheet{zoom:var(--dm-mobile-scale,0.38);margin:12px auto}\n}\n</style></head>")
     .replace('</body>', "<script>(function(){\n  var workspace=document.querySelector('.workspace');\n  if(!workspace)return;\n  function fit(){\n    var available=workspace.clientWidth-16;\n    var scale=Math.min(1,Math.max(0.1,(available-1)/(210*96/25.4)));\n    workspace.style.setProperty('--dm-mobile-scale',String(scale));\n  }\n  fit();\n  window.addEventListener('resize',fit,{passive:true});\n})();\n</script></body>");
