@@ -49,9 +49,6 @@ export function GET() {
   let updatedHtml;
   try {
     updatedHtml = addHotelSticker(html);
-    const brand = '<span class="brand">空間衛生社</span>';
-    if (updatedHtml.split(brand).length !== 5) return unavailable();
-    updatedHtml = updatedHtml.replaceAll(brand, '<span class="brand" style="display:inline-flex;align-items:center;flex-shrink:0"><img alt="空間衛生社" src="/dm/short-assets/logo-20261127.png" style="display:block;width:47mm;height:auto;max-height:11mm;object-fit:contain"></span>');
   } catch { return unavailable(); }
   // Mobile preview only; the approved document and print CSS stay unchanged.
   const responsiveHtml = updatedHtml.replace('</head>', "<style>@media screen and (max-width: 830px) {\n  html,body{width:100%;max-width:100%;margin:0;-webkit-text-size-adjust:100%}\n  .toolbar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 12px 10px;max-width:100%;font-size:14px}\n  .toolbar .nav-label,.toolbar .print-action,.toolbar .page-summary,.toolbar .help{grid-column:1/-1;text-align:center;min-width:0}\n  .toolbar .nav-label{font-size:16px;margin-bottom:3px}\n  .toolbar .dm-tab,.toolbar .print-action{width:100%;margin:0;min-height:44px;padding:8px 4px;white-space:normal}\n  .toolbar .page-summary{font-size:12px}\n  .toolbar .help{font-size:11px;line-height:1.5}\n  .workspace{width:100%;max-width:100%;padding:0 8px;overflow-x:auto}\n  .workspace .sheet{zoom:var(--dm-mobile-scale,0.38);margin:12px auto}\n}\n</style></head>")
