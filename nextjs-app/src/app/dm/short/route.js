@@ -392,6 +392,8 @@ export function GET() {
       cached = cached.replace(/(<small\b[^>]*\bclass="help"[^>]*>)A4縦・倍率100%・ブラウザのヘッダーとフッターをオフ。\s*印刷対象は選択中の業種のみです。(<\/small>)/g, '$1A4縦・倍率100%・ブラウザのヘッダーとフッターをオフ。<br>印刷対象は選択中の業種のみです。$2').replace('</head>', '<style>.help{display:block;text-align:center!important;width:100%;flex-basis:100%;}</style></head>');
       // Unify the trial-wash plan wording across all four DMs.
       cached = cached.replaceAll("「お試し1台洗浄」をご用意しています。", "「お試し1台洗浄の特別プラン」をご用意しています。");
+      // Avoid extra blank printed sheets; allow iOS Safari printer margins without changing screen or desktop sizing.
+      cached = cached.replace('</head>', "<style id=\"dm-print-pagination-fix\">\n@page{size:A4 portrait;margin:0}\n@media print{\n  html,body,.workspace,.dm-document{margin:0!important;padding:0!important;max-width:none!important;overflow:visible!important}\n  html,body{-webkit-text-size-adjust:100%}\n  .sheet{break-after:auto!important;page-break-after:auto!important;break-inside:avoid;page-break-inside:avoid}\n  .sheet+.sheet{break-before:page!important;page-break-before:always!important}\n}\n@supports (-webkit-touch-callout: none){\n  @media print{\n    .sheet{zoom:.88!important;margin:0 auto!important}\n  }\n}\n</style>" + '</head>');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
