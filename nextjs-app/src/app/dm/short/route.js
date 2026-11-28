@@ -185,6 +185,8 @@ export function GET() {
       for (const [oldCopy, newCopy] of experienceCopy) {
         cached = cached.replaceAll(oldCopy, newCopy);
       }
+      // Apply the approved mold removal description to matching industry DMs.
+      cached = cached.replaceAll("専用洗剤を使い、部品への影響に配慮しながら丁寧に除去します。", "こうした汚れに対しては、専用洗剤を使用し、汚れの程度や部品の材質に応じた処理を行うことで、通常洗浄では取り切れない汚れの除去を目指します。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
