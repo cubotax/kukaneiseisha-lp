@@ -355,6 +355,13 @@ export function GET() {
       });
       // Apply approved inspection-introduction wording across all matching industry DMs.
       cached = cached.replaceAll("エアコン内部の汚れは外から確認しにくいため、汚れが蓄積していても気づかれず、長期間洗浄されないままになっているケースもあります。", "エアコン内部の汚れは外から確認しにくいため、汚れの蓄積に気づかないまま、長期間使用されているケースも少なくありません。");
+      // Remove only the empty hotel page left by the sticker-section move, then renumber.
+      cached = cached.replace(/<main\b[^>]*\bid="dm-hotel"[^>]*>[\s\S]*?<\/main>/, hotel => {
+        const emptyFifthPage = /<section class="sheet">\s*<div class="content">(?:\s|<!--[\s\S]*?-->|<p>\s*<\/p>)*<\/div>\s*<footer class="footer"><span>05 \/ 08<\/span><\/footer>\s*<\/section>/;
+        const numbers = [...hotel.matchAll(/<footer class="footer"><span>(0[1-8]) \/ 08<\/span><\/footer>/g)];
+        if (numbers.map(n => n[1]).join(',') !== '01,02,03,04,05,06,07,08' || !emptyFifthPage.test(hotel)) return hotel;
+        return hotel.replace(emptyFifthPage, '').replace(/(<footer class="footer"><span>)(0[1-8]) \/ 08(<\/span><\/footer>)/g, (_, start, n, end) => start+String(Number(n)-(Number(n)>5?1:0)).padStart(2,'0')+' / 07'+end);
+      });
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
