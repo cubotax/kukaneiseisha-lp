@@ -163,6 +163,28 @@ export function GET() {
       for (const [oldCopy, newCopy] of coatingCopy) {
         cached = cached.replaceAll(oldCopy, newCopy);
       }
+      // Apply the approved experience and operational considerations to matching industry DMs.
+      const experienceCopy = [
+        [
+          "<p>空間衛生社は、総合病院やショッピングモール、ホテル、学校、工場などの大型施設で、壁掛け型から天井埋込型・天井吊り型まで洗浄してきました。</p>",
+          "<p>空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工経験を通じて、さまざまな機種への対応力や、多数台の洗浄に必要な施工管理のノウハウを培ってきました。</p><p>こうした施工経験を生かし、施設ごとの運営状況に合わせた施工にも力を入れています。</p>"
+        ],
+        [
+          "入居者の皆様の生活や介護業務への影響をできるだけ抑えるため、食事・入浴・レクリエーションの予定に配慮しながら、休日や業務時間外の施工にも対応しています。",
+          "入居者の皆様の生活や介護業務に配慮し、休日や業務時間外の施工にも対応しています。"
+        ],
+        [
+          "患者様の療養や診療業務への影響をできるだけ抑えるため、診療・検査・面会の予定に配慮しながら、休日や業務時間外の施工にも対応しています。",
+          "患者様の療養や診療業務に配慮し、休日や業務時間外の施工にも対応しています。"
+        ],
+        [
+          "子どもたちの生活や日々の保育活動への影響をできるだけ抑えるため、食事・お昼寝・園行事などの予定に配慮しながら、休日や保育時間外の施工にも対応しています。",
+          "子どもたちの生活や保育活動に配慮し、休日や保育時間外の施工にも対応しています。"
+        ]
+      ];
+      for (const [oldCopy, newCopy] of experienceCopy) {
+        cached = cached.replaceAll(oldCopy, newCopy);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
