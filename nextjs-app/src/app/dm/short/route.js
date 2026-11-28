@@ -240,6 +240,32 @@ export function GET() {
       cached = cached.replace(nurseryClosingSplit, '$1$3$2');
       // Bold only the trial-wash price table's two column headings.
       cached = cached.replace(/(<th\b[^>]*>)(エアコンの種類|1台の洗浄料金)(<\/th>)/g, '$1<strong style="font-weight:700!important">$2</strong>$3');
+      // Apply the approved concise scheduling wording after pagination adjustments.
+      const conciseScheduling = [
+        [
+          "こうした施工経験を生かし、施設ごとの運営状況に合わせた施工にも力を入れています。",
+          "こうした経験を生かし、施設ごとの運営状況に合わせた柔軟な対応にも力を入れています。"
+        ],
+        [
+          "子どもたちの生活や保育活動に配慮し、休日や保育時間外の施工にも対応しています。",
+          "子どもたちの生活や保育活動に配慮し、休日や保育時間外の洗浄も可能です。"
+        ],
+        [
+          "入居者の皆様の生活や介護業務に配慮し、休日や業務時間外の施工にも対応しています。",
+          "入居者の皆様の生活や介護業務に配慮し、休日や業務時間外の洗浄も可能です。"
+        ],
+        [
+          "患者様の療養や診療業務に配慮し、休日や業務時間外の施工にも対応しています。",
+          "患者様の療養や診療業務に配慮し、休日や業務時間外の洗浄も可能です。"
+        ],
+        [
+          "また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。",
+          "多数のエアコンを一度に洗浄することが難しい場合には、時期を分けた段階的な施工にも対応しております."
+        ]
+      ];
+      for (const [oldCopy, newCopy] of conciseScheduling) {
+        cached = cached.replaceAll(oldCopy, newCopy);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
