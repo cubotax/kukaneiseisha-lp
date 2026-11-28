@@ -348,6 +348,11 @@ export function GET() {
       });
       // Apply approved experience copy after all page moves and hotel insertion.
       cached = cached.replaceAll("空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工経験を通じて、さまざまな機種への対応力や、多数台の洗浄に必要な施工管理のノウハウを培ってきました。", "空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場など、さまざまな大型施設でエアコン洗浄の実績を積み重ねてきました。");
+      // Move the complete hotel sticker section directly after the experience section.
+      cached = cached.replace(/<main\b[^>]*\bid="dm-hotel"[^>]*>[\s\S]*?<\/main>/, hotel => {
+        const stickerPageSplit = /(<p>多数のエアコンを一度に洗浄することが難しい場合には、時期を分けた段階的な施工にも対応しております。<\/p>)(\s*<\/div>\s*<footer class="footer"><span>04 \/ 08<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)(<h2\b[^>]*>エアコン内部の洗浄履歴を、お客様にも見える形に。<\/h2>[\s\S]*?<p\b[^>]*>客室の雰囲気を損なわない、シンプルで落ち着いたデザインを使用しています。<\/p>)/;
+        return hotel.replace(stickerPageSplit, (whole, previous, boundary, sticker) => /<footer\b/.test(sticker) ? whole : previous + sticker + boundary);
+      });
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
