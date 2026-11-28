@@ -336,6 +336,16 @@ export function GET() {
       // Keep the hotel's health-context conclusion on page three.
       const hotelHygieneSplit = /(<\/div>\s*<footer class="footer"><span>03 \/ 07<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)(<p(?:\s[^>]*)?>もちろん、エアコン内部にカビがあっても、必ず健康被害が起こるわけではありません。<\/p>\s*<p(?:\s[^>]*)?>しかし、ホテルの客室はお客様がくつろぎ、心身を休める大切な場所だからこそ、エアコン内部の衛生状態にも気を配る必要があるのではないでしょうか。<\/p>)/g;
       cached = cached.replace(hotelHygieneSplit, '$2$1');
+      // Add the approved-style experience section only to the hotel DM, preserving all existing pages.
+      const hotelExperienceBlock = "<h2 class=\"section\">ホテルのエアコン洗浄で、大切なのは洗う技術だけではありません。</h2><p>複数のエアコンを一度に洗浄するには、一般的な洗浄とは異なる技術と施工体制が必要です。</p><p>メーカー・機種・年式によって分解方法や、不具合時の対応が異なります。多くの台数を短期間で洗浄するには、人員確保と工程管理も欠かせません。</p><p>空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工経験を通じて、さまざまな機種への対応力や、多数台の洗浄に必要な施工管理のノウハウを培ってきました。</p><p>こうした経験を生かし、施設ごとの運営状況に合わせた柔軟な対応にも力を入れています。</p><p>客室の稼働状況や宿泊されるお客様に配慮し、チェックアウトからチェックインまでの時間帯での洗浄も可能です。</p><p>多数のエアコンを一度に洗浄することが難しい場合には、時期を分けた段階的な施工にも対応しております。</p>";
+      cached = cached.replace(/<main\b[^>]*\bid="dm-hotel"[^>]*>[\s\S]*?<\/main>/, hotel => {
+        if (hotel.includes('ホテルのエアコン洗浄で、大切なのは洗う技術だけではありません。')) return hotel;
+        const pageBoundary = /(<footer class="footer"><span>03 \/ 07<\/span><\/footer>\s*<\/section>\s*)(<section class="sheet"><div class="content">)/;
+        const pageNumbers = [...hotel.matchAll(/(<footer class="footer"><span>)(0[1-7]) \/ 07(<\/span><\/footer>)/g)];
+        if (pageNumbers.length !== 7 || !pageBoundary.test(hotel)) return hotel;
+        const inserted = hotel.replace(pageBoundary, '$1<section class="sheet"><div class="content">'+hotelExperienceBlock+'</div><footer class="footer"><span>NEW / 08</span></footer></section>$2');
+        return inserted.replace(/(<footer class="footer"><span>)(0[1-7]) \/ 07(<\/span><\/footer>)/g, (_, start, n, end) => start+String(Number(n)+(Number(n)>=4?1:0)).padStart(2,'0')+' / 08'+end).replace('NEW / 08','04 / 08');
+      });
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
