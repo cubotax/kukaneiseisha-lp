@@ -141,6 +141,28 @@ export function GET() {
       }
       // Begin the annual planning sentence in a separate paragraph wherever it follows another sentence.
       cached = cached.replaceAll("。また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。", "。</p><p>また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。");
+      // Apply the approved coating copy after pagination, preserving existing paragraph placement.
+      const coatingCopy = [
+        [
+          "洗浄後も、使用に伴いカビや細菌が再び繁殖することがあります。",
+          "洗浄後も、エアコンを使用する中でカビや細菌が再び繁殖することは避けられません。"
+        ],
+        [
+          "ご希望に応じて、アルミフィンやドレンパンに防カビ・抗菌コーティングを施工できます。",
+          "そこで、ご希望に応じてアルミフィンやドレンパンに防カビ・抗菌コーティングを施工することも可能です。"
+        ],
+        [
+          "再繁殖を抑えて清潔さを長く保ち、カビ由来の嫌なニオイを抑える効果も期待できます。",
+          "カビや細菌の再繁殖を抑えることで、清潔な状態を長く維持し、カビ由来の嫌なニオイの抑制も期待できます。"
+        ],
+        [
+          "除菌・カビ除去・防カビコーティングを組み合わせ、洗浄後の衛生環境まで考えた対策をご提案します。",
+          "除菌・カビ除去・防カビコーティングを組み合わせ、洗浄後の衛生環境まで考えた対策をご提案いたします。"
+        ]
+      ];
+      for (const [oldCopy, newCopy] of coatingCopy) {
+        cached = cached.replaceAll(oldCopy, newCopy);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
