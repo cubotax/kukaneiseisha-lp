@@ -230,6 +230,9 @@ export function GET() {
       // Use available page-three space for the experience introduction, without changing copy.
       const experiencePageSplit = /(<p>メーカー・機種・年式によって分解方法や、不具合時の対応が異なります。多くの台数を短期間で洗浄するには、人員確保と工程管理も欠かせません。<\/p>)(\s*<\/div><footer class="footer"><span>03 \/ 07<\/span><\/footer><\/section>\s*<section class="sheet"><div class="content">\s*)(<p>空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工経験を通じて、さまざまな機種への対応力や、多数台の洗浄に必要な施工管理のノウハウを培ってきました。<\/p>\s*<p>こうした施工経験を生かし、施設ごとの運営状況に合わせた施工にも力を入れています。<\/p>)/g;
       cached = cached.replace(experiencePageSplit, '$1$3$2');
+      // Keep nursery scheduling paragraphs together with the experience section on page three.
+      const nurserySchedulingSplit = /(<p>こうした施工経験を生かし、施設ごとの運営状況に合わせた施工にも力を入れています。<\/p>)(\s*<\/div><footer class="footer"><span>03 \/ 07<\/span><\/footer><\/section>\s*<section class="sheet"><div class="content">\s*)(<p>子どもたちの生活や保育活動に配慮し、休日や保育時間外の施工にも対応しています。<\/p>\s*<p>また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。<\/p>)/g;
+      cached = cached.replace(nurserySchedulingSplit, '$1$3$2');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
