@@ -390,6 +390,8 @@ export function GET() {
       }
       // Center the print instructions and break after the first sentence only.
       cached = cached.replace(/(<small\b[^>]*\bclass="help"[^>]*>)A4縦・倍率100%・ブラウザのヘッダーとフッターをオフ。\s*印刷対象は選択中の業種のみです。(<\/small>)/g, '$1A4縦・倍率100%・ブラウザのヘッダーとフッターをオフ。<br>印刷対象は選択中の業種のみです。$2').replace('</head>', '<style>.help{display:block;text-align:center!important;width:100%;flex-basis:100%;}</style></head>');
+      // Unify the trial-wash plan wording across all four DMs.
+      cached = cached.replaceAll("「お試し1台洗浄」をご用意しています。", "「お試し1台洗浄の特別プラン」をご用意しています。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
