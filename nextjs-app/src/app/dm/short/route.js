@@ -347,7 +347,7 @@ export function GET() {
         return inserted.replace(/(<footer class="footer"><span>)(0[1-7]) \/ 07(<\/span><\/footer>)/g, (_, start, n, end) => start+String(Number(n)+(Number(n)>=4?1:0)).padStart(2,'0')+' / 08'+end).replace('NEW / 08','04 / 08');
       });
       // Apply approved experience copy after all page moves and hotel insertion.
-      cached = cached.replaceAll("空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工経験を通じて、さまざまな機種への対応力や、多数台の洗浄に必要な施工管理のノウハウを培ってきました。", "空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工を通じて、さまざまな機種への対応力と施工管理のノウハウを培ってきました。");
+      cached = cached.replaceAll("空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場などの大型施設での施工経験を通じて、さまざまな機種への対応力や、多数台の洗浄に必要な施工管理のノウハウを培ってきました。", "空間衛生社では、これまで総合病院やショッピングモール、ホテル、学校、工場など、さまざまな大型施設でエアコン洗浄の実績を積み重ねてきました。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
