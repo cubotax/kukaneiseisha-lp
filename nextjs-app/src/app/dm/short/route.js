@@ -353,6 +353,8 @@ export function GET() {
         const stickerPageSplit = /(<p>多数のエアコンを一度に洗浄することが難しい場合には、時期を分けた段階的な施工にも対応しております。<\/p>)(\s*<\/div>\s*<footer class="footer"><span>04 \/ 08<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)(<h2\b[^>]*>エアコン内部の洗浄履歴を、お客様にも見える形に。<\/h2>[\s\S]*?<p\b[^>]*>客室の雰囲気を損なわない、シンプルで落ち着いたデザインを使用しています。<\/p>)/;
         return hotel.replace(stickerPageSplit, (whole, previous, boundary, sticker) => /<footer\b/.test(sticker) ? whole : previous + sticker + boundary);
       });
+      // Apply approved inspection-introduction wording across all matching industry DMs.
+      cached = cached.replaceAll("エアコン内部の汚れは外から確認しにくいため、汚れが蓄積していても気づかれず、長期間洗浄されないままになっているケースもあります。", "エアコン内部の汚れは外から確認しにくいため、汚れの蓄積に気づかないまま、長期間使用されているケースも少なくありません。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
