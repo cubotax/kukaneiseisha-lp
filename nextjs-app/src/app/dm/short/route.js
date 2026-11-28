@@ -107,6 +107,15 @@ export function GET() {
       if (cached.split(nursingSplit).length === 2) {
         cached = cached.replace(nursingSplit, nursingConclusion + nursingNextParagraphs + nursingBoundary);
       }
+      // Update only the approved nursing-home copy.
+      const nursingAirOld = "しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所だからこそ、空気環境にも気を配りたいものです。";
+      const nursingAirNew = "しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所です。";
+      const nursingHygieneOld = "目に見える場所を清潔に保つだけでなく、日々の生活に欠かせないエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。";
+      const nursingHygieneNew = "目に見える場所だけでなく、日々の生活に欠かせないエアコン内部の衛生状態にも気を配る必要があるのではないでしょうか。";
+      if (cached.includes(nursingAirOld) && cached.includes(nursingHygieneOld)) {
+        const nursingCopyPair = /しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所だからこそ、空気環境にも気を配りたいものです\。(\s*<\/p>\s*<p(?:\s[^>]*)?>\s*)目に見える場所を清潔に保つだけでなく、日々の生活に欠かせないエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。/g;
+        cached = cached.replace(nursingCopyPair, (_match, separator) => nursingAirNew + separator + nursingHygieneNew);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
