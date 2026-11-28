@@ -333,6 +333,9 @@ export function GET() {
       // Move the hotel's two photo-section conclusion sentences onto page two as one paragraph.
       const hotelPhotoConclusionSplit = /(<\/div>\s*<footer class="footer"><span>02 \/ 07<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)<p(?:\s[^>]*)?>こうした汚れは、不快なニオイの原因にもなります。<\/p>\s*<p(?:\s[^>]*)?>一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。<\/p>/g;
       cached = cached.replace(hotelPhotoConclusionSplit, '<p style="padding-top:6mm">こうした汚れは、不快なニオイの原因にもなります。一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。</p>$1');
+      // Keep the hotel's health-context conclusion on page three.
+      const hotelHygieneSplit = /(<\/div>\s*<footer class="footer"><span>03 \/ 07<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)(<p(?:\s[^>]*)?>もちろん、エアコン内部にカビがあっても、必ず健康被害が起こるわけではありません。<\/p>\s*<p(?:\s[^>]*)?>しかし、ホテルの客室はお客様がくつろぎ、心身を休める大切な場所だからこそ、エアコン内部の衛生状態にも気を配る必要があるのではないでしょうか。<\/p>)/g;
+      cached = cached.replace(hotelHygieneSplit, '$2$1');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
