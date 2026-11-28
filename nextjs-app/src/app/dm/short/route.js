@@ -139,6 +139,8 @@ export function GET() {
       for (const [oldCopy, newCopy] of hygieneCopy) {
         cached = cached.replaceAll(oldCopy, newCopy);
       }
+      // Begin the annual planning sentence in a separate paragraph wherever it follows another sentence.
+      cached = cached.replaceAll("。また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。", "。</p><p>また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
