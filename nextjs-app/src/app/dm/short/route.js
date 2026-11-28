@@ -332,7 +332,7 @@ export function GET() {
       cached = cached.replace(hospitalClosingSplit, '$1$3$2');
       // Move the hotel's two photo-section conclusion sentences onto page two as one paragraph.
       const hotelPhotoConclusionSplit = /(<\/div>\s*<footer class="footer"><span>02 \/ 07<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)<p(?:\s[^>]*)?>こうした汚れは、不快なニオイの原因にもなります。<\/p>\s*<p(?:\s[^>]*)?>一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。<\/p>/g;
-      cached = cached.replace(hotelPhotoConclusionSplit, '<p>こうした汚れは、不快なニオイの原因にもなります。一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。</p>$1');
+      cached = cached.replace(hotelPhotoConclusionSplit, '<p style="padding-top:6mm">こうした汚れは、不快なニオイの原因にもなります。一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。</p>$1');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
