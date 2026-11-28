@@ -326,7 +326,7 @@ export function GET() {
         });
       }
       // Use the same low-pressure inspection heading in all four industry DMs.
-      cached = cached.replace(/(<h2\b[^>]*>)\s*一度、(?:ホテル内|施設内|院内|園内)のエアコン内部の状態を確認してみませんか？\s*(<\/h2>)/g, '$1まずはエアコン内部の状態を確認してみませんか？$2');
+      cached = cached.replace(/(<h2\b[^>]*>)\s*一度、(?:ホテル内|施設内|院内|園内)のエアコン内部の状態を確認してみませんか？\s*(<\/h2>)/g, '$1エアコン洗浄を検討する前に、まずは内部の状態を確認してみませんか？$2');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
