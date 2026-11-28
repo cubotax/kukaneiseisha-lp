@@ -388,6 +388,8 @@ export function GET() {
       for (const [oldCopy, newCopy] of reportDescriptionCopy) {
         cached = cached.replaceAll(oldCopy, newCopy);
       }
+      // Center the print instructions and break after the first sentence only.
+      cached = cached.replace(/(<small\b[^>]*\bclass="help"[^>]*>)A4縦・倍率100%・ブラウザのヘッダーとフッターをオフ。\s*印刷対象は選択中の業種のみです。(<\/small>)/g, '$1A4縦・倍率100%・ブラウザのヘッダーとフッターをオフ。<br>印刷対象は選択中の業種のみです。$2').replace('</head>', '<style>.help{display:block;text-align:center!important;width:100%;flex-basis:100%;}</style></head>');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
