@@ -238,6 +238,8 @@ export function GET() {
       // Keep the nursery closing question on page six, without changing text or spacing.
       const nurseryClosingSplit = /(<p>そのための第一歩として、まずは写真付き無料点検レポートをご利用いただければと思います。<\/p>)(\s*<\/div><footer class="footer"><span>06 \/ 07<\/span><\/footer><\/section>\s*<section class="sheet"><div class="content">\s*)(<p>園内のエアコンの状態を一緒に確認し、必要な洗浄や今後の管理方法を考えてみませんか？<\/p>)/g;
       cached = cached.replace(nurseryClosingSplit, '$1$3$2');
+      // Bold only the trial-wash price table's two column headings.
+      cached = cached.replace(/(<th\b[^>]*>)(エアコンの種類|1台の洗浄料金)(<\/th>)/g, '$1<strong style="font-weight:700!important">$2</strong>$3');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
