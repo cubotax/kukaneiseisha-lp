@@ -99,6 +99,14 @@ export function GET() {
       }
       // Add space only above the paragraph immediately following the dirt photos.
       cached = cached.replaceAll('<p>こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。', '<p style="padding-top:4mm">こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。');
+      // Keep the nursing-home conclusion together on page 6; leave other DMs intact.
+      const nursingConclusion = '<p>私たちは、エアコン洗浄を通じて、入居者の皆様が気持ちよく暮らせる環境づくりをお手伝いしたいと考えています。</p>';
+      const nursingBoundary = '</div><footer class="footer"><span>06 / 07</span></footer></section><section class="sheet"><div class="content">';
+      const nursingNextParagraphs = '<p>そのための第一歩として、まずは写真付き無料点検レポートをご利用いただければと思います。</p><p>施設のエアコンの状態を一緒に確認し、必要な洗浄や今後の管理方法を考えてみませんか？</p>';
+      const nursingSplit = nursingConclusion + nursingBoundary + nursingNextParagraphs;
+      if (cached.split(nursingSplit).length === 2) {
+        cached = cached.replace(nursingSplit, nursingConclusion + nursingNextParagraphs + nursingBoundary);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
