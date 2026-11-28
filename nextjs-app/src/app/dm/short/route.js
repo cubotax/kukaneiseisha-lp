@@ -107,6 +107,8 @@ export function GET() {
       if (cached.split(nursingSplit).length === 2) {
         cached = cached.replace(nursingSplit, nursingConclusion + nursingNextParagraphs + nursingBoundary);
       }
+      // Shorten the nursery-school introduction only.
+      cached = cached.replaceAll("しかし、保育園は子どもたちが遊び、食事をし、お昼寝をするなど、一日の多くの時間を過ごす大切な生活の場です。", "しかし、保育園は子どもたちが毎日を過ごす大切な場所です。");
       // Apply the approved hygiene wording to the exact matching sentences only.
       const hygieneCopy = [
         [
@@ -131,7 +133,7 @@ export function GET() {
         ],
         [
           "目に見える場所を清潔に保つだけでなく、子どもたちが毎日過ごす空間で使用するエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。",
-          "目に見える場所だけでなく、子どもたちが毎日過ごす空間で使用するエアコン内部の衛生の状態にも気を配る必要があるのではないでしょうか。"
+          "目に見える場所だけでなく、日々使用するエアコン内部の衛生の状態にも気を配る必要があるのではないでしょうか。"
         ]
       ];
       for (const [oldCopy, newCopy] of hygieneCopy) {
