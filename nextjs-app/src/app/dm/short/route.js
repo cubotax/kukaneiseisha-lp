@@ -266,6 +266,65 @@ export function GET() {
       for (const [oldCopy, newCopy] of conciseScheduling) {
         cached = cached.replaceAll(oldCopy, newCopy);
       }
+      // Replace only the three approved closing sections, preserving any existing page boundary.
+      const closingSections = [
+        [
+          "入居者の皆様と、ご家族の安心につながる施設づくりを一緒に考えませんか？",
+          "施設のエアコンの状態を一緒に確認し、必要な洗浄や今後の管理方法を考えてみませんか？",
+          "一度、施設内のエアコン内部の状態を確認してみませんか？",
+          [
+            "普段は見ることのできないエアコンの内部。",
+            "実際にどのような状態なのか、写真付きの無料点検レポートで確かめてみませんか？",
+            "点検を受けたからといって、洗浄をご依頼いただく必要はありません。",
+            "私たちが大切にしているのは、ただエアコンをきれいにすることだけではなく、その先にある快適な生活環境づくりです。",
+            "施設の維持管理の負担を減らし、入居者の皆様にも気持ちよく毎日を過ごしていただくこと。",
+            "施設にも、そこで暮らす皆様にも喜んでいただける。そんなエアコン洗浄の計画を、施設の皆様と一緒に考えていきたいと思っています。"
+          ]
+        ],
+        [
+          "患者様と職員の皆様の安心につながる院内環境づくりを一緒に考えませんか？",
+          "院内のエアコンの状態を一緒に確認し、必要な洗浄や今後の管理方法を考えてみませんか？",
+          "一度、院内のエアコン内部の状態を確認してみませんか？",
+          [
+            "普段は見ることのできないエアコンの内部。",
+            "実際にどのような状態なのか、写真付きの無料点検レポートで確かめてみませんか？",
+            "点検を受けたからといって、洗浄をご依頼いただく必要はありません。",
+            "私たちが大切にしているのは、ただエアコンをきれいにすることだけではなく、その先にある快適な院内環境づくりです。",
+            "病院の維持管理の負担を減らし、患者様や職員の皆様にも気持ちよく過ごしていただくこと。",
+            "病院にも、そこで過ごす皆様にも喜んでいただける。そんなエアコン洗浄の計画を、病院の皆様と一緒に考えていきたいと思っています。"
+          ]
+        ],
+        [
+          "子どもたちと保護者の安心につながる保育環境づくりを一緒に考えませんか？",
+          "園内のエアコンの状態を一緒に確認し、必要な洗浄や今後の管理方法を考えてみませんか？",
+          "一度、園内のエアコン内部の状態を確認してみませんか？",
+          [
+            "普段は見ることのできないエアコンの内部。",
+            "実際にどのような状態なのか、写真付きの無料点検レポートで確かめてみませんか？",
+            "点検を受けたからといって、洗浄をご依頼いただく必要はありません。",
+            "私たちが大切にしているのは、ただエアコンをきれいにすることだけではなく、その先にある快適な保育環境づくりです。",
+            "園の維持管理の負担を減らし、子どもたちにも気持ちよく毎日を過ごしてもらうこと。",
+            "保育園にも、そこで過ごす子どもたちにも喜んでもらえる。そんなエアコン洗浄の計画を、園の皆様と一緒に考えていきたいと思っています。"
+          ]
+        ]
+      ];
+      for (const [oldHeading, oldLast, heading, paragraphs] of closingSections) {
+        const pattern = new RegExp('(<h2\\b[^>]*>)'+oldHeading+'(</h2>)([\\s\\S]*?)(<p\\b[^>]*>'+oldLast+'</p>)','g');
+        cached = cached.replace(pattern, (whole, openHeading, closeHeading, body, last) => {
+          const originalBody = body + last;
+          const boundaryPattern = /<\/div>\s*<footer\b[^>]*>[\s\S]*?<\/footer>\s*<\/section>\s*<section\b[^>]*>\s*<div class="content">/g;
+          const boundaries = [...originalBody.matchAll(boundaryPattern)];
+          if (boundaries.length > 1 || /<h[1-6]\b/.test(originalBody)) return whole;
+          const rendered = paragraphs.map(p => '<p>'+p+'</p>');
+          if (boundaries.length === 1) {
+            const b = boundaries[0];
+            const trailingCount = (originalBody.slice(b.index+b[0].length).match(/<p\b/g)||[]).length;
+            const split = Math.max(1, Math.min(rendered.length-1, rendered.length-trailingCount));
+            rendered.splice(split, 0, b[0]);
+          }
+          return openHeading + heading + closeHeading + rendered.join('');
+        });
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
