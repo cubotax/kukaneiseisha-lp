@@ -233,6 +233,11 @@ export function GET() {
       // Keep nursery scheduling paragraphs together with the experience section on page three.
       const nurserySchedulingSplit = /(<p>こうした施工経験を生かし、施設ごとの運営状況に合わせた施工にも力を入れています。<\/p>)(\s*<\/div><footer class="footer"><span>03 \/ 07<\/span><\/footer><\/section>\s*<section class="sheet"><div class="content">\s*)(<p>子どもたちの生活や保育活動に配慮し、休日や保育時間外の施工にも対応しています。<\/p>\s*<p>また、多数のエアコンを一度に洗浄することが難しい場合には、年間計画を立てて時期を分けるなど、洗浄対象や作業の進捗を管理しながら、計画的に施工を進めます。<\/p>)/g;
       cached = cached.replace(nurserySchedulingSplit, '$1$3$2');
+      // Separate the overall service summary from the third service across matching DMs.
+      cached = cached.replaceAll('<p>除菌・カビ除去・防カビコーティングを組み合わせ、洗浄後の衛生環境まで考えた対策をご提案いたします。</p>', '<p style="border-top:1px solid #a6b0b7;margin-top:4mm;padding-top:4mm;">除菌・カビ除去・防カビコーティングを組み合わせ、洗浄後の衛生環境まで考えた対策をご提案いたします。</p>');
+      // Keep the nursery closing question on page six, without changing text or spacing.
+      const nurseryClosingSplit = /(<p>そのための第一歩として、まずは写真付き無料点検レポートをご利用いただければと思います。<\/p>)(\s*<\/div><footer class="footer"><span>06 \/ 07<\/span><\/footer><\/section>\s*<section class="sheet"><div class="content">\s*)(<p>園内のエアコンの状態を一緒に確認し、必要な洗浄や今後の管理方法を考えてみませんか？<\/p>)/g;
+      cached = cached.replace(nurseryClosingSplit, '$1$3$2');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
