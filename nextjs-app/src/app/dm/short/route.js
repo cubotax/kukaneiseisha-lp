@@ -362,6 +362,32 @@ export function GET() {
         if (numbers.map(n => n[1]).join(',') !== '01,02,03,04,05,06,07,08' || !emptyFifthPage.test(hotel)) return hotel;
         return hotel.replace(emptyFifthPage, '').replace(/(<footer class="footer"><span>)(0[1-8]) \/ 08(<\/span><\/footer>)/g, (_, start, n, end) => start+String(Number(n)-(Number(n)>5?1:0)).padStart(2,'0')+' / 07'+end);
       });
+      // Apply approved report-description wording while preserving industry-specific benefits.
+      const reportDescriptionCopy = [
+        [
+          "写真と汚れの評価を一覧で確認できるため、優先的に洗浄すべきエアコンと、今回は見送るエアコンを判断できます。",
+          "写真と汚れの評価を一覧で確認できるため、優先的に洗浄すべきエアコンと、今回は見送るエアコンの判断が可能です。"
+        ],
+        [
+          "実際の汚れに応じて洗浄計画を立てることで、無駄な費用を抑えながら、客室の快適さを維持できます。",
+          "実際の汚れに応じた洗浄計画を立てることで、無駄な費用を抑えながら、客室の快適さを維持できます。"
+        ],
+        [
+          "実際の汚れに応じて洗浄計画を立てることで、無駄な費用を抑えながら、施設内の快適な環境を維持できます。",
+          "実際の汚れに応じた洗浄計画を立てることで、無駄な費用を抑えながら、施設内の快適な環境を維持できます。"
+        ],
+        [
+          "実際の汚れに応じて洗浄計画を立てることで、無駄な費用を抑えながら、院内の快適さを維持できます。",
+          "実際の汚れに応じた洗浄計画を立てることで、無駄な費用を抑えながら、院内の快適さを維持できます。"
+        ],
+        [
+          "実際の汚れに応じて洗浄計画を立てることで、無駄な費用を抑えながら、園内の快適さを維持できます。",
+          "実際の汚れに応じた洗浄計画を立てることで、無駄な費用を抑えながら、園内の快適さを維持できます。"
+        ]
+      ];
+      for (const [oldCopy, newCopy] of reportDescriptionCopy) {
+        cached = cached.replaceAll(oldCopy, newCopy);
+      }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
