@@ -97,6 +97,8 @@ export function GET() {
           cached = cached.replaceAll(source, paragraphs + boundary);
         }
       }
+      // Add space only above the paragraph immediately following the dirt photos.
+      cached = cached.replaceAll('<p>こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。', '<p style="padding-top:4mm">こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
