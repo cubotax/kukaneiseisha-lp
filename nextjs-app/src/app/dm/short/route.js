@@ -189,6 +189,8 @@ export function GET() {
       cached = cached.replaceAll("専用洗剤を使い、部品への影響に配慮しながら丁寧に除去します。", "こうした汚れに対しては、専用洗剤を使用し、汚れの程度や部品の材質に応じた処理を行うことで、通常洗浄では取り切れない汚れの除去を目指します。");
       // Apply the approved drain-pan wording after existing pagination adjustments.
       cached = cached.replaceAll("特にドレンパンの汚れは外観やフィルターからは見えず、分解しなければ確認できません。", "特にドレンパンの汚れは、外からでは確認しにくく、内部の状態を詳しく確認するには分解が必要です。");
+      // Apply the approved periodic inspection wording after pagination across matching DMs.
+      cached = cached.replaceAll("そのため、定期的にエアコン内部を点検し、汚れの状態を把握しておくことが大切です。", "そのため、定期的にエアコンを点検し、汚れの状態を把握しておくことが大切です。").replaceAll("だからこそ、お客様からニオイを指摘されて初めて対応するのではなく、定期的にエアコン内部を点検し、汚れの状態を把握しておくことが大切なのです。", "そのため、定期的にエアコンを点検し、汚れの状態を把握しておくことが大切です。");
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
