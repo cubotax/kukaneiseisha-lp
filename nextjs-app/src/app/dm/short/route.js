@@ -330,6 +330,9 @@ export function GET() {
       // Keep the hospital closing section together on page six.
       const hospitalClosingSplit = /(<p>私たちが大切にしているのは、ただエアコンをきれいにすることだけではなく、その先にある快適な院内環境づくりです。<\/p>)(\s*<\/div><footer class="footer"><span>06 \/ 07<\/span><\/footer><\/section>\s*<section class="sheet"><div class="content">\s*)(<p>病院の維持管理の負担を減らし、患者様や職員の皆様にも気持ちよく過ごしていただくこと。<\/p>\s*<p>病院にも、そこで過ごす皆様にも喜んでいただける。そんなエアコン洗浄の計画を、病院の皆様と一緒に考えていきたいと思っています。<\/p>)/g;
       cached = cached.replace(hospitalClosingSplit, '$1$3$2');
+      // Move the hotel's two photo-section conclusion sentences onto page two as one paragraph.
+      const hotelPhotoConclusionSplit = /(<\/div>\s*<footer class="footer"><span>02 \/ 07<\/span><\/footer>\s*<\/section>\s*<section class="sheet"><div class="content">\s*)<p(?:\s[^>]*)?>こうした汚れは、不快なニオイの原因にもなります。<\/p>\s*<p(?:\s[^>]*)?>一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。<\/p>/g;
+      cached = cached.replace(hotelPhotoConclusionSplit, '<p>こうした汚れは、不快なニオイの原因にもなります。一見きれいに見えるエアコンでも、内部には想像以上の汚れが潜んでいることがあるのです。</p>$1');
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   } catch {
