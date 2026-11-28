@@ -98,7 +98,7 @@ export function GET() {
         }
       }
       // Add space only above the paragraph immediately following the dirt photos.
-      cached = cached.replaceAll('<p>こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。', '<p style="padding-top:4mm">こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。');
+      cached = cached.replaceAll('<p>こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。', '<p style="padding-top:6mm">こうした汚れは、嫌なニオイやカビ・細菌が繁殖しやすい環境の原因になります。');
       // Keep the nursing-home conclusion together on page 6; leave other DMs intact.
       const nursingConclusion = '<p>私たちは、エアコン洗浄を通じて、入居者の皆様が気持ちよく暮らせる環境づくりをお手伝いしたいと考えています。</p>';
       const nursingBoundary = '</div><footer class="footer"><span>06 / 07</span></footer></section><section class="sheet"><div class="content">';
@@ -107,14 +107,35 @@ export function GET() {
       if (cached.split(nursingSplit).length === 2) {
         cached = cached.replace(nursingSplit, nursingConclusion + nursingNextParagraphs + nursingBoundary);
       }
-      // Update only the approved nursing-home copy.
-      const nursingAirOld = "しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所だからこそ、空気環境にも気を配りたいものです。";
-      const nursingAirNew = "しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所です。";
-      const nursingHygieneOld = "目に見える場所を清潔に保つだけでなく、日々の生活に欠かせないエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。";
-      const nursingHygieneNew = "目に見える場所だけでなく、日々の生活に欠かせないエアコン内部の衛生状態にも気を配る必要があるのではないでしょうか。";
-      if (cached.includes(nursingAirOld) && cached.includes(nursingHygieneOld)) {
-        const nursingCopyPair = /しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所だからこそ、空気環境にも気を配りたいものです\。(\s*<\/p>\s*<p(?:\s[^>]*)?>\s*)目に見える場所を清潔に保つだけでなく、日々の生活に欠かせないエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。/g;
-        cached = cached.replace(nursingCopyPair, (_match, separator) => nursingAirNew + separator + nursingHygieneNew);
+      // Apply the approved hygiene wording to the exact matching sentences only.
+      const hygieneCopy = [
+        [
+          "しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所だからこそ、空気環境にも気を配りたいものです。",
+          "しかし、老人ホームは入居者の皆様が毎日を過ごす大切な場所です。"
+        ],
+        [
+          "目に見える場所を清潔に保つだけでなく、日々の生活に欠かせないエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。",
+          "目に見える場所だけでなく、日々の生活に欠かせないエアコン内部の衛生の状態にも気を配る必要があるのではないでしょうか。"
+        ],
+        [
+          "目に見える場所だけでなく、日々の生活に欠かせないエアコン内部の衛生状態にも気を配る必要があるのではないでしょうか。",
+          "目に見える場所だけでなく、日々の生活に欠かせないエアコン内部の衛生の状態にも気を配る必要があるのではないでしょうか。"
+        ],
+        [
+          "しかし、病院は患者様が診察や治療を受ける大切な場所だからこそ、空気環境にも気を配りたいものです。",
+          "しかし、病院は患者様が診察や治療を受ける大切な場所です。"
+        ],
+        [
+          "目に見える場所を清潔に保つだけでなく、院内で使用するエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。",
+          "目に見える場所だけでなく、院内で使用するエアコン内部の衛生の状態にも気を配る必要があるのではないでしょうか。"
+        ],
+        [
+          "目に見える場所を清潔に保つだけでなく、子どもたちが毎日過ごす空間で使用するエアコンだからこそ、普段は見えない内部の衛生状態にも目を向ける必要があるのではないでしょうか。",
+          "目に見える場所だけでなく、子どもたちが毎日過ごす空間で使用するエアコン内部の衛生の状態にも気を配る必要があるのではないでしょうか。"
+        ]
+      ];
+      for (const [oldCopy, newCopy] of hygieneCopy) {
+        cached = cached.replaceAll(oldCopy, newCopy);
       }
     }
     return new Response(cached, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
